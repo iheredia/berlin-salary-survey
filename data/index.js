@@ -35,14 +35,15 @@ csv({
           isPartTime: row.field15 === "Part-time",
           isFreelance: row.field15 === "Contract/Freelance",
 
-          hoursPerWeek: row.field16,
-          grossSalary: row.field17,
+          hoursPerWeek: parseFloat(row.field16.replace(",", ".")),
+          grossSalary: parseInt(row.field17.replace(/\D/g, "")),
           bonus: row.field18,
           equity: row.field19,
           salaryRaise: row.field20,
         };
       })
-      .filter((row) => row.inBerlin || row.workingRemotelyForBerlin);
+      .filter((row) => row.inBerlin || row.workingRemotelyForBerlin)
+      .filter((row) => !isNaN(row.grossSalary));
 
     console.log(`Clean count: ${cleanData.length}`);
     const cleanDataString = stringify(cleanData, { space: "  " });
