@@ -1,12 +1,12 @@
 import merge from "lodash/merge";
 import HighchartChart from "./highchart-chart";
 import { getCredits, getSeries, getTooltipFormat } from "./helpers";
-import { Dimension, names, units } from "@/data/types";
+import { NumericDimension, names, units } from "@/data";
 
 type ScatterChartProps = {
   year: 2023 | 2024;
-  dimensionX: Dimension;
-  dimensionY: Dimension;
+  dimensionX: NumericDimension;
+  dimensionY: NumericDimension;
 };
 
 export default function ScatterChart(props: ScatterChartProps) {

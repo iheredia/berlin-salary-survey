@@ -1,5 +1,4 @@
-import data2023 from "@/data/2023.json";
-import { Dimension, units, names } from "@/data/types";
+import { data2023, units, names, NumericDimension } from "@/data";
 
 export function getCredits(year: 2023 | 2024) {
   // TODO: add 2024
@@ -9,23 +8,22 @@ export function getCredits(year: 2023 | 2024) {
   };
 }
 
-export function getSeries(year: 2023 | 2024, dimensionX: Dimension, dimensionY: Dimension) {
+export function getSeries(
+  year: 2023 | 2024,
+  dimensionX: NumericDimension,
+  dimensionY: NumericDimension
+) {
   return {
     name: `${year} Salary Survey`,
     data: data2023
       .map((row) => [row[dimensionX], row[dimensionY]])
       .filter((dataPoint) => {
-        return (
-          typeof dataPoint[0] === "number" &&
-          !isNaN(dataPoint[0]) &&
-          typeof dataPoint[1] === "number" &&
-          !isNaN(dataPoint[1])
-        );
+        return typeof dataPoint[0] === "number" && typeof dataPoint[1] === "number";
       }),
   };
 }
 
-export function getTooltipFormat(dimensionX: Dimension, dimensionY: Dimension) {
+export function getTooltipFormat(dimensionX: NumericDimension, dimensionY: NumericDimension) {
   const formatX = `<strong>${names[dimensionX]}:</strong> {point.x} ${units[dimensionX]}`;
   const formatY = `<strong>${names[dimensionY]}:</strong> {point.y} ${units[dimensionY]}`;
   return `${formatX} <br /> ${formatY}`;

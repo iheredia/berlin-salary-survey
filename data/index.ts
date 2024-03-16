@@ -1,7 +1,14 @@
 import data2023 from "@/data/2023.json";
 
+export { data2023 };
 export type DataPoint = (typeof data2023)[number];
 export type Dimension = keyof DataPoint;
+
+type NumericKeys<T> = {
+  [K in keyof T]: T[K] extends number ? K : never;
+}[keyof T];
+
+export type NumericDimension = NumericKeys<DataPoint>;
 
 export const names: Record<Dimension, string> = {
   age: "Age",
@@ -28,28 +35,7 @@ export const names: Record<Dimension, string> = {
   yearsInCurrentPosition: "Years in current position",
 };
 
-export const units: Record<Dimension, string> = {
-  citizenship: "",
-  education: "",
-  gender: "",
-  inBerlin: "",
-  industry: "",
-  isFreelance: "",
-  isFullTime: "",
-  isPartTime: "",
-  organizationType: "",
-  position: "",
-  role: "",
-  workingRemotelyForBerlin: "",
-
-  age: "years",
-  bonus: "€",
-  companySize: "employees",
-  experience: "years",
-  equity: "€",
+export const units: Record<NumericDimension, string> = {
   grossSalary: "€",
-  salaryRaise: "%",
   hoursPerWeek: "hours",
-  yearsInCurrentCompany: "years",
-  yearsInCurrentPosition: "years",
 };
