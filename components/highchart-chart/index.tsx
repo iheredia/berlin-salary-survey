@@ -24,6 +24,11 @@ const defaultProps = {
     endOnTick: true,
     showLastLabel: true,
   },
+
+  tooltip: {
+    headerFormat: "",
+    footerFormat: "",
+  },
 };
 
 export default function HighchartChart(props: HighchartsReact.Props) {

@@ -1,4 +1,5 @@
 import data2023 from "@/data/2023.json";
+import range from "lodash/range";
 import { NumericKeys, BooleanKeys } from "./helpers";
 
 export { data2023 };
@@ -6,6 +7,7 @@ export type DataPoint = (typeof data2023)[number];
 export type Dimension = keyof DataPoint;
 export type NumericDimension = NumericKeys<DataPoint>;
 export type BooleanDimension = BooleanKeys<DataPoint>;
+export type AvailableYear = 2023;
 
 export const names: Record<Dimension, string> = {
   age: "Age",
@@ -35,6 +37,11 @@ export const names: Record<Dimension, string> = {
 export const units: Record<NumericDimension, string> = {
   grossSalary: "€",
   hoursPerWeek: "hours",
+};
+
+export const histogramBuckets: Record<NumericDimension, number[]> = {
+  grossSalary: range(0, 210_000, 10_000),
+  hoursPerWeek: range(0, 52, 4),
 };
 
 export function getStats() {

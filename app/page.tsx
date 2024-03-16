@@ -1,6 +1,7 @@
 import ScatterChart from "@/components/scatter-chart";
 import styles from "./page.module.css";
 import { getStats } from "@/data";
+import HistogramChart from "@/components/histogram-chart";
 
 export default function Home() {
   const year = 2023;
@@ -17,6 +18,7 @@ export default function Home() {
           Gross salaries go from <strong>€ {stats.minSalary}</strong> to a whopping{" "}
           <strong>€ {stats.maxSalary}</strong> a year
         </p>
+        <HistogramChart year={year} dimension="grossSalary" />
 
         {/* <p>Table of contents:</p>
         <ul>
@@ -35,6 +37,7 @@ export default function Home() {
               <li>Difference by seniority</li>
             </ul>
           </li>
+          <li>Wealth distribution</li>
           <li>How is the gender gap in Berlin?</li>
         </ul> */}
 

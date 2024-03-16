@@ -1,9 +1,28 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits, getSeries, getTooltipFormat } from "./helpers";
-import { NumericDimension, names, units } from "@/data";
+import { getCredits, getYearData } from "./helpers";
+import { AvailableYear, NumericDimension, names, units } from "@/data";
+
+function getTooltipFormat(dimensionX: NumericDimension, dimensionY: NumericDimension) {
+  const formatX = `<strong>${names[dimensionX]}:</strong> {point.x} ${units[dimensionX]}`;
+  const formatY = `<strong>${names[dimensionY]}:</strong> {point.y} ${units[dimensionY]}`;
+  return `${formatX} <br /> ${formatY}`;
+}
+
+function getSeries(
+  year: AvailableYear,
+  dimensionX: NumericDimension,
+  dimensionY: NumericDimension
+) {
+  const data = getYearData(year)
+    .map((row) => [row[dimensionX], row[dimensionY]])
+    .filter((dataPoint) => {
+      return typeof dataPoint[0] === "number" && typeof dataPoint[1] === "number";
+    });
+  return { data };
+}
 
 type ScatterChartProps = {
-  year: 2023 | 2024;
+  year: AvailableYear;
   dimensionX: NumericDimension;
   dimensionY: NumericDimension;
 };
@@ -30,14 +49,9 @@ export default function ScatterChart(props: ScatterChartProps) {
       },
     },
 
-    plotOptions: {
-      scatter: {
-        tooltip: {
-          pointFormat: getTooltipFormat(props.dimensionX, props.dimensionY),
-        },
-      },
+    tooltip: {
+      pointFormat: getTooltipFormat(props.dimensionX, props.dimensionY),
     },
-
     series: [getSeries(props.year, props.dimensionX, props.dimensionY)],
   };
   return <HighchartChart {...chartProps} />;
