@@ -14,3 +14,8 @@
 .main ul {
   padding-left: 20px;
 }
+
+.main h1,
+.main h2 {
+  margin: 20px 0;
+}

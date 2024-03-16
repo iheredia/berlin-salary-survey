@@ -1,5 +1,57 @@
+import merge from "lodash/merge";
 import HighchartChart from "./highchart-chart";
+import { getCredits, getSeries, getTooltipFormat } from "./helpers";
+import { Dimension, names, units } from "@/data/types";
 
-export default function ScatterChart(props) {
-  return <HighchartChart {...props} />;
+type ScatterChartProps = {
+  year: 2023 | 2024;
+  dimensionX: Dimension;
+  dimensionY: Dimension;
+};
+
+export default function ScatterChart(props: ScatterChartProps) {
+  const chartProps = merge(
+    {
+      chart: { type: "scatter", backgroundColor: "rgba(255, 255, 255, 0.0)" },
+      title: false,
+      credits: getCredits(props.year),
+
+      xAxis: {
+        title: {
+          text: names[props.dimensionX],
+        },
+        labels: {
+          format: `{value:,.0f} ${units[props.dimensionX]}`,
+        },
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true,
+      },
+      yAxis: {
+        title: {
+          text: names[props.dimensionY],
+        },
+        labels: {
+          format: `{value:,.0f} ${units[props.dimensionY]}`,
+        },
+      },
+
+      plotOptions: {
+        scatter: {
+          showInLegend: false,
+          marker: {
+            radius: 2,
+            symbol: "circle",
+          },
+          tooltip: {
+            pointFormat: getTooltipFormat(props.dimensionX, props.dimensionY),
+          },
+        },
+      },
+
+      series: [getSeries(props.year, props.dimensionX, props.dimensionY)],
+    },
+    props
+  );
+  return <HighchartChart {...chartProps} />;
 }

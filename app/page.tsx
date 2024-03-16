@@ -1,3 +1,4 @@
+import ScatterChart from "@/components/scatter-chart";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
       <section>
         <h1>Berlin salary survey 2023</h1>
 
-        <p>Table of contents:</p>
+        {/* <p>Table of contents:</p>
         <ul>
           <li>
             What does it pay better?
@@ -24,7 +25,10 @@ export default function Home() {
             </ul>
           </li>
           <li>How is the gender gap in Berlin?</li>
-        </ul>
+        </ul> */}
+
+        <h2>Workig more pays more?</h2>
+        <ScatterChart year={2023} dimensionX="hoursPerWeek" dimensionY="grossSalary" />
       </section>
     </main>
   );
