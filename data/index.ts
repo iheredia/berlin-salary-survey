@@ -1,14 +1,11 @@
 import data2023 from "@/data/2023.json";
+import { NumericKeys, BooleanKeys } from "./helpers";
 
 export { data2023 };
 export type DataPoint = (typeof data2023)[number];
 export type Dimension = keyof DataPoint;
-
-type NumericKeys<T> = {
-  [K in keyof T]: T[K] extends number ? K : never;
-}[keyof T];
-
 export type NumericDimension = NumericKeys<DataPoint>;
+export type BooleanDimension = BooleanKeys<DataPoint>;
 
 export const names: Record<Dimension, string> = {
   age: "Age",
