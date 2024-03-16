@@ -39,3 +39,16 @@ export const units: Record<NumericDimension, string> = {
   grossSalary: "€",
   hoursPerWeek: "hours",
 };
+
+export function getStats() {
+  const salaries = data2023.map((row) => row.grossSalary);
+  return {
+    respondants: data2023.length,
+    minSalary: Math.min(...salaries)
+      .toLocaleString("de")
+      .replace(".", " "),
+    maxSalary: Math.max(...salaries)
+      .toLocaleString("de")
+      .replace(".", " "),
+  };
+}

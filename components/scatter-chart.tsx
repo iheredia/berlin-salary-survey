@@ -38,7 +38,6 @@ export default function ScatterChart(props: ScatterChartProps) {
 
       plotOptions: {
         scatter: {
-          showInLegend: false,
           marker: {
             radius: 2,
             symbol: "circle",

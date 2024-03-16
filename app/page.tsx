@@ -1,11 +1,22 @@
 import ScatterChart from "@/components/scatter-chart";
 import styles from "./page.module.css";
+import { getStats } from "@/data";
 
 export default function Home() {
+  const year = 2023;
+  const stats = getStats();
   return (
     <main className={styles.main}>
       <section>
-        <h1>Berlin salary survey 2023</h1>
+        <h1>Berlin salary survey {year}</h1>
+        <p>
+          The Handpicked salary survey for {year} had{" "}
+          <strong>{stats.respondants} respondants</strong>
+        </p>
+        <p>
+          Gross salaries go from <strong>€ {stats.minSalary}</strong> to a whopping{" "}
+          <strong>€ {stats.maxSalary}</strong> a year
+        </p>
 
         {/* <p>Table of contents:</p>
         <ul>
@@ -28,7 +39,7 @@ export default function Home() {
         </ul> */}
 
         <h2>Workig more pays more?</h2>
-        <ScatterChart year={2023} dimensionX="hoursPerWeek" dimensionY="grossSalary" />
+        <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" />
       </section>
     </main>
   );
