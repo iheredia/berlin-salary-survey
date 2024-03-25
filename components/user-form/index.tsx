@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Select from "./select";
 import SalaryInput from "./salary-input";
+import styles from "./index.module.css";
 
 export type User = {
   salary?: number;
@@ -7,20 +9,21 @@ export type User = {
 };
 
 export default function UserForm(props: { user: User; setUser: CallableFunction }) {
+  const [showMore, setShowMore] = useState(false);
   const setUser = (newUser: User) => {
-    console.log({ oldUser: props.user, newUser });
     props.setUser({ ...props.user, ...newUser });
   };
   return (
-    <form onSubmit={(event) => event.preventDefault()}>
+    <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
       <SalaryInput setUser={setUser} />
 
       <Select dimension="age" setUser={setUser} />
       <Select dimension="gender" setUser={setUser} />
+      <Select dimension="experience" setUser={setUser} />
+
       <Select dimension="citizenship" setUser={setUser} />
       <Select dimension="companySize" setUser={setUser} />
       <Select dimension="education" setUser={setUser} />
-      <Select dimension="experience" setUser={setUser} />
       <Select dimension="position" setUser={setUser} />
       <Select dimension="organizationType" setUser={setUser} />
       <Select dimension="industry" setUser={setUser} />

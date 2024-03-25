@@ -1,0 +1,14 @@
+.form label {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.form input[type="number"] {
+  appearance: textfield;
+  padding: 3px 4px;
+}
+
+.form select {
+  padding: 3px 4px;
+}

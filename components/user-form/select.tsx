@@ -13,12 +13,12 @@ export default function Select(props: { setUser: CallableFunction; dimension: St
             props.setUser({ [props.dimension]: event.currentTarget.value });
           }}
         >
+          <option value={defaultValue}>{defaultValue}</option>
           {values[props.dimension].map((value) => (
             <option key={value} value={value}>
               {value}
             </option>
           ))}
-          <option value={defaultValue}>{defaultValue}</option>
         </select>
       </label>
     </p>
