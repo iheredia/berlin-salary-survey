@@ -1,12 +1,13 @@
 import data2023 from "@/data/2023.json";
 import range from "lodash/range";
-import { NumericKeys, BooleanKeys } from "./helpers";
+import { NumericKeys, BooleanKeys, StringKeys } from "./helpers";
 
 export { data2023 };
 export type DataPoint = (typeof data2023)[number];
 export type Dimension = keyof DataPoint;
 export type NumericDimension = NumericKeys<DataPoint>;
 export type BooleanDimension = BooleanKeys<DataPoint>;
+export type StringDimension = StringKeys<DataPoint>;
 export type AvailableYear = 2023;
 
 export const names: Record<Dimension, string> = {

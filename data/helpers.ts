@@ -5,3 +5,7 @@ export type NumericKeys<T> = {
 export type BooleanKeys<T> = {
   [K in keyof T]: T[K] extends boolean ? K : never;
 }[keyof T];
+
+export type StringKeys<T> = {
+  [K in keyof T]: T[K] extends String ? K : never;
+}[keyof T];
