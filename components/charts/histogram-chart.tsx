@@ -1,6 +1,6 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits, getYearData } from "../helpers";
-import { NumericDimension, names, histogramBuckets, AvailableYear } from "@/data";
+import { getCredits } from "../helpers";
+import { NumericDimension, names, histogramBuckets, AvailableYear, getYearData } from "@/data";
 
 function getTooltipFormat(dimension: NumericDimension) {
   return `<strong>Amount of people:</strong> {point.y} <br /> <strong>${names[dimension]}</strong>: {point.category}`;

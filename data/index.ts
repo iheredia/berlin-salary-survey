@@ -50,15 +50,20 @@ export const histogramBuckets: Record<NumericDimension, number[]> = {
   hoursPerWeek: range(0, 52, 4),
 };
 
-export function getStats() {
-  const salaries = data2023.map((row) => row.grossSalary);
-  return {
-    respondants: data2023.length,
-    minSalary: Math.min(...salaries)
-      .toLocaleString("de")
-      .replace(".", " "),
-    maxSalary: Math.max(...salaries)
-      .toLocaleString("de")
-      .replace(".", " "),
-  };
+export function getYearData(year: AvailableYear) {
+  return data2023;
+}
+
+export function calculatePercentile(year: AvailableYear, salary: number) {
+  let count = 0;
+  const data = getYearData(year);
+  data.forEach((row) => {
+    const v = row.grossSalary;
+    if (v < salary) {
+      count++;
+    } else if (v == salary) {
+      count += 0.5;
+    }
+  });
+  return Math.round((100 * count) / data.length);
 }

@@ -1,15 +1,18 @@
 "use client";
 import { useState } from "react";
-import ScatterChart from "@/components/charts/scatter-chart";
-import styles from "./page.module.css";
-import { getStats } from "@/data";
-import HistogramChart from "@/components/charts/histogram-chart";
+
 import UserForm, { User } from "@/components/user-form";
+
+import DeviationFromMeanChart from "@/components/charts/deviation-from-mean-chart";
+import ScatterChart from "@/components/charts/scatter-chart";
+import HistogramChart from "@/components/charts/histogram-chart";
+
+import styles from "./page.module.css";
 
 export default function Home() {
   const [user, setUser] = useState<User>({});
   const year = 2023;
-  // const stats = getStats();
+
   return (
     <main className={styles.main}>
       <section>
@@ -24,19 +27,19 @@ export default function Home() {
           If it&apos;s your first time heare, try filling your data to compare yourself agaisnt the
           survey.
         </p>
-        <h3>How do you compare?</h3>
 
         <UserForm user={user} setUser={setUser} />
+        <DeviationFromMeanChart year={year} user={user} />
 
-        <p>User info:</p>
+        {/* <p>User info:</p>
         <pre>
           <code>{JSON.stringify(user, null, 2)}</code>
-        </pre>
+        </pre> */}
 
-        {/* <HistogramChart year={year} dimension="grossSalary" />
-
-        <h2>Workig more pays more?</h2>
-        <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" /> */}
+        {/* <HistogramChart year={year} dimension="grossSalary" /> */}
+        {/* <HistogramChart year={year} dimension="bonus" /> */}
+        {/* <HistogramChart year={year} dimension="equity" /> */}
+        {/* <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" /> */}
       </section>
     </main>
   );
