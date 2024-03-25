@@ -1,5 +1,5 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits, getYearData } from "./helpers";
+import { getCredits, getYearData } from "../helpers";
 import { NumericDimension, names, histogramBuckets, AvailableYear } from "@/data";
 
 function getTooltipFormat(dimension: NumericDimension) {
