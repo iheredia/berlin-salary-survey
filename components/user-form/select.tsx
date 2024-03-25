@@ -77,9 +77,6 @@ const values: Record<StringDimension, string[]> = {
   yearsInCurrentCompany: ["Less than 1", "1-2", "3-5", "6-10", "11-15", "16-20", "21-30", "30+"],
   yearsInCurrentPosition: ["Less than 1", "1-2", "3-5", "6-10", "11-15", "16-20"],
 
-  equity: [],
-  bonus: [],
-
   // satisfaction: [["1", "5", "2", "4", "3"]],
   // startup: ["Yes", "No", "I'm self-employed", "I don't know"],
   // overtime: ["No", "Yes, additional time off (flex-time)", "Yes, paid", "Prefer not to say", "Self-employed" ]

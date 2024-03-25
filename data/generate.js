@@ -38,8 +38,8 @@ csv({
 
           hoursPerWeek: parseFloat(row.field16.replace(",", ".")),
           grossSalary: parseInt(row.field17.replace(/\D/g, "")),
-          bonus: row.field18,
-          equity: row.field19,
+          bonus: parseInt(row.field18.replace(/\D/g, "")) || 0,
+          equity: parseInt(row.field19.replace(/\D/g, "")) || 0,
           salaryRaise: row.field20,
         };
       })

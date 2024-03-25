@@ -38,11 +38,15 @@ export const names: Record<Dimension, string> = {
 
 export const units: Record<NumericDimension, string> = {
   grossSalary: "€",
+  bonus: "€",
+  equity: "€",
   hoursPerWeek: "hours",
 };
 
 export const histogramBuckets: Record<NumericDimension, number[]> = {
   grossSalary: range(0, 210_000, 10_000),
+  bonus: range(0, 100_000, 5_000),
+  equity: range(0, 100_000, 5_000),
   hoursPerWeek: range(0, 52, 4),
 };
 

@@ -21,8 +21,6 @@ export default function UserForm(props: { user: User; setUser: CallableFunction 
       <Select dimension="companySize" setUser={setUser} />
       <Select dimension="education" setUser={setUser} />
       <Select dimension="experience" setUser={setUser} />
-      <Select dimension="bonus" setUser={setUser} />
-      <Select dimension="equity" setUser={setUser} />
       <Select dimension="position" setUser={setUser} />
       <Select dimension="organizationType" setUser={setUser} />
       <Select dimension="industry" setUser={setUser} />

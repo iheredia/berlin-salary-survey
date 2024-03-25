@@ -26,9 +26,13 @@ function getHistogramSeries(year: AvailableYear, dimension: NumericDimension) {
   const data = bucketsForDimension.map(() => 0);
   getYearData(year).forEach((dataPoint) => {
     const dimensionValue = dataPoint[dimension];
-    if (dimensionValue !== null) {
-      const bucketIndex =
-        bucketsForDimension.findIndex((bucketStart) => bucketStart > dimensionValue) - 1;
+    if (dimensionValue !== null && dimensionValue > 0) {
+      const bucketIndex = bucketsForDimension.findIndex((bucketStart, index) => {
+        if (index === bucketsForDimension.length - 1) {
+          return true;
+        }
+        return bucketStart <= dimensionValue && dimensionValue < bucketsForDimension[index + 1];
+      });
       data[bucketIndex] += 1;
     }
   });
