@@ -1,6 +1,7 @@
 import data2023 from "@/data/2023.json";
 import range from "lodash/range";
 import { NumericKeys, BooleanKeys, StringKeys } from "./helpers";
+import { User } from "@/components/user-form";
 
 export { data2023 };
 export type DataPoint = (typeof data2023)[number];
@@ -36,11 +37,31 @@ export const names: Record<Dimension, string> = {
   yearsInCurrentPosition: "Years in current position",
 };
 
-export const units: Record<NumericDimension, string> = {
+export const units: Record<Dimension, string> = {
   grossSalary: "€",
   bonus: "€",
   equity: "€",
   hoursPerWeek: "hours",
+  age: "years",
+  yearsInCurrentCompany: "years",
+  yearsInCurrentPosition: "years",
+  companySize: "employees",
+
+  experience: "years",
+  citizenship: "",
+  education: "",
+  gender: "",
+  inBerlin: "",
+  industry: "",
+  isFreelance: "",
+  isFullTime: "",
+  isPartTime: "",
+  organizationType: "",
+  position: "",
+  role: "",
+  salaryRaise: "",
+  workingRemotelyForBerlin: "",
+  workingSchedule: "",
 };
 
 export const histogramBuckets: Record<NumericDimension, number[]> = {
@@ -54,16 +75,25 @@ export function getYearData(year: AvailableYear) {
   return data2023;
 }
 
-export function calculatePercentile(year: AvailableYear, salary: number) {
+export function calculatePercentile(year: AvailableYear, user: User, dimension: Dimension) {
   let count = 0;
   const data = getYearData(year);
-  data.forEach((row) => {
-    const v = row.grossSalary;
-    if (v < salary) {
-      count++;
-    } else if (v == salary) {
-      count += 0.5;
+  const filteredData = data.filter((row) => {
+    if (dimension && dimension !== "grossSalary") {
+      return row[dimension] === user[dimension];
+    }
+    return true;
+  });
+  filteredData.forEach((row) => {
+    if (user.grossSalary) {
+      if (row.grossSalary < user.grossSalary) {
+        count++;
+      } else if (row.grossSalary == user.grossSalary) {
+        count += 0.5;
+      }
     }
   });
-  return Math.round((100 * count) / data.length);
+  console.log({ dimension, value: user[dimension], filteredData });
+
+  return Math.round((100 * count) / filteredData.length);
 }

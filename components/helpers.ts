@@ -7,7 +7,3 @@ export function getCredits(year: AvailableYear) {
     href: "https://handpickedberlin.com/report-on-berlin-salary-trends-survey-june-2023/",
   };
 }
-
-export function getYearData(year: AvailableYear) {
-  return data2023;
-}

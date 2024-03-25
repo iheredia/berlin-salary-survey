@@ -29,7 +29,15 @@ export default function Home() {
         </p>
 
         <UserForm user={user} setUser={setUser} />
-        <DeviationFromMeanChart year={year} user={user} />
+        <DeviationFromMeanChart year={year} user={user} dimension="grossSalary" />
+        <DeviationFromMeanChart year={year} user={user} dimension="age" />
+        <DeviationFromMeanChart year={year} user={user} dimension="gender" />
+        <DeviationFromMeanChart year={year} user={user} dimension="experience" />
+        <DeviationFromMeanChart year={year} user={user} dimension="citizenship" />
+        <DeviationFromMeanChart year={year} user={user} dimension="education" />
+        <DeviationFromMeanChart year={year} user={user} dimension="organizationType" />
+        <DeviationFromMeanChart year={year} user={user} dimension="industry" />
+        <DeviationFromMeanChart year={year} user={user} dimension="role" />
 
         {/* <p>User info:</p>
         <pre>

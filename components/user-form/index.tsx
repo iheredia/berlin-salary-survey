@@ -1,15 +1,11 @@
-import { useState } from "react";
 import Select from "./select";
 import SalaryInput from "./salary-input";
 import styles from "./index.module.css";
+import { DataPoint } from "@/data";
 
-export type User = {
-  salary?: number;
-  gender?: string;
-};
+export type User = Partial<DataPoint>;
 
 export default function UserForm(props: { user: User; setUser: CallableFunction }) {
-  const [showMore, setShowMore] = useState(false);
   const setUser = (newUser: User) => {
     props.setUser({ ...props.user, ...newUser });
   };
@@ -23,18 +19,11 @@ export default function UserForm(props: { user: User; setUser: CallableFunction 
         <Select dimension="age" setUser={setUser} />
         <Select dimension="gender" setUser={setUser} />
         <Select dimension="experience" setUser={setUser} />
-
         <Select dimension="citizenship" setUser={setUser} />
-        <Select dimension="companySize" setUser={setUser} />
         <Select dimension="education" setUser={setUser} />
-        <Select dimension="position" setUser={setUser} />
         <Select dimension="organizationType" setUser={setUser} />
         <Select dimension="industry" setUser={setUser} />
         <Select dimension="role" setUser={setUser} />
-        <Select dimension="yearsInCurrentCompany" setUser={setUser} />
-        <Select dimension="yearsInCurrentPosition" setUser={setUser} />
-        <Select dimension="salaryRaise" setUser={setUser} />
-        <Select dimension="workingSchedule" setUser={setUser} />
       </p>
     </form>
   );

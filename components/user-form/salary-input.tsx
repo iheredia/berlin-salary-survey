@@ -1,6 +1,8 @@
+import styles from "./salary-input.module.css";
+
 export default function SalaryInput(props: { setUser: CallableFunction }) {
   return (
-    <p>
+    <p className={styles.salaryInputContainer}>
       <label>
         <span>
           Your current <strong>gross yearly salary</strong>
@@ -16,7 +18,7 @@ export default function SalaryInput(props: { setUser: CallableFunction }) {
             const newSalary = parseInt(sanitizedInput);
             if (newSalary && !isNaN(newSalary) && newSalary > 100) {
               props.setUser({
-                salary: newSalary,
+                grossSalary: newSalary,
               });
             }
           }}

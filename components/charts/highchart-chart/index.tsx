@@ -1,7 +1,6 @@
 import HighchartsReact from "highcharts-react-official";
 import ClientChart from "./client-chart";
 import merge from "lodash/merge";
-import styles from "./index.module.css";
 
 const defaultProps = {
   chart: {
@@ -33,8 +32,9 @@ const defaultProps = {
 
 export default function HighchartChart(props: HighchartsReact.Props) {
   const options = merge({}, defaultProps, props);
+  const height = options.chart.height || 400;
   return (
-    <div className={styles.chart}>
+    <div style={{ height: `${height}px` }}>
       <ClientChart {...options} />
     </div>
   );
