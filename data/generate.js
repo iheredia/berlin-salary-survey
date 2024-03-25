@@ -31,6 +31,7 @@ csv({
           role: row.field13,
           yearsInCurrentPosition: row.field14,
 
+          workingSchedule: row.field15,
           isFullTime: row.field15 === "Full-time",
           isPartTime: row.field15 === "Part-time",
           isFreelance: row.field15 === "Contract/Freelance",

@@ -31,6 +31,7 @@ export const names: Record<Dimension, string> = {
   role: "Role",
   salaryRaise: "Salary raise",
   workingRemotelyForBerlin: "Working remotely for berlin",
+  workingSchedule: "Working schedule",
   yearsInCurrentCompany: "Years in current company",
   yearsInCurrentPosition: "Years in current position",
 };
