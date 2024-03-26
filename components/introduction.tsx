@@ -1,4 +1,4 @@
-import { AvailableYear } from "@/data";
+import { AvailableYear } from "@/data/types";
 
 export default function Introduction(props: { year: AvailableYear }) {
   const { year } = props;

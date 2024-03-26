@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { AvailableYear } from "@/data";
-import UserForm, { User } from "./user-form";
+import { AvailableYear, User } from "@/data/types";
+import UserForm from "./user-form";
 import DeviationFromMeanChart from "./charts/deviation-from-mean-chart";
 import ScatterChart from "./charts/scatter-chart";
 import HistogramChart from "./charts/histogram-chart";

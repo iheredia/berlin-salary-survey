@@ -1,4 +1,5 @@
-import { StringDimension, names } from "@/data";
+import { names } from "@/data";
+import { StringDimension } from "@/data/types";
 import values from "@/data/values";
 
 export default function Select(props: { setUser: CallableFunction; dimension: StringDimension }) {

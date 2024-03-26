@@ -1,7 +1,7 @@
 import HighchartChart from "./highchart-chart";
 import { getCredits } from "./helpers";
-import { AvailableYear, Dimension, calculatePercentile, names, units } from "@/data";
-import { User } from "../user-form";
+import { calculatePercentile, names, units } from "@/data";
+import { AvailableYear, Dimension, User } from "@/data/types";
 import { range } from "lodash";
 
 export type Props = {

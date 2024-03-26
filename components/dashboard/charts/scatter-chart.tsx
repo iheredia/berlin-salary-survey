@@ -1,6 +1,7 @@
 import HighchartChart from "./highchart-chart";
 import { getCredits } from "./helpers";
-import { AvailableYear, NumericDimension, names, units, getYearData } from "@/data";
+import { names, units, getYearData } from "@/data";
+import { AvailableYear, NumericDimension } from "@/data/types";
 
 function getTooltipFormat(dimensionX: NumericDimension, dimensionY: NumericDimension) {
   const formatX = `<strong>${names[dimensionX]}:</strong> {point.x} ${units[dimensionX]}`;

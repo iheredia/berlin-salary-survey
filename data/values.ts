@@ -1,4 +1,4 @@
-import { StringDimension } from ".";
+import { StringDimension } from "./types";
 
 const values: Record<StringDimension, string[]> = {
   age: [
