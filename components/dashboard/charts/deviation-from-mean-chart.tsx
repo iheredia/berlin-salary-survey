@@ -1,5 +1,5 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits } from "../helpers";
+import { getCredits } from "./helpers";
 import { AvailableYear, Dimension, calculatePercentile, names, units } from "@/data";
 import { User } from "../user-form";
 import { range } from "lodash";

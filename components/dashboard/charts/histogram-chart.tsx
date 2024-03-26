@@ -1,5 +1,5 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits } from "../helpers";
+import { getCredits } from "./helpers";
 import {
   NumericDimension,
   names,

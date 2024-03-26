@@ -1,4 +1,4 @@
-import { AvailableYear, data2023 } from "@/data";
+import { AvailableYear } from "@/data";
 
 export function getCredits(year: AvailableYear) {
   // TODO: add 2024
