@@ -41,7 +41,7 @@ function getCommentForPercentile(userPercentile: number, user: User, dimension: 
     : userPercentile < 50
     ? `😕 you are not all the way at the bottom but there is a lot of room for improvement. ${upperDifference}% of people earn more than you`
     : userPercentile < 75
-    ? `Not bad. You are in the upper range of salaries, earning more than ${upperDifference}% of people.`
+    ? `Not bad. You are in the upper range of salaries, earning more than ${userPercentile}% of people.`
     : userPercentile === 100
     ? "Oh wow. Are you sure you wrote that? You earn more than everyone who took the survey 😎"
     : `🥳 niiice. You are in the top range of salaries. Only ${upperDifference}% earn more than you 💰💰`;
