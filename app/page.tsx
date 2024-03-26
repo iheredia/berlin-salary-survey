@@ -8,6 +8,7 @@ import ScatterChart from "@/components/charts/scatter-chart";
 import HistogramChart from "@/components/charts/histogram-chart";
 
 import styles from "./page.module.css";
+import Introduction from "@/components/introduction";
 
 export default function Home() {
   const [user, setUser] = useState<User>({});
@@ -15,105 +16,90 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <Introduction year={year} />
+
       <section>
-        <h1>Berlin salary survey {year}</h1>
-        <h2>How are you paid?</h2>
-        <p>Welcome to the analysis of the {year} Handpicked Berlin Salary Survey.</p>
-        <p>
-          Here you can find general statistics of the survey and an interactive section to see{" "}
-          <strong>how does your salary compare?</strong> against the survey.
-        </p>
-        <p>
-          If it&apos;s your first time heare, try filling your data to compare yourself agaisnt the
-          survey.
-        </p>
-
         <UserForm user={user} setUser={setUser} />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="grossSalary" />
-          <HistogramChart year={year} user={user} dimension="grossSalary" />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="grossSalary" />
+        <HistogramChart year={year} user={user} dimension="grossSalary" />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="age" />
-          <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="age" />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="age" />
+        <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="age" />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="gender" />
-          <HistogramChart
-            year={year}
-            user={user}
-            dimension="grossSalary"
-            filterDimension="gender"
-          />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="gender" />
+        <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="gender" />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="experience" />
-          <HistogramChart
-            year={year}
-            user={user}
-            dimension="grossSalary"
-            filterDimension="experience"
-          />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="experience" />
+        <HistogramChart
+          year={year}
+          user={user}
+          dimension="grossSalary"
+          filterDimension="experience"
+        />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="citizenship" />
-          <HistogramChart
-            year={year}
-            user={user}
-            dimension="grossSalary"
-            filterDimension="citizenship"
-          />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="citizenship" />
+        <HistogramChart
+          year={year}
+          user={user}
+          dimension="grossSalary"
+          filterDimension="citizenship"
+        />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="education" />
-          <HistogramChart
-            year={year}
-            user={user}
-            dimension="grossSalary"
-            filterDimension="education"
-          />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="education" />
+        <HistogramChart
+          year={year}
+          user={user}
+          dimension="grossSalary"
+          filterDimension="education"
+        />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="organizationType" />
-          <HistogramChart
-            year={year}
-            user={user}
-            dimension="grossSalary"
-            filterDimension="organizationType"
-          />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="organizationType" />
+        <HistogramChart
+          year={year}
+          user={user}
+          dimension="grossSalary"
+          filterDimension="organizationType"
+        />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="industry" />
-          <HistogramChart
-            year={year}
-            user={user}
-            dimension="grossSalary"
-            filterDimension="industry"
-          />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="industry" />
+        <HistogramChart
+          year={year}
+          user={user}
+          dimension="grossSalary"
+          filterDimension="industry"
+        />
+      </section>
 
-        <div className={styles.section}>
-          <DeviationFromMeanChart year={year} user={user} dimension="role" />
-          <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="role" />
-        </div>
+      <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="role" />
+        <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="role" />
+      </section>
 
-        {/* <p>User info:</p>
+      {/* <p>User info:</p>
         <pre>
           <code>{JSON.stringify(user, null, 2)}</code>
         </pre> */}
 
-        {/* <HistogramChart year={year} dimension="bonus" /> */}
-        {/* <HistogramChart year={year} dimension="equity" /> */}
-        {/* <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" /> */}
-      </section>
+      {/* <HistogramChart year={year} dimension="bonus" /> */}
+      {/* <HistogramChart year={year} dimension="equity" /> */}
+      {/* <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" /> */}
     </main>
   );
 }
