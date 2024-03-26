@@ -1,9 +1,7 @@
 import Select from "./select";
 import SalaryInput from "./salary-input";
 import styles from "./index.module.css";
-import { DataPoint } from "@/data";
-
-export type User = Partial<DataPoint>;
+import { User } from "@/data/types";
 
 export default function UserForm(props: { user: User; setUser: CallableFunction }) {
   const setUser = (newUser: User) => {
