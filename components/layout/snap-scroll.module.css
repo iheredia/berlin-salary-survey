@@ -1,0 +1,25 @@
+.snapScroll {
+  overflow: auto;
+}
+
+.snapScrollHorizontal {
+  width: 100%;
+
+  -webkit-scroll-snap-type: x mandatory;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+}
+
+.snapScrollVertical {
+  -webkit-scroll-snap-type: y mandatory;
+  -ms-scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
+
+  height: 100%;
+}
+
+.snapScroll > * {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}

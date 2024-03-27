@@ -1,14 +1,4 @@
 .main {
-  overflow: auto;
-  -webkit-scroll-snap-type: y mandatory;
-  -ms-scroll-snap-type: y mandatory;
-  scroll-snap-type: y mandatory;
-
   height: 100vh;
   height: 100dvh;
-}
-
-.main > section {
-  scroll-snap-align: start;
-  padding: 40px 20px;
 }

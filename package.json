@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "csvtojson": "^2.0.10",
     "highcharts": "^11.4.0",
     "highcharts-react-official": "^3.2.1",
