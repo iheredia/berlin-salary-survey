@@ -1,9 +1,10 @@
 import { AvailableYear } from "@/data/types";
+import styles from "./introduction.module.css";
 
 export default function Introduction(props: { year: AvailableYear }) {
   const { year } = props;
   return (
-    <section>
+    <section className={styles.introduction}>
       <h1>Berlin salary survey {year}</h1>
       <h2>How are you paid?</h2>
       <p>Welcome to the analysis of the {year} Handpicked Berlin Salary Survey.</p>

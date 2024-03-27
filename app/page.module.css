@@ -1,21 +1,14 @@
 .main {
+  overflow: auto;
+  -webkit-scroll-snap-type: y mandatory;
+  -ms-scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
+
+  height: 100vh;
+  height: 100dvh;
+}
+
+.main > section {
+  scroll-snap-align: start;
   padding: 40px 20px;
-}
-
-.main section {
-  max-width: 1000px;
-  margin: 0 auto 40px auto;
-}
-
-.main p {
-  margin: 20px 0;
-}
-
-.main ul {
-  padding-left: 20px;
-}
-
-.main h1,
-.main h2 {
-  margin: 0 0 20px 0;
 }

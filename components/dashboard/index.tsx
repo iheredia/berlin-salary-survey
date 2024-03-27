@@ -5,12 +5,13 @@ import UserForm from "./user-form";
 import DeviationFromMeanChart from "./charts/deviation-from-mean-chart";
 import ScatterChart from "./charts/scatter-chart";
 import HistogramChart from "./charts/histogram-chart";
+import styles from "./index.module.css";
 
 export default function Dashboard(props: { year: AvailableYear }) {
   const [user, setUser] = useState<User>({});
   const { year } = props;
   return (
-    <>
+    <section className={styles.dashboard}>
       <section>
         <UserForm user={user} setUser={setUser} />
       </section>
@@ -93,6 +94,6 @@ export default function Dashboard(props: { year: AvailableYear }) {
       {/* <HistogramChart year={year} dimension="bonus" /> */}
       {/* <HistogramChart year={year} dimension="equity" /> */}
       {/* <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" /> */}
-    </>
+    </section>
   );
 }
