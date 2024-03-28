@@ -1,12 +1,19 @@
 "use client";
 import { useState } from "react";
 import { AvailableYear, User } from "@/data/types";
-// import UserForm from "./user-form";
-import DeviationFromMeanChart from "./charts/deviation-from-mean-chart";
-import ScatterChart from "./charts/scatter-chart";
-import HistogramChart from "./charts/histogram-chart";
+import classNames from "classnames";
+
 import styles from "./index.module.css";
+
 import SalarySection from "./sections/salary";
+import AgeSection from "./sections/age";
+import GenderSection from "./sections/gender";
+import ExperienceSection from "./sections/experience";
+import CitizenshipSection from "./sections/citizenship";
+import EducationSection from "./sections/education";
+import OrganizationTypeSection from "./sections/organization-type";
+import IndustrySection from "./sections/industry";
+import RoleSection from "./sections/role";
 
 const DEBUG = true;
 
@@ -17,83 +24,47 @@ export default function Dashboard(props: { year: AvailableYear }) {
     _setUser(user);
   };
   const { year } = props;
+  const dashboardClassName = classNames(
+    styles.dashboard,
+    user.grossSalary ? styles.dashboardWithSalary : ""
+  );
   return (
-    <section className={styles.dashboard}>
-      <SalarySection user={user} setUser={setUser} />
-      {/* 
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="grossSalary" />
-        <HistogramChart year={year} user={user} dimension="grossSalary" />
+    <>
+      <section className={dashboardClassName}>
+        <SalarySection user={user} setUser={setUser} />
       </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="age" />
-        <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="age" />
-      </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="gender" />
-        <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="gender" />
-      </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="experience" />
-        <HistogramChart
-          year={year}
-          user={user}
-          dimension="grossSalary"
-          filterDimension="experience"
-        />
-      </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="citizenship" />
-        <HistogramChart
-          year={year}
-          user={user}
-          dimension="grossSalary"
-          filterDimension="citizenship"
-        />
-      </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="education" />
-        <HistogramChart
-          year={year}
-          user={user}
-          dimension="grossSalary"
-          filterDimension="education"
-        />
-      </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="organizationType" />
-        <HistogramChart
-          year={year}
-          user={user}
-          dimension="grossSalary"
-          filterDimension="organizationType"
-        />
-      </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="industry" />
-        <HistogramChart
-          year={year}
-          user={user}
-          dimension="grossSalary"
-          filterDimension="industry"
-        />
-      </section>
-
-      <section>
-        <DeviationFromMeanChart year={year} user={user} dimension="role" />
-        <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="role" />
-      </section> */}
+      {user.grossSalary ? (
+        <>
+          <section className={dashboardClassName}>
+            <AgeSection user={user} setUser={setUser} />
+          </section>
+          <section className={dashboardClassName}>
+            <GenderSection user={user} setUser={setUser} />
+          </section>
+          <section className={dashboardClassName}>
+            <ExperienceSection user={user} setUser={setUser} />
+          </section>
+          <section className={dashboardClassName}>
+            <CitizenshipSection user={user} setUser={setUser} />
+          </section>
+          <section className={dashboardClassName}>
+            <EducationSection user={user} setUser={setUser} />
+          </section>
+          <section className={dashboardClassName}>
+            <OrganizationTypeSection user={user} setUser={setUser} />
+          </section>
+          <section className={dashboardClassName}>
+            <IndustrySection user={user} setUser={setUser} />
+          </section>
+          <section className={dashboardClassName}>
+            <RoleSection user={user} setUser={setUser} />
+          </section>
+        </>
+      ) : null}
 
       {/* <HistogramChart year={year} dimension="bonus" /> */}
       {/* <HistogramChart year={year} dimension="equity" /> */}
       {/* <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" /> */}
-    </section>
+    </>
   );
 }

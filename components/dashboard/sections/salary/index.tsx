@@ -10,6 +10,10 @@ export default function SalarySection(props: SalarySectionProps) {
   return (
     <BaseSection>
       <SalaryForm user={props.user} setUser={props.setUser} />
+      {/* <section>
+        <DeviationFromMeanChart year={year} user={user} dimension="grossSalary" />
+        <HistogramChart year={year} user={user} dimension="grossSalary" />
+      </section> */}
     </BaseSection>
   );
 }

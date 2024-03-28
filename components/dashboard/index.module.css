@@ -1,3 +1,12 @@
 .dashboard {
   height: 100%;
+  padding: 20px 20px 0 20px;
+  transition: all 400ms;
+}
+
+.dashboard:last-child {
+  padding-bottom: 20px;
+}
+.dashboardWithSalary.dashboard {
+  height: calc(100% - 40px);
 }
