@@ -6,9 +6,14 @@ import DeviationFromMeanChart from "./charts/deviation-from-mean-chart";
 import ScatterChart from "./charts/scatter-chart";
 import HistogramChart from "./charts/histogram-chart";
 import styles from "./index.module.css";
+const DEBUG = true;
 
 export default function Dashboard(props: { year: AvailableYear }) {
-  const [user, setUser] = useState<User>({});
+  const [user, _setUser] = useState<User>({});
+  const setUser = (user: User) => {
+    if (DEBUG) console.log(user);
+    _setUser(user);
+  };
   const { year } = props;
   return (
     <section className={styles.dashboard}>
@@ -85,11 +90,6 @@ export default function Dashboard(props: { year: AvailableYear }) {
         <DeviationFromMeanChart year={year} user={user} dimension="role" />
         <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="role" />
       </section>
-
-      {/* <p>User info:</p>
-        <pre>
-          <code>{JSON.stringify(user, null, 2)}</code>
-        </pre> */}
 
       {/* <HistogramChart year={year} dimension="bonus" /> */}
       {/* <HistogramChart year={year} dimension="equity" /> */}
