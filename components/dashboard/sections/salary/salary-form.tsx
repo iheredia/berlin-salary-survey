@@ -32,7 +32,9 @@ export default function SalaryForm(props: SalaryFormProps) {
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <label className={styles.label}>
-        <span className={styles.labelText}>Your current gross annual salary</span>
+        {!props.user.grossSalary && (
+          <span className={styles.labelText}>Your current gross annual salary</span>
+        )}
         <span className={styles.inputContainer}>
           <input
             className={styles.input}
@@ -43,16 +45,8 @@ export default function SalaryForm(props: SalaryFormProps) {
             onChange={onSalaryChange}
           />
           <button type="submit" className={styles.inputSubmitIcon}>
-            GO
+            {props.user.grossSalary ? "Edit" : "Go"}
           </button>
-          <span
-            onClick={(event) => {
-              event.preventDefault();
-              updateIfThreshold();
-            }}
-          >
-            GO
-          </span>
         </span>
       </label>
     </form>
