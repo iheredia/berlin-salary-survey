@@ -1,18 +1,29 @@
 .introduction {
-  background: #f5f5f5;
-  padding: 40px 5vw;
+  padding: 0px 5vw;
 }
 
 .titleContainer h1 {
+  display: flex;
+  align-items: center;
   margin: 0;
   padding-top: 40px;
 
   @media (max-width: 600px) {
+    gap: 2vw;
     font-size: 5vw;
   }
   @media (min-width: 601px) {
+    gap: 12px;
     font-size: 30px;
   }
+}
+
+.titleContainer h1 svg {
+  height: 0.7em;
+}
+
+.titleContainer h1 svg polygon {
+  fill: #f33b1d;
 }
 
 .titleContainer h2 {

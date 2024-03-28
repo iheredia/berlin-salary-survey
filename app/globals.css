@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+*:focus {
+  outline: solid 1px #f33b1d;
+}
+
 body {
   color: #222;
   background: #f5f5f5;
