@@ -1,11 +1,13 @@
 "use client";
 import { useState } from "react";
 import { AvailableYear, User } from "@/data/types";
-import UserForm from "./user-form";
+// import UserForm from "./user-form";
 import DeviationFromMeanChart from "./charts/deviation-from-mean-chart";
 import ScatterChart from "./charts/scatter-chart";
 import HistogramChart from "./charts/histogram-chart";
 import styles from "./index.module.css";
+import SalarySection from "./sections/salary";
+
 const DEBUG = true;
 
 export default function Dashboard(props: { year: AvailableYear }) {
@@ -17,10 +19,8 @@ export default function Dashboard(props: { year: AvailableYear }) {
   const { year } = props;
   return (
     <section className={styles.dashboard}>
-      <section>
-        <UserForm user={user} setUser={setUser} />
-      </section>
-
+      <SalarySection user={user} setUser={setUser} />
+      {/* 
       <section>
         <DeviationFromMeanChart year={year} user={user} dimension="grossSalary" />
         <HistogramChart year={year} user={user} dimension="grossSalary" />
@@ -89,7 +89,7 @@ export default function Dashboard(props: { year: AvailableYear }) {
       <section>
         <DeviationFromMeanChart year={year} user={user} dimension="role" />
         <HistogramChart year={year} user={user} dimension="grossSalary" filterDimension="role" />
-      </section>
+      </section> */}
 
       {/* <HistogramChart year={year} dimension="bonus" /> */}
       {/* <HistogramChart year={year} dimension="equity" /> */}
