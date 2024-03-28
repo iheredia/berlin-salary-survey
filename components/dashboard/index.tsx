@@ -31,7 +31,7 @@ export default function Dashboard(props: { year: AvailableYear }) {
   return (
     <>
       <section className={dashboardClassName}>
-        <SalarySection user={user} setUser={setUser} />
+        <SalarySection year={year} user={user} setUser={setUser} />
       </section>
       {user.grossSalary ? (
         <>

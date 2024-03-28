@@ -78,16 +78,11 @@ export default function DeviationFromMeanChart(props: Props) {
   if (!user[dimension] || user[dimension] === "Prefer not to say") return null;
 
   const userPercentile = calculatePercentile(props.year, user, dimension) || 1;
-  const tooltipText = getCommentForPercentile(userPercentile, user, dimension);
+  const tooltipText = "You are here";
 
   const chartProps = {
-    chart: { type: "bar", height: 180, margin: [0, 0, 0, 0], spacingBottom: 0 },
-    credits: {
-      ...getCredits(props.year),
-      position: {
-        y: -50,
-      },
-    },
+    chart: { type: "bar", height: 140, margin: [0, 0, 0, 0], spacingBottom: 0 },
+    credits: false,
 
     xAxis: { visible: false },
     yAxis: { visible: false },
@@ -133,13 +128,5 @@ export default function DeviationFromMeanChart(props: Props) {
     ],
   };
 
-  return (
-    <div>
-      <h3>{getTitle(dimension)}</h3>
-      <p>
-        {names[dimension]}: {user[dimension]} {units[dimension]}
-      </p>
-      <HighchartChart {...chartProps} />
-    </div>
-  );
+  return <HighchartChart {...chartProps} />;
 }

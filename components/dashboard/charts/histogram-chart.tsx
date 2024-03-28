@@ -64,7 +64,7 @@ function getAnnotation(user: User, dimension: NumericDimension) {
   });
   return {
     point: `column-${columnIndex}`,
-    text: "Here you are",
+    text: "You are here",
     verticalAlign: "bottom",
   };
 }
@@ -89,7 +89,7 @@ export default function HistogramChart(props: HistogramChartProps) {
 
   const chartProps = {
     chart: { type: "column" },
-    credits: getCredits(year),
+    credits: false,
 
     xAxis: {
       title: {

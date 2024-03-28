@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import styles from "./salary-form.module.css";
 import { User } from "@/data/types";
+import classNames from "classnames";
 
 type SalaryFormProps = {
   setUser: CallableFunction;
@@ -29,8 +30,13 @@ export default function SalaryForm(props: SalaryFormProps) {
     event.preventDefault();
     updateIfThreshold();
   };
+
+  const formClassName = classNames(
+    styles.form,
+    props.user.grossSalary ? styles.formWithSalary : ""
+  );
   return (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <form className={formClassName} onSubmit={onSubmit}>
       <label className={styles.label}>
         {!props.user.grossSalary && (
           <span className={styles.labelText}>Your current gross annual salary</span>

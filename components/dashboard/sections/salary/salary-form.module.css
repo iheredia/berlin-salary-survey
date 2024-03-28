@@ -5,6 +5,10 @@
   width: auto;
 }
 
+.form.formWithSalary {
+  padding: 10px;
+}
+
 .label {
   display: flex;
   flex-direction: column;
