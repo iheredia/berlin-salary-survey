@@ -23,3 +23,28 @@ export type BooleanDimension = BooleanKeys<DataPoint>;
 export type StringDimension = StringKeys<DataPoint>;
 
 export type AvailableYear = 2023;
+
+export type HistogramSeries = {
+  data: {
+    id: string;
+    y: number;
+  }[];
+};
+
+export type HistogramCategories = string[];
+
+export type HistogramBuckets = number[];
+
+export type UserComparisonData = Partial<
+  Record<
+    Dimension,
+    {
+      percentile: number;
+      histogramSeries: HistogramSeries;
+      histogramCategories: HistogramCategories;
+      histogramBuckets: HistogramBuckets;
+    }
+  >
+>;
+
+// export type UserComparisonData = Awaited<ReturnType<typeof getData>>;

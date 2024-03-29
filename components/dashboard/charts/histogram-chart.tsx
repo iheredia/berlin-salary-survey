@@ -1,66 +1,33 @@
 import HighchartChart from "./highchart-chart";
 import { getCredits } from "./helpers";
-import { names, histogramBuckets, getYearData } from "@/data";
-import { User, NumericDimension, AvailableYear, Dimension } from "@/data/types";
+import { names } from "@/data/static-values";
+import {
+  User,
+  NumericDimension,
+  AvailableYear,
+  Dimension,
+  HistogramSeries,
+  HistogramBuckets,
+  HistogramCategories,
+} from "@/data/types";
 
 function getTooltipFormat(dimension: NumericDimension) {
   return `<strong>Amount of people:</strong> {point.y} <br /> <strong>${names[dimension]}</strong>: {point.category}`;
 }
 
-function getHistogramCategories(year: AvailableYear, dimension: NumericDimension) {
-  const bucketsForDimension = histogramBuckets[dimension];
-  const categories: string[] = bucketsForDimension.map((bucketStart, index) => {
-    const normalizedSize = bucketStart > 1000 ? `${bucketStart / 1000}k` : bucketStart;
-    if (index + 1 === bucketsForDimension.length) {
-      return `${normalizedSize} +`;
-    }
-    const nextBucketStart = bucketsForDimension[index + 1];
-    const normalizedSizeNext =
-      nextBucketStart > 1000 ? `${nextBucketStart / 1000}k` : nextBucketStart;
-    return `${normalizedSize} to ${normalizedSizeNext}`;
-  });
-  return categories;
-}
-
-function getHistogramSeries(
-  year: AvailableYear,
-  dimension: NumericDimension,
+function getAnnotation(
   user: User,
-  filterDimension?: Dimension
+  dimension: NumericDimension,
+  histogramBuckets: HistogramBuckets
 ) {
-  const bucketsForDimension = histogramBuckets[dimension];
-  const data = bucketsForDimension.map(() => 0);
-  const filteredData = getYearData(year).filter((dataPoint) => {
-    if (filterDimension && user[filterDimension]) {
-      return dataPoint[filterDimension] === user[filterDimension];
-    }
-    return true;
-  });
-  filteredData.forEach((dataPoint) => {
-    const dimensionValue = dataPoint[dimension];
-    if (dimensionValue !== null && dimensionValue > 0) {
-      const bucketIndex = bucketsForDimension.findIndex((bucketStart, index) => {
-        if (index === bucketsForDimension.length - 1) {
-          return true;
-        }
-        return bucketStart <= dimensionValue && dimensionValue < bucketsForDimension[index + 1];
-      });
-      data[bucketIndex] += 1;
-    }
-  });
-  return { data: data.map((value, index) => ({ id: `column-${index}`, y: value })) };
-}
-
-function getAnnotation(user: User, dimension: NumericDimension) {
-  const bucketsForDimension = histogramBuckets[dimension];
-  const columnIndex = bucketsForDimension.findIndex((bucketStart, index) => {
-    if (index === bucketsForDimension.length - 1) {
+  const columnIndex = histogramBuckets.findIndex((bucketStart, index) => {
+    if (index === histogramBuckets.length - 1) {
       return true;
     }
     if (!user.grossSalary) {
       return true;
     }
-    return bucketStart <= user.grossSalary && user.grossSalary < bucketsForDimension[index + 1];
+    return bucketStart <= user.grossSalary && user.grossSalary < histogramBuckets[index + 1];
   });
   return {
     point: `column-${columnIndex}`,
@@ -74,13 +41,21 @@ type HistogramChartProps = {
   user: User;
   dimension: NumericDimension;
   filterDimension?: Dimension;
+  histogramSeries: HistogramSeries;
+  histogramCategories: HistogramCategories;
+  histogramBuckets: HistogramBuckets;
 };
 
 export default function HistogramChart(props: HistogramChartProps) {
-  const { year, user, dimension, filterDimension } = props;
-  if (!user.grossSalary) return null;
-  if (filterDimension && (!user[filterDimension] || user[filterDimension] === "Prefer not to say"))
-    return null;
+  const {
+    year,
+    user,
+    dimension,
+    filterDimension,
+    histogramSeries,
+    histogramBuckets,
+    histogramCategories,
+  } = props;
 
   const xAxisText =
     filterDimension && user[filterDimension]
@@ -89,13 +64,13 @@ export default function HistogramChart(props: HistogramChartProps) {
 
   const chartProps = {
     chart: { type: "column" },
-    credits: false,
+    credits: getCredits(year),
 
     xAxis: {
       title: {
         text: xAxisText,
       },
-      categories: getHistogramCategories(year, dimension),
+      categories: histogramCategories,
     },
     yAxis: {
       title: {
@@ -108,7 +83,7 @@ export default function HistogramChart(props: HistogramChartProps) {
     tooltip: {
       pointFormat: getTooltipFormat(dimension),
     },
-    series: [getHistogramSeries(year, dimension, user, filterDimension)],
+    series: [histogramSeries],
     annotations: [
       {
         draggable: "",
@@ -119,7 +94,7 @@ export default function HistogramChart(props: HistogramChartProps) {
             width: 300,
           },
         },
-        labels: [getAnnotation(user, dimension)],
+        labels: [getAnnotation(user, dimension, histogramBuckets)],
       },
     ],
   };

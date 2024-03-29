@@ -1,6 +1,5 @@
-import { names } from "@/data";
 import { StringDimension } from "@/data/types";
-import values from "@/data/values";
+import { names, values } from "@/data/static-values";
 
 export default function Select(props: { setUser: CallableFunction; dimension: StringDimension }) {
   const defaultValue = "Prefer not to say";

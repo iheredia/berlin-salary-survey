@@ -30,7 +30,7 @@ export default function Introduction(props: { year: AvailableYear }) {
         <strong>how does your salary compare?</strong> against the survey.
       </p>
       <p>
-        If it&apos;s your first time heare, try filling your data to compare yourself agaisnt the
+        If it&apos;s your first time heare, try filling your data to compare yourself against the
         survey.
       </p>
     </section>

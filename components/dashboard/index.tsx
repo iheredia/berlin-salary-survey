@@ -1,40 +1,104 @@
 "use client";
 import { useState } from "react";
-import { AvailableYear, User } from "@/data/types";
+import { AvailableYear, User, UserComparisonData } from "@/data/types";
 
 import SalarySection from "./sections/salary";
-import AgeSection from "./sections/age";
-import GenderSection from "./sections/gender";
-import ExperienceSection from "./sections/experience";
-import CitizenshipSection from "./sections/citizenship";
-import EducationSection from "./sections/education";
-import OrganizationTypeSection from "./sections/organization-type";
-import IndustrySection from "./sections/industry";
-import RoleSection from "./sections/role";
+import CategorySection from "./sections/category-section";
+import getData from "@/data";
 
 const DEBUG = true;
 
 export default function Dashboard(props: { year: AvailableYear }) {
   const [user, _setUser] = useState<User>({});
-  const setUser = (newUserValues: User) => {
-    _setUser({ ...user, ...newUserValues });
-    if (DEBUG) console.log({ ...user, ...newUserValues });
+  const [data, setData] = useState<UserComparisonData>();
+  const [loadingData, setLoadingData] = useState(false);
+
+  const setUser = async (newUserValues: User) => {
+    const newUser = { ...user, ...newUserValues };
+    _setUser(newUser);
+    if (DEBUG) console.log(newUser);
+    setLoadingData(true);
+    const newData = await getData(props.year, newUser);
+    setData(newData);
+    setLoadingData(false);
   };
   const { year } = props;
 
   return (
     <>
-      <SalarySection year={year} user={user} setUser={setUser} />
+      <SalarySection
+        year={year}
+        user={user}
+        setUser={setUser}
+        loadingData={loadingData}
+        data={data}
+      />
       {user.grossSalary ? (
         <>
-          <AgeSection user={user} setUser={setUser} />
-          <GenderSection user={user} setUser={setUser} />
-          <ExperienceSection user={user} setUser={setUser} />
-          <CitizenshipSection user={user} setUser={setUser} />
-          <EducationSection user={user} setUser={setUser} />
-          <OrganizationTypeSection user={user} setUser={setUser} />
-          <IndustrySection user={user} setUser={setUser} />
-          <RoleSection user={user} setUser={setUser} />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="age"
+          />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="gender"
+          />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="experience"
+          />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="citizenship"
+          />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="education"
+          />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="organizationType"
+          />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="industry"
+          />
+          <CategorySection
+            year={year}
+            user={user}
+            setUser={setUser}
+            loadingData={loadingData}
+            data={data}
+            dimension="role"
+          />
         </>
       ) : null}
 
