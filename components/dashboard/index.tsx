@@ -16,9 +16,9 @@ const DEBUG = true;
 
 export default function Dashboard(props: { year: AvailableYear }) {
   const [user, _setUser] = useState<User>({});
-  const setUser = (user: User) => {
-    if (DEBUG) console.log(user);
-    _setUser(user);
+  const setUser = (newUserValues: User) => {
+    _setUser({ ...user, ...newUserValues });
+    if (DEBUG) console.log({ ...user, ...newUserValues });
   };
   const { year } = props;
 
