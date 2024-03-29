@@ -1,5 +1,5 @@
 import { User } from "@/data/types";
-import BaseSection from "../base-section";
+import BaseSection from "@/components/layout/base-section";
 
 type SalarySectionProps = {
   setUser: CallableFunction;
@@ -7,7 +7,7 @@ type SalarySectionProps = {
 };
 export default function RoleSection(props: SalarySectionProps) {
   return (
-    <BaseSection>
+    <BaseSection fullHeight={!props.user.role}>
       Role section
       {/* <section>
         <DeviationFromMeanChart year={year} user={user} dimension="role" />

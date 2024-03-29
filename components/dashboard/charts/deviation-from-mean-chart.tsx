@@ -128,5 +128,9 @@ export default function DeviationFromMeanChart(props: Props) {
     ],
   };
 
-  return <HighchartChart {...chartProps} />;
+  return (
+    <div style={{ width: "100%" }}>
+      <HighchartChart {...chartProps} />
+    </div>
+  );
 }

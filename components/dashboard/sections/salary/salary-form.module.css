@@ -1,8 +1,7 @@
 .form {
   position: sticky;
   bottom: 25vh;
-  padding: 40px 20px;
-  width: auto;
+  width: 100%;
 }
 
 .form.formWithSalary {
@@ -12,12 +11,10 @@
 .label {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   font-size: 18px;
-}
-
-.label > * {
-  max-width: 13em;
 }
 
 .labelText {
@@ -25,6 +22,7 @@
 }
 
 .inputContainer {
+  max-width: 13em;
   position: relative;
   height: 2em;
   border-radius: 4px;

@@ -123,5 +123,9 @@ export default function HistogramChart(props: HistogramChartProps) {
       },
     ],
   };
-  return <HighchartChart {...chartProps} />;
+  return (
+    <div style={{ width: "100%" }}>
+      <HighchartChart {...chartProps} />
+    </div>
+  );
 }

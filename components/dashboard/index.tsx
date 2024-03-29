@@ -1,9 +1,6 @@
 "use client";
 import { useState } from "react";
 import { AvailableYear, User } from "@/data/types";
-import classNames from "classnames";
-
-import styles from "./index.module.css";
 
 import SalarySection from "./sections/salary";
 import AgeSection from "./sections/age";
@@ -24,41 +21,20 @@ export default function Dashboard(props: { year: AvailableYear }) {
     _setUser(user);
   };
   const { year } = props;
-  const dashboardClassName = classNames(
-    styles.dashboard,
-    user.grossSalary ? styles.dashboardWithSalary : ""
-  );
+
   return (
     <>
-      <section className={dashboardClassName}>
-        <SalarySection year={year} user={user} setUser={setUser} />
-      </section>
+      <SalarySection year={year} user={user} setUser={setUser} />
       {user.grossSalary ? (
         <>
-          <section className={dashboardClassName}>
-            <AgeSection user={user} setUser={setUser} />
-          </section>
-          <section className={dashboardClassName}>
-            <GenderSection user={user} setUser={setUser} />
-          </section>
-          <section className={dashboardClassName}>
-            <ExperienceSection user={user} setUser={setUser} />
-          </section>
-          <section className={dashboardClassName}>
-            <CitizenshipSection user={user} setUser={setUser} />
-          </section>
-          <section className={dashboardClassName}>
-            <EducationSection user={user} setUser={setUser} />
-          </section>
-          <section className={dashboardClassName}>
-            <OrganizationTypeSection user={user} setUser={setUser} />
-          </section>
-          <section className={dashboardClassName}>
-            <IndustrySection user={user} setUser={setUser} />
-          </section>
-          <section className={dashboardClassName}>
-            <RoleSection user={user} setUser={setUser} />
-          </section>
+          <AgeSection user={user} setUser={setUser} />
+          <GenderSection user={user} setUser={setUser} />
+          <ExperienceSection user={user} setUser={setUser} />
+          <CitizenshipSection user={user} setUser={setUser} />
+          <EducationSection user={user} setUser={setUser} />
+          <OrganizationTypeSection user={user} setUser={setUser} />
+          <IndustrySection user={user} setUser={setUser} />
+          <RoleSection user={user} setUser={setUser} />
         </>
       ) : null}
 

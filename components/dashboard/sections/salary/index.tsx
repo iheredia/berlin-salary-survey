@@ -1,6 +1,6 @@
 import { AvailableYear, User } from "@/data/types";
 import SalaryForm from "./salary-form";
-import BaseSection from "../base-section";
+import BaseSection from "@/components/layout/base-section";
 import DeviationFromMeanChart from "../../charts/deviation-from-mean-chart";
 import HistogramChart from "../../charts/histogram-chart";
 
@@ -12,14 +12,16 @@ type SalarySectionProps = {
 export default function SalarySection(props: SalarySectionProps) {
   const { user, setUser, year } = props;
   return (
-    <BaseSection>
-      <SalaryForm user={user} setUser={setUser} />
-      <div style={{ width: "100%" }}>
+    <>
+      <BaseSection fullHeight={!user.grossSalary}>
+        <SalaryForm user={user} setUser={setUser} />
         <DeviationFromMeanChart year={year} user={user} dimension="grossSalary" />
-      </div>
-      <div style={{ width: "100%" }}>
-        <HistogramChart year={year} user={user} dimension="grossSalary" />
-      </div>
-    </BaseSection>
+      </BaseSection>
+      {user.grossSalary ? (
+        <BaseSection>
+          <HistogramChart year={year} user={user} dimension="grossSalary" />
+        </BaseSection>
+      ) : null}
+    </>
   );
 }

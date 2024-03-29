@@ -38,9 +38,7 @@ export default function SalaryForm(props: SalaryFormProps) {
   return (
     <form className={formClassName} onSubmit={onSubmit}>
       <label className={styles.label}>
-        {!props.user.grossSalary && (
-          <span className={styles.labelText}>Your current gross annual salary</span>
-        )}
+        <span className={styles.labelText}>Your current gross annual salary</span>
         <span className={styles.inputContainer}>
           <input
             className={styles.input}
