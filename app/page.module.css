@@ -1,4 +1,16 @@
 .main {
   height: 100vh;
   height: 100dvh;
+
+  overflow: auto;
+
+  -webkit-scroll-snap-type: y mandatory;
+  -ms-scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
+}
+
+.main > * {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
 }

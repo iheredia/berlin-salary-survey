@@ -29,7 +29,6 @@
 .sectionFullHeight {
   height: 100vh;
   height: 100dvh;
-  max-height: calc(100% - 30px);
 }
 
 .section:last-child {
