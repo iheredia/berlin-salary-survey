@@ -1,5 +1,5 @@
 import { AvailableYear } from "@/data/types";
-import { lora, montserrat } from "../fonts";
+import { lora } from "../fonts";
 import styles from "./index.module.css";
 import classNames from "classnames";
 

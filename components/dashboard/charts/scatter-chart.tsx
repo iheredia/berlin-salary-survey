@@ -1,5 +1,4 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits } from "./helpers";
 import { names, units } from "@/data/static-values";
 import { AvailableYear, NumericDimension } from "@/data/types";
 
@@ -18,7 +17,6 @@ type ScatterChartProps = {
 export default function ScatterChart(props: ScatterChartProps) {
   const chartProps = {
     chart: { type: "scatter" },
-    credits: getCredits(props.year),
 
     xAxis: {
       title: {

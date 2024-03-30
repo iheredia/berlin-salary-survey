@@ -3,7 +3,6 @@
   margin: 0 auto;
 
   box-sizing: border-box;
-  transition: all 400ms;
 
   @media (max-width: 600px) {
     padding: 10px 10px 0 10px;
@@ -51,19 +50,20 @@
   align-items: center;
   justify-content: center;
 
-  padding: 10px;
-}
-
-.card.fullCard {
   border-radius: 6px;
+  padding: 10px;
 }
 
 .card.topPart {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .card.bottomPart {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }

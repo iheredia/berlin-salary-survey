@@ -14,6 +14,9 @@ const defaultProps = {
   title: false,
   legend: false,
   plotOptions: {
+    series: {
+      animation: false,
+    },
     scatter: {
       marker: {
         radius: 2,
@@ -48,7 +51,7 @@ export default function HighchartChart(props: HighchartsReact.Props) {
   const options = merge({}, defaultProps, { credits }, props);
   const height = options.chart.height || 400;
   return (
-    <div style={{ height: `${height}px` }}>
+    <div style={{ height: `${height}px`, width: "100%" }}>
       <ClientChart {...options} />
     </div>
   );
