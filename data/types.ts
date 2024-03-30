@@ -14,7 +14,8 @@ type StringKeys<T> = {
   [K in keyof T]: T[K] extends String ? K : never;
 }[keyof T];
 
-export type DataPoint = (typeof data2023)[number];
+export type SurveyData = typeof data2023;
+export type DataPoint = SurveyData[number];
 export type User = Partial<DataPoint>;
 
 export type Dimension = keyof DataPoint;

@@ -1,25 +1,12 @@
 import HighchartChart from "./highchart-chart";
 import { getCredits } from "./helpers";
-import { names, units, getYearData } from "@/data";
+import { names, units } from "@/data/static-values";
 import { AvailableYear, NumericDimension } from "@/data/types";
 
 function getTooltipFormat(dimensionX: NumericDimension, dimensionY: NumericDimension) {
   const formatX = `<strong>${names[dimensionX]}:</strong> {point.x} ${units[dimensionX]}`;
   const formatY = `<strong>${names[dimensionY]}:</strong> {point.y} ${units[dimensionY]}`;
   return `${formatX} <br /> ${formatY}`;
-}
-
-function getSeries(
-  year: AvailableYear,
-  dimensionX: NumericDimension,
-  dimensionY: NumericDimension
-) {
-  const data = getYearData(year)
-    .map((row) => [row[dimensionX], row[dimensionY]])
-    .filter((dataPoint) => {
-      return typeof dataPoint[0] === "number" && typeof dataPoint[1] === "number";
-    });
-  return { data };
 }
 
 type ScatterChartProps = {
@@ -53,7 +40,7 @@ export default function ScatterChart(props: ScatterChartProps) {
     tooltip: {
       pointFormat: getTooltipFormat(props.dimensionX, props.dimensionY),
     },
-    series: [getSeries(props.year, props.dimensionX, props.dimensionY)],
+    // series: [props.series],
   };
   return <HighchartChart {...chartProps} />;
 }
