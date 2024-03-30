@@ -16,7 +16,7 @@ export default function CategorySection(props: CategorySectionProps) {
   const dimensionData = data?.[dimension];
   return (
     <>
-      <BaseSection fullHeight={!user[dimension]}>
+      <BaseSection fullHeight={!dimensionData} part={dimensionData ? "top" : undefined}>
         <Select dimension={dimension} />
         {dimensionData ? (
           <>
@@ -26,7 +26,7 @@ export default function CategorySection(props: CategorySectionProps) {
         ) : null}
       </BaseSection>
       {dimensionData ? (
-        <BaseSection>
+        <BaseSection part="bottom">
           <HistogramChart
             dimension="grossSalary"
             filterDimension={dimension}
