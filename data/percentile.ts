@@ -1,5 +1,3 @@
-"use server";
-
 import { SurveyData, User, Dimension } from "./types";
 
 export function calculatePercentile(yearData: SurveyData, user: User, dimension: Dimension) {

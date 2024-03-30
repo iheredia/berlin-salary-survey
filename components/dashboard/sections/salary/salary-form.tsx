@@ -1,14 +1,10 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import styles from "./salary-form.module.css";
-import { User } from "@/data/types";
 import classNames from "classnames";
+import AppContext from "@/components/context";
 
-type SalaryFormProps = {
-  setUser: CallableFunction;
-  user: User;
-};
-
-export default function SalaryForm(props: SalaryFormProps) {
+export default function SalaryForm() {
+  const { user, setUser } = useContext(AppContext);
   const [parsedSalary, setParsedSalary] = useState(0);
 
   const onSalaryChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +18,7 @@ export default function SalaryForm(props: SalaryFormProps) {
 
   const updateIfThreshold = () => {
     if (parsedSalary > 10_000) {
-      props.setUser({ grossSalary: parsedSalary });
+      setUser({ grossSalary: parsedSalary });
     }
   };
 
@@ -31,10 +27,7 @@ export default function SalaryForm(props: SalaryFormProps) {
     updateIfThreshold();
   };
 
-  const formClassName = classNames(
-    styles.form,
-    props.user.grossSalary ? styles.formWithSalary : ""
-  );
+  const formClassName = classNames(styles.form, user.grossSalary ? styles.formWithSalary : "");
   return (
     <form className={formClassName} onSubmit={onSubmit}>
       <label className={styles.label}>
@@ -49,7 +42,7 @@ export default function SalaryForm(props: SalaryFormProps) {
             onChange={onSalaryChange}
           />
           <button type="submit" className={styles.inputSubmitIcon}>
-            {props.user.grossSalary ? "Edit" : "Go"}
+            {user.grossSalary ? "Edit" : "Go"}
           </button>
         </span>
       </label>

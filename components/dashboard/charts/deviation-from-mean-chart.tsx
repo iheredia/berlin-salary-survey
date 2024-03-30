@@ -1,10 +1,7 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits } from "./helpers";
 import { range } from "lodash";
-import { AvailableYear } from "@/data/types";
 
 export type Props = {
-  year: AvailableYear;
   userPercentile: number;
 };
 
@@ -40,7 +37,6 @@ export default function DeviationFromMeanChart(props: Props) {
   const chartProps = {
     chart: { type: "bar", height: 180, margin: [0, 0, 0, 0], spacingBottom: 0 },
     credits: {
-      ...getCredits(props.year),
       position: {
         y: -50,
       },

@@ -1,37 +1,33 @@
-import { AvailableYear, UserComparisonData, User, Dimension, StringDimension } from "@/data/types";
+import { StringDimension } from "@/data/types";
 import Select from "./select";
 import BaseSection from "./base-section";
 import DeviationFromMeanChart from "../charts/deviation-from-mean-chart";
 import HistogramChart from "../charts/histogram-chart";
 import SalaryComment from "./comment";
+import { useContext } from "react";
+import AppContext from "@/components/context";
 
 type CategorySectionProps = {
-  setUser: CallableFunction;
-  user: User;
-  year: AvailableYear;
   dimension: StringDimension;
-  loadingData: boolean;
-  data?: UserComparisonData;
 };
 export default function CategorySection(props: CategorySectionProps) {
-  const { user, setUser, year, dimension, loadingData, data } = props;
+  const { dimension } = props;
+  const { user, data } = useContext(AppContext);
   const dimensionData = data?.[dimension];
   return (
     <>
-      <BaseSection fullHeight={!user[dimension]} loading={loadingData}>
-        <Select dimension={dimension} setUser={setUser} />
+      <BaseSection fullHeight={!user[dimension]}>
+        <Select dimension={dimension} />
         {dimensionData ? (
           <>
             <SalaryComment percentile={dimensionData.percentile} />
-            <DeviationFromMeanChart year={year} userPercentile={dimensionData.percentile} />
+            <DeviationFromMeanChart userPercentile={dimensionData.percentile} />
           </>
         ) : null}
       </BaseSection>
       {dimensionData ? (
-        <BaseSection loading={loadingData}>
+        <BaseSection>
           <HistogramChart
-            year={year}
-            user={user}
             dimension="grossSalary"
             filterDimension={dimension}
             histogramSeries={dimensionData.histogramSeries}

@@ -1,104 +1,25 @@
 "use client";
-import { useState } from "react";
-import { AvailableYear, User, UserComparisonData } from "@/data/types";
+import { useContext } from "react";
 
 import SalarySection from "./sections/salary";
 import CategorySection from "./sections/category-section";
-import getData from "@/data";
+import AppContext from "../context";
 
-const DEBUG = true;
-
-export default function Dashboard(props: { year: AvailableYear }) {
-  const [user, _setUser] = useState<User>({});
-  const [data, setData] = useState<UserComparisonData>();
-  const [loadingData, setLoadingData] = useState(false);
-
-  const setUser = async (newUserValues: User) => {
-    const newUser = { ...user, ...newUserValues };
-    _setUser(newUser);
-    if (DEBUG) console.log(newUser);
-    setLoadingData(true);
-    const newData = await getData(props.year, newUser);
-    setData(newData);
-    setLoadingData(false);
-  };
-  const { year } = props;
-
+export default function Dashboard() {
+  const { user } = useContext(AppContext);
   return (
     <>
-      <SalarySection
-        year={year}
-        user={user}
-        setUser={setUser}
-        loadingData={loadingData}
-        data={data}
-      />
+      <SalarySection />
       {user.grossSalary ? (
         <>
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="age"
-          />
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="gender"
-          />
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="experience"
-          />
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="citizenship"
-          />
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="education"
-          />
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="organizationType"
-          />
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="industry"
-          />
-          <CategorySection
-            year={year}
-            user={user}
-            setUser={setUser}
-            loadingData={loadingData}
-            data={data}
-            dimension="role"
-          />
+          <CategorySection dimension="age" />
+          <CategorySection dimension="gender" />
+          <CategorySection dimension="experience" />
+          <CategorySection dimension="citizenship" />
+          <CategorySection dimension="education" />
+          <CategorySection dimension="organizationType" />
+          <CategorySection dimension="industry" />
+          <CategorySection dimension="role" />
         </>
       ) : null}
 

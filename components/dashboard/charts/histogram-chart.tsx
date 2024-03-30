@@ -1,15 +1,15 @@
 import HighchartChart from "./highchart-chart";
-import { getCredits } from "./helpers";
 import { names } from "@/data/static-values";
 import {
   User,
   NumericDimension,
-  AvailableYear,
   Dimension,
   HistogramSeries,
   HistogramBuckets,
   HistogramCategories,
 } from "@/data/types";
+import { useContext } from "react";
+import AppContext from "@/components/context";
 
 function getTooltipFormat(dimension: NumericDimension) {
   return `<strong>Amount of people:</strong> {point.y} <br /> <strong>${names[dimension]}</strong>: {point.category}`;
@@ -37,8 +37,6 @@ function getAnnotation(
 }
 
 type HistogramChartProps = {
-  year: AvailableYear;
-  user: User;
   dimension: NumericDimension;
   filterDimension?: Dimension;
   histogramSeries: HistogramSeries;
@@ -47,15 +45,9 @@ type HistogramChartProps = {
 };
 
 export default function HistogramChart(props: HistogramChartProps) {
-  const {
-    year,
-    user,
-    dimension,
-    filterDimension,
-    histogramSeries,
-    histogramBuckets,
-    histogramCategories,
-  } = props;
+  const { user } = useContext(AppContext);
+  const { dimension, filterDimension, histogramSeries, histogramBuckets, histogramCategories } =
+    props;
 
   const xAxisText =
     filterDimension && user[filterDimension]
@@ -64,7 +56,6 @@ export default function HistogramChart(props: HistogramChartProps) {
 
   const chartProps = {
     chart: { type: "column" },
-    credits: getCredits(year),
 
     xAxis: {
       title: {
