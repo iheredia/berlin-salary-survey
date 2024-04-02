@@ -28,6 +28,10 @@ export default function SalaryForm() {
   };
 
   const formClassName = classNames(styles.form, user.grossSalary ? styles.formWithSalary : "");
+  const buttonClassName = classNames(
+    styles.inputSubmitIcon,
+    parsedSalary > 10_000 ? styles.inputSubmitIconActive : ""
+  );
   return (
     <form className={formClassName} onSubmit={onSubmit}>
       <label className={styles.label}>
@@ -41,8 +45,8 @@ export default function SalaryForm() {
             placeholder="65 432"
             onChange={onSalaryChange}
           />
-          <button type="submit" className={styles.inputSubmitIcon}>
-            {user.grossSalary ? "Edit" : "Go"}
+          <button type="submit" className={buttonClassName}>
+            Compare
           </button>
         </span>
       </label>

@@ -1,4 +1,6 @@
 .section {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 900px;
   margin: 0 auto;
 
@@ -28,6 +30,12 @@
 .sectionFullHeight {
   height: 100vh;
   height: 100dvh;
+  max-height: calc(100vh - 30px);
+  max-height: calc(100dvh - 30px);
+
+  @media (min-height: 600px) {
+    max-height: 600px;
+  }
 }
 
 .section:last-child {
