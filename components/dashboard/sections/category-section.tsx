@@ -20,7 +20,7 @@ export default function CategorySection(props: CategorySectionProps) {
         <Select dimension={dimension} />
         {dimensionData ? (
           <>
-            <SalaryComment percentile={dimensionData.percentile} />
+            <SalaryComment percentile={dimensionData.percentile} dimension={dimension} />
             <DeviationFromMeanChart userPercentile={dimensionData.percentile} />
           </>
         ) : null}
