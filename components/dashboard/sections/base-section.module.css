@@ -28,12 +28,21 @@
 }
 
 .sectionFullHeight {
+  max-height: 100vh;
+  max-height: 100dvh;
+}
+
+.sectionFullHeightHint {
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+}
+
+.sectionFullHeight,
+.sectionFullHeightHint {
   height: 100vh;
   height: 100dvh;
-  max-height: calc(100vh - 30px);
-  max-height: calc(100dvh - 30px);
 
-  @media (min-height: 600px) {
+  @media (min-width: 600px) {
     max-height: 600px;
   }
 }

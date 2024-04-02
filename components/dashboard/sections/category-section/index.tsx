@@ -12,11 +12,11 @@ type CategorySectionProps = {
 };
 export default function CategorySection(props: CategorySectionProps) {
   const { dimension } = props;
-  const { user, data } = useContext(AppContext);
+  const { data } = useContext(AppContext);
   const dimensionData = data?.[dimension];
   return (
     <>
-      <BaseSection fullHeight={!dimensionData} part={dimensionData ? "top" : undefined}>
+      <BaseSection fullHeightHint={!dimensionData} part={dimensionData ? "top" : undefined}>
         <Select dimension={dimension} />
         {dimensionData ? (
           <>

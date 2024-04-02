@@ -6,12 +6,13 @@ import AppContext from "@/components/context";
 type BaseSectionProps = {
   children: React.ReactNode;
   fullHeight?: boolean;
+  fullHeightHint?: boolean;
   part?: "top" | "center" | "bottom";
 };
 
 export default function BaseSection(props: BaseSectionProps) {
   const { loading } = useContext(AppContext);
-  const { children, fullHeight, part } = props;
+  const { children, fullHeight, fullHeightHint, part } = props;
 
   const partClassName = classNames(
     part === "top" ? styles.topPart : "",
@@ -22,6 +23,7 @@ export default function BaseSection(props: BaseSectionProps) {
   const sectionClassName = classNames(
     styles.section,
     fullHeight ? styles.sectionFullHeight : null,
+    fullHeightHint ? styles.sectionFullHeightHint : null,
     loading ? styles.loading : null,
     partClassName
   );

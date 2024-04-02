@@ -23,7 +23,7 @@ export type NumericDimension = NumericKeys<DataPoint>;
 export type BooleanDimension = BooleanKeys<DataPoint>;
 export type StringDimension = StringKeys<DataPoint>;
 
-export type AvailableYear = 2023;
+export type AvailableYear = 2023 | 2024;
 
 export type HistogramSeries = {
   data: {
