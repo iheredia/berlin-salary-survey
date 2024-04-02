@@ -13,7 +13,7 @@ export default function App(props: AppProps) {
   const { year, embed } = props;
 
   return (
-    <AppContextElement year={year} embed={embed}>
+    <AppContextElement year={year}>
       <main className={styles.main}>
         {embed ? null : <Introduction year={year} />}
         <Dashboard />
