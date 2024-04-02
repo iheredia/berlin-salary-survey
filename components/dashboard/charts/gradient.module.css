@@ -1,0 +1,54 @@
+.gradientContainer {
+  width: 100%;
+  padding: 20px;
+}
+
+.gradient {
+  position: relative;
+  height: 20px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    hsl(0, 75%, 47%) 0%,
+    hsl(70, 68%, 46.86%) 50%,
+    hsl(140, 61%, 29%) 100%
+  );
+}
+
+.tooltipContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.tooltipIcon {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #333;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip {
+  position: absolute;
+  top: -22px;
+  white-space: nowrap;
+
+  z-index: 1;
+  color: white;
+  background: #333;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.referenceLeft,
+.referenceRight {
+  font-size: 0.8em;
+}
+
+.referenceRight {
+  float: right;
+}

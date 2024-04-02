@@ -7,7 +7,10 @@ export default function SalaryComment(props: { percentile: number; dimension?: S
   const upperDifference = 100 - percentile;
 
   const withSameDimension = dimension ? (
-    <strong>with your same {names[dimension].toLowerCase()}</strong>
+    <>
+      {" "}
+      <strong>with your same {names[dimension].toLowerCase()}</strong>
+    </>
   ) : (
     ""
   );
@@ -31,7 +34,7 @@ export default function SalaryComment(props: { percentile: number; dimension?: S
     return (
       <div className={styles.comment}>
         Not bad 🤑. You are in the upper range of salaries, earning more than {percentile}% of
-        people {withSameDimension}.
+        people{withSameDimension}.
       </div>
     );
   }

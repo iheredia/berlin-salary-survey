@@ -1,9 +1,9 @@
 import { StringDimension } from "@/data/types";
 import Select from "./select";
-import BaseSection from "./base-section";
-import DeviationFromMeanChart from "../charts/deviation-from-mean-chart";
-import HistogramChart from "../charts/histogram-chart";
-import SalaryComment from "./comment";
+import BaseSection from "../base-section";
+import GradientChart from "../../charts/gradient";
+import HistogramChart from "../../charts/histogram-chart";
+import SalaryComment from "../comment";
 import { useContext } from "react";
 import AppContext from "@/components/context";
 
@@ -21,7 +21,7 @@ export default function CategorySection(props: CategorySectionProps) {
         {dimensionData ? (
           <>
             <SalaryComment percentile={dimensionData.percentile} dimension={dimension} />
-            <DeviationFromMeanChart userPercentile={dimensionData.percentile} />
+            <GradientChart userPercentile={dimensionData.percentile} />
           </>
         ) : null}
       </BaseSection>

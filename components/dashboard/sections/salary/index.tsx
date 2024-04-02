@@ -1,6 +1,6 @@
 import SalaryForm from "./salary-form";
 import BaseSection from "../base-section";
-import DeviationFromMeanChart from "../../charts/deviation-from-mean-chart";
+import GradientChart from "../../charts/gradient";
 import HistogramChart from "../../charts/histogram-chart";
 import SalaryComment from "../comment";
 import { useContext } from "react";
@@ -15,7 +15,7 @@ export default function SalarySection() {
         {data?.grossSalary ? (
           <>
             <SalaryComment percentile={data.grossSalary.percentile} />
-            <DeviationFromMeanChart userPercentile={data.grossSalary.percentile} />
+            <GradientChart userPercentile={data.grossSalary.percentile} />
           </>
         ) : null}
       </BaseSection>
