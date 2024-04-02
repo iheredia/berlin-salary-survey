@@ -10,6 +10,9 @@ const defaultProps = {
   chart: {
     backgroundColor: "rgba(255, 255, 255, 0.0)",
     height: 400,
+    style: {
+      fontFamily: "var(--montserrat)",
+    },
   },
   title: false,
   legend: false,
