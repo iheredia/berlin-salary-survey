@@ -1,5 +1,5 @@
 import { AvailableYear } from "@/data/types";
-import { lora } from "../fonts";
+import { montserrat } from "../fonts";
 import styles from "./index.module.css";
 import classNames from "classnames";
 
@@ -7,7 +7,7 @@ export default function Introduction(props: { year: AvailableYear }) {
   const { year } = props;
   return (
     <section className={styles.introduction}>
-      <div className={classNames(styles.titleContainer, lora.className)}>
+      <div className={classNames(styles.titleContainer, montserrat.className)}>
         <h1>
           <svg
             viewBox="0 0 68.98 38.88"
