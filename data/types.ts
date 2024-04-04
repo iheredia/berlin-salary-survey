@@ -47,5 +47,3 @@ export type UserComparisonData = Partial<
     }
   >
 >;
-
-// export type UserComparisonData = Awaited<ReturnType<typeof getData>>;
