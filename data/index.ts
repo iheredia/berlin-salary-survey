@@ -9,22 +9,17 @@ function getYearData(year: AvailableYear) {
 }
 
 function getDataForDimension(yearData: SurveyData, user: User, dimension: Dimension) {
-  if (user[dimension] && user[dimension] !== "Prefer not to say") {
-    return {
-      [dimension]: {
-        percentile: calculatePercentile(yearData, user, dimension),
-        histogramBuckets: histogramBuckets.grossSalary,
-        histogramCategories: getHistogramCategories("grossSalary"),
-        histogramSeries: getHistogramSeries(
-          yearData,
-          "grossSalary",
-          user,
-          dimension !== "grossSalary" ? dimension : undefined
-        ),
-      },
-    };
-  }
-  return null;
+  return {
+    percentile: calculatePercentile(yearData, user, dimension),
+    histogramBuckets: histogramBuckets.grossSalary,
+    histogramCategories: getHistogramCategories("grossSalary"),
+    histogramSeries: getHistogramSeries(
+      yearData,
+      "grossSalary",
+      user,
+      dimension !== "grossSalary" ? dimension : undefined
+    ),
+  };
 }
 
 export default async function getData(
@@ -32,15 +27,13 @@ export default async function getData(
   user: User
 ): Promise<UserComparisonData> {
   const yearData = getYearData(year);
-  return {
-    ...getDataForDimension(yearData, user, "grossSalary"),
-    ...getDataForDimension(yearData, user, "age"),
-    ...getDataForDimension(yearData, user, "citizenship"),
-    ...getDataForDimension(yearData, user, "education"),
-    ...getDataForDimension(yearData, user, "experience"),
-    ...getDataForDimension(yearData, user, "gender"),
-    ...getDataForDimension(yearData, user, "industry"),
-    ...getDataForDimension(yearData, user, "organizationType"),
-    ...getDataForDimension(yearData, user, "role"),
-  };
+  const data: UserComparisonData = {};
+
+  let key: Dimension;
+  for (key in user) {
+    if (key) {
+      data[key] = getDataForDimension(yearData, user, key);
+    }
+  }
+  return data;
 }
