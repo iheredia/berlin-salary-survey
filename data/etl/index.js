@@ -1,33 +1,6 @@
 const csv = require("csvtojson");
 const path = require("path");
-const fs = require("fs");
-const stringify = require("json-stable-stringify");
-
-function writeJson(dataObj, filePath) {
-  const dataObjString = stringify(dataObj, { space: "  " });
-  fs.writeFileSync(path.join(__dirname, filePath), dataObjString);
-}
-
-function getUniqueValues(data) {
-  const ignoreKeys = ["bonus", "equity", "grossSalary", "hoursPerWeek"];
-
-  const uniqueValues = {};
-  data.forEach((row) =>
-    Object.keys(row).forEach((key) => {
-      if (ignoreKeys.includes(key)) return;
-      if (!uniqueValues[key]) {
-        uniqueValues[key] = new Set();
-      }
-      uniqueValues[key].add(row[key]);
-    })
-  );
-
-  // Convert sets into arrays, for future serialization into json
-  Object.keys(uniqueValues).forEach((key) => {
-    uniqueValues[key] = [...uniqueValues[key]].sort();
-  });
-  return uniqueValues;
-}
+const { writeJson, getUniqueValues } = require("./utils");
 
 csv({
   delimiter: ",",
@@ -79,6 +52,6 @@ csv({
       .filter((row) => !isNaN(row.grossSalary));
 
     console.log(`Clean count: ${cleanData.length}`);
-    writeJson(cleanData, "./2023.json");
-    writeJson(getUniqueValues(cleanData), "./2023-values.json");
+    writeJson(cleanData, "../2023.json");
+    writeJson(getUniqueValues(cleanData), "../2023-values.json");
   });
