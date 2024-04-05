@@ -1,3 +1,12 @@
+:root {
+  --background-color: #f5f5f5;
+  --card-color: #e0e0e0;
+
+  --font-color: #222;
+  --accent-color: #f33b1d;
+  --secondary-color: rgb(209, 161, 83);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -5,12 +14,12 @@
 }
 
 *:focus {
-  outline: solid 1px #f33b1d;
+  outline: solid 1px var(--accent-color);
 }
 
 body {
-  color: #222;
-  background: #f5f5f5;
+  color: var(--font-color);
+  background: var(--background-color);
 }
 
 a {

@@ -60,7 +60,7 @@
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-  background: #e0e0e0;
+  background: var(--card-color);
 
   display: flex;
   flex-direction: column;

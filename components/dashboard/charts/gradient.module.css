@@ -28,7 +28,7 @@
   display: inline-block;
   width: 10px;
   height: 10px;
-  background: #333;
+  background: var(--font-color);
   transform: translateX(-50%) rotate(45deg);
 }
 
@@ -38,8 +38,8 @@
   white-space: nowrap;
 
   z-index: 1;
-  color: white;
-  background: #333;
+  color: var(--background-color);
+  background: var(--font-color);
   padding: 2px 4px;
   border-radius: 4px;
 }

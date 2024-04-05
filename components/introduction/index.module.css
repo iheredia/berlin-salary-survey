@@ -25,7 +25,7 @@
 }
 
 .titleContainer h1 svg polygon {
-  fill: #f33b1d;
+  fill: var(--accent-color);
 }
 
 .titleContainer h2 {
