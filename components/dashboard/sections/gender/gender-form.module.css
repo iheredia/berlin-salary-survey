@@ -1,0 +1,34 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+
+  padding: 30px;
+}
+
+.form label {
+  width: 200px;
+  background: var(--background-color);
+  border: solid 1px #c0c0c0;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form label:focus,
+.form label:focus-within {
+  outline: solid 1px var(--accent-color);
+}
+
+.form input {
+  outline: none;
+}

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 
 type BaseSectionProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   fullHeight?: boolean;
   fullHeightHint?: boolean;
   part?: "top" | "center" | "bottom";

@@ -9,7 +9,9 @@ type AppProps = {
   year: AvailableYear;
 };
 
-const DEBUG = true;
+const DEBUG = process.env.NODE_ENV === "development";
+
+const logCopy = (obj: Object) => console.log(JSON.parse(JSON.stringify(obj)));
 
 export default function AppContextElement(props: AppProps) {
   const [user, _setUser] = useState<User>({});
@@ -19,9 +21,10 @@ export default function AppContextElement(props: AppProps) {
   const setUser = async (newUserValues: User) => {
     const newUser = { ...user, ...newUserValues };
     _setUser(newUser);
-    if (DEBUG) console.log(newUser);
+    if (DEBUG) logCopy({ newUser });
     setLoadingData(true);
     const newData = await getData(props.year, newUser);
+    if (DEBUG) logCopy({ newData });
     setData(newData);
     setLoadingData(false);
   };
