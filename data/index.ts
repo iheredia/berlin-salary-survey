@@ -13,12 +13,7 @@ function getDataForDimension(yearData: SurveyData, user: User, dimension: Dimens
     percentile: calculatePercentile(yearData, user, dimension),
     histogramBuckets: histogramBuckets.grossSalary,
     histogramCategories: getHistogramCategories("grossSalary"),
-    histogramSeries: getHistogramSeries(
-      yearData,
-      "grossSalary",
-      user,
-      dimension !== "grossSalary" ? dimension : undefined
-    ),
+    histogramSeries: getHistogramSeries(yearData, user, dimension),
   };
 }
 

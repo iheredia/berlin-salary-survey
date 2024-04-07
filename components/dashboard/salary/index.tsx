@@ -1,8 +1,8 @@
 import SalaryForm from "./salary-form";
 import BaseSection from "../base-section";
-import GradientChart from "../../charts/gradient";
-import HistogramChart from "../../charts/histogram-chart";
-import SalaryComment from "../comment";
+import GradientChart from "./gradient";
+import HistogramChart from "./histogram-chart";
+import SalaryComment from "./comment";
 import { useContext } from "react";
 import AppContext from "@/components/context";
 

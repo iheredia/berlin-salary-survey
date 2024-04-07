@@ -1,9 +1,9 @@
 "use client";
 import { useContext } from "react";
 
-import SalarySection from "./sections/salary";
-import GenderSection from "./sections/gender";
-import CategorySection from "./sections/category-section";
+import SalarySection from "./salary";
+import GenderSection from "./gender";
+import CategorySection from "./category-section";
 import AppContext from "../context";
 
 export default function Dashboard() {
@@ -14,7 +14,6 @@ export default function Dashboard() {
       {user.grossSalary ? (
         <>
           <GenderSection />
-
           <CategorySection dimension="age" />
           <CategorySection dimension="experience" />
           <CategorySection dimension="citizenship" />

@@ -26,11 +26,12 @@ export type StringDimension = StringKeys<DataPoint>;
 export type AvailableYear = 2023 | 2024;
 
 export type HistogramSeries = {
+  name: string;
   data: {
     id: string;
     y: number;
   }[];
-};
+}[];
 
 export type HistogramCategories = string[];
 

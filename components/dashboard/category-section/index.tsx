@@ -1,9 +1,9 @@
 import { StringDimension } from "@/data/types";
 import Select from "./select";
 import BaseSection from "../base-section";
-import GradientChart from "../../charts/gradient";
-import HistogramChart from "../../charts/histogram-chart";
-import SalaryComment from "../comment";
+// import GradientChart from "../../charts/gradient";
+// import HistogramChart from "../../charts/histogram-chart";
+// import SalaryComment from "../comment";
 import { useContext } from "react";
 import AppContext from "@/components/context";
 
@@ -20,20 +20,20 @@ export default function CategorySection(props: CategorySectionProps) {
         <Select dimension={dimension} />
         {dimensionData ? (
           <>
-            <SalaryComment percentile={dimensionData.percentile} dimension={dimension} />
-            <GradientChart userPercentile={dimensionData.percentile} />
+            {/* <SalaryComment percentile={dimensionData.percentile} dimension={dimension} />
+            <GradientChart userPercentile={dimensionData.percentile} /> */}
           </>
         ) : null}
       </BaseSection>
       {dimensionData ? (
         <BaseSection part="bottom">
-          <HistogramChart
+          {/* <HistogramChart
             dimension="grossSalary"
             filterDimension={dimension}
             histogramSeries={dimensionData.histogramSeries}
             histogramBuckets={dimensionData.histogramBuckets}
             histogramCategories={dimensionData.histogramCategories}
-          />
+          /> */}
         </BaseSection>
       ) : null}
     </>

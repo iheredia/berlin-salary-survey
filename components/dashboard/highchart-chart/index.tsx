@@ -39,7 +39,7 @@ const defaultProps = {
     footerFormat: "",
   },
 
-  colors: ["var( --secondary-color)", "var(--accent-color)"],
+  colors: ["var( --secondary-color)", "var(--accent-color)", "blue"],
 };
 
 function getCredits(year: AvailableYear) {

@@ -1,7 +1,6 @@
-import HighchartChart from "./highchart-chart";
+import HighchartChart from "../highchart-chart";
 import { names } from "@/data/static-values";
 import {
-  User,
   NumericDimension,
   Dimension,
   HistogramSeries,
@@ -10,31 +9,7 @@ import {
 } from "@/data/types";
 import { useContext } from "react";
 import AppContext from "@/components/context";
-
-function getTooltipFormat(dimension: NumericDimension) {
-  return `<strong>Amount of people:</strong> {point.y} <br /> <strong>${names[dimension]}</strong>: {point.category}`;
-}
-
-function getAnnotation(
-  user: User,
-  dimension: NumericDimension,
-  histogramBuckets: HistogramBuckets
-) {
-  const columnIndex = histogramBuckets.findIndex((bucketStart, index) => {
-    if (index === histogramBuckets.length - 1) {
-      return true;
-    }
-    if (!user.grossSalary) {
-      return true;
-    }
-    return bucketStart <= user.grossSalary && user.grossSalary < histogramBuckets[index + 1];
-  });
-  return {
-    point: `column-${columnIndex}`,
-    text: "You are here",
-    verticalAlign: "bottom",
-  };
-}
+import { getTooltipFormat, getAnnotation } from "../highchart-chart/utils";
 
 type HistogramChartProps = {
   dimension: NumericDimension;
@@ -55,7 +30,7 @@ export default function HistogramChart(props: HistogramChartProps) {
       : names[dimension];
 
   const chartProps = {
-    chart: { type: "column" },
+    chart: { type: "spline" },
 
     xAxis: {
       title: {
@@ -68,26 +43,14 @@ export default function HistogramChart(props: HistogramChartProps) {
         text: "People",
       },
       labels: {
-        format: "{value:,.0f}",
+        format: "{value:,.0f}%",
       },
     },
     tooltip: {
       pointFormat: getTooltipFormat(dimension),
     },
-    series: [histogramSeries],
-    annotations: [
-      {
-        draggable: "",
-        labelOptions: {
-          useHTML: true,
-          style: {
-            fontSize: "15px",
-            width: 300,
-          },
-        },
-        labels: [getAnnotation(user, dimension, histogramBuckets)],
-      },
-    ],
+    series: histogramSeries,
+    annotations: [getAnnotation(user, histogramBuckets)],
   };
   return <HighchartChart {...chartProps} />;
 }
