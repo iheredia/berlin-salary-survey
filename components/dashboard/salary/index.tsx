@@ -1,16 +1,16 @@
 import SalaryForm from "./salary-form";
 import BaseSection from "../base-section";
 import GradientChart from "./gradient";
-import HistogramChart from "./histogram-chart";
+import SalaryHistogramChart from "./histogram-chart";
 import SalaryComment from "./comment";
 import { useContext } from "react";
 import AppContext from "@/components/context";
 
 export default function SalarySection() {
-  const { user, data } = useContext(AppContext);
+  const { data } = useContext(AppContext);
   return (
     <>
-      <BaseSection fullHeight={!user.grossSalary} part={user.grossSalary ? "top" : undefined}>
+      <BaseSection part="top">
         <SalaryForm />
         {data?.grossSalary ? (
           <>
@@ -19,16 +19,9 @@ export default function SalarySection() {
           </>
         ) : null}
       </BaseSection>
-      {data?.grossSalary ? (
-        <BaseSection part="bottom">
-          <HistogramChart
-            dimension="grossSalary"
-            histogramSeries={data.grossSalary.histogramSeries}
-            histogramBuckets={data.grossSalary.histogramBuckets}
-            histogramCategories={data.grossSalary.histogramCategories}
-          />
-        </BaseSection>
-      ) : null}
+      <BaseSection part="bottom">
+        <SalaryHistogramChart />
+      </BaseSection>
     </>
   );
 }

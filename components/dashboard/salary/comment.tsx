@@ -1,24 +1,14 @@
-import { StringDimension } from "@/data/types";
 import styles from "./comment.module.css";
-import { names } from "@/data/static-values";
 
-export default function SalaryComment(props: { percentile: number; dimension?: StringDimension }) {
-  const { percentile, dimension } = props;
+export default function SalaryComment(props: { percentile: number }) {
+  const { percentile } = props;
   const upperDifference = 100 - percentile;
 
-  const withSameDimension = dimension ? (
-    <>
-      {" "}
-      <strong>with your same {names[dimension].toLowerCase()}</strong>
-    </>
-  ) : (
-    ""
-  );
   if (percentile < 20) {
     return (
       <div className={styles.comment}>
-        😨 you are in the bottom range of salaries . {upperDifference}% of people{" "}
-        {withSameDimension} earn more than you in Berlin 💸
+        😨 you are in the bottom range of salaries. {upperDifference}% of people earn more than you
+        in Berlin 💸
       </div>
     );
   }
@@ -26,7 +16,7 @@ export default function SalaryComment(props: { percentile: number; dimension?: S
     return (
       <div className={styles.comment}>
         😕 you are not all the way at the bottom but there is a lot of room for improvement.{" "}
-        {upperDifference}% of people {withSameDimension} earn more than you
+        {upperDifference}% of people earn more than you
       </div>
     );
   }
@@ -34,22 +24,21 @@ export default function SalaryComment(props: { percentile: number; dimension?: S
     return (
       <div className={styles.comment}>
         Not bad 🤑. You are in the upper range of salaries, earning more than {percentile}% of
-        people{withSameDimension}.
+        people.
       </div>
     );
   }
   if (percentile < 100) {
     return (
       <div className={styles.comment}>
-        🥳 niiice. You are in the top range of salaries. Only {upperDifference}% of people{" "}
-        {withSameDimension} earn more than you 💰💰
+        🥳 niiice. You are in the top range of salaries. Only {upperDifference}% of people earn more
+        than you 💰💰
       </div>
     );
   }
   return (
     <div className={styles.comment}>
-      Oh wow. Are you sure you wrote that? You earn more than everyone {withSameDimension} who took
-      the survey 😎
+      Oh wow. Are you sure you wrote that? You earn more than everyone who took the survey 😎
     </div>
   );
 }

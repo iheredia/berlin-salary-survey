@@ -1,40 +1,21 @@
-import HighchartChart from "../highchart-chart";
-import { names } from "@/data/static-values";
-import {
-  NumericDimension,
-  Dimension,
-  HistogramSeries,
-  HistogramBuckets,
-  HistogramCategories,
-} from "@/data/types";
 import { useContext } from "react";
+import { names } from "@/data/static-values";
 import AppContext from "@/components/context";
+import HighchartChart from "../highchart-chart";
 import { getTooltipFormat, getAnnotation } from "../highchart-chart/utils";
 
-type HistogramChartProps = {
-  dimension: NumericDimension;
-  filterDimension?: Dimension;
-  histogramSeries: HistogramSeries;
-  histogramCategories: HistogramCategories;
-  histogramBuckets: HistogramBuckets;
-};
+export default function SalaryHistogramChart() {
+  const { user, data } = useContext(AppContext);
+  if (!data.grossSalary) return;
 
-export default function HistogramChart(props: HistogramChartProps) {
-  const { user } = useContext(AppContext);
-  const { dimension, filterDimension, histogramSeries, histogramBuckets, histogramCategories } =
-    props;
-
-  const xAxisText =
-    filterDimension && user[filterDimension]
-      ? `${names[dimension]} for ${names[filterDimension]}: ${user[filterDimension]}`
-      : names[dimension];
+  const { histogramSeries, histogramBuckets, histogramCategories } = data.grossSalary;
 
   const chartProps = {
     chart: { type: "column" },
 
     xAxis: {
       title: {
-        text: xAxisText,
+        text: names.grossSalary,
       },
       categories: histogramCategories,
     },
@@ -47,7 +28,7 @@ export default function HistogramChart(props: HistogramChartProps) {
       },
     },
     tooltip: {
-      pointFormat: getTooltipFormat(dimension),
+      pointFormat: getTooltipFormat("grossSalary"),
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets)],

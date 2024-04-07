@@ -6,7 +6,6 @@ export default function GradientChart(props: { userPercentile: number }) {
   const iconLeft = `${userPercentile}%`;
   const iconStyle = { left: iconLeft };
 
-  const tooltipLeft = `${userPercentile}%`;
   const tooltipStyle =
     userPercentile > 90
       ? { right: "-15px" }

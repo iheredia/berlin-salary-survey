@@ -1,11 +1,19 @@
 .form {
-  position: sticky;
-  bottom: 25vh;
   width: 100%;
+
+  box-sizing: border-box;
+  min-height: 250px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 400ms;
 }
 
 .form.formWithSalary {
   padding: 10px;
+  min-height: 0;
 }
 
 .label {
