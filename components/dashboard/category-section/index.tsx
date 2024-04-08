@@ -15,27 +15,21 @@ export default function CategorySection(props: CategorySectionProps) {
   const { data } = useContext(AppContext);
   const dimensionData = data?.[dimension];
   return (
-    <>
-      <BaseSection part={dimensionData ? "top" : undefined}>
-        <Select dimension={dimension} />
-        {dimensionData ? (
-          <>
-            {/* <SalaryComment percentile={dimensionData.percentile} dimension={dimension} />
-            <GradientChart userPercentile={dimensionData.percentile} /> */}
-          </>
-        ) : null}
-      </BaseSection>
+    <BaseSection>
+      <Select dimension={dimension} />
       {dimensionData ? (
-        <BaseSection part="bottom">
+        <>
+          {/* <SalaryComment percentile={dimensionData.percentile} dimension={dimension} />
+            <GradientChart userPercentile={dimensionData.percentile} /> */}
           {/* <HistogramChart
-            dimension="grossSalary"
-            filterDimension={dimension}
-            histogramSeries={dimensionData.histogramSeries}
-            histogramBuckets={dimensionData.histogramBuckets}
-            histogramCategories={dimensionData.histogramCategories}
-          /> */}
-        </BaseSection>
+          dimension="grossSalary"
+          filterDimension={dimension}
+          histogramSeries={dimensionData.histogramSeries}
+          histogramBuckets={dimensionData.histogramBuckets}
+          histogramCategories={dimensionData.histogramCategories}
+        /> */}
+        </>
       ) : null}
-    </>
+    </BaseSection>
   );
 }

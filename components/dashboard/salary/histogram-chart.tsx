@@ -21,7 +21,7 @@ export default function SalaryHistogramChart() {
     },
     yAxis: {
       title: {
-        text: "People",
+        text: "Percentage of people",
       },
       labels: {
         format: "{value:,.0f}%",

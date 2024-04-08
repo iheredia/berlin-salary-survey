@@ -33,6 +33,13 @@ export default function GenderSplineChart() {
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets)],
     colors: ["#C00CAE", "#0400F3"],
+    legend: {
+      align: "right",
+      verticalAlign: "top",
+      floating: true,
+      x: 0,
+      y: 0,
+    },
   };
   return <HighchartChart {...chartProps} />;
 }

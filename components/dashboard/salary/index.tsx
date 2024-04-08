@@ -6,15 +6,11 @@ import SalaryHistogramChart from "./histogram-chart";
 
 export default function SalarySection() {
   return (
-    <>
-      <BaseSection part="top">
-        <SalaryForm />
-        <SalaryComment />
-        <GradientChart />
-      </BaseSection>
-      <BaseSection part="bottom">
-        <SalaryHistogramChart />
-      </BaseSection>
-    </>
+    <BaseSection>
+      <SalaryForm />
+      <SalaryComment />
+      <GradientChart />
+      <SalaryHistogramChart />
+    </BaseSection>
   );
 }

@@ -5,14 +5,10 @@ import SplineChart from "./spline-chart";
 
 export default function GenderSection() {
   return (
-    <>
-      <BaseSection part="top">
-        <GenderForm />
-        <GenderComment />
-      </BaseSection>
-      <BaseSection part="bottom">
-        <SplineChart />
-      </BaseSection>
-    </>
+    <BaseSection>
+      <GenderForm />
+      <GenderComment />
+      <SplineChart />
+    </BaseSection>
   );
 }
