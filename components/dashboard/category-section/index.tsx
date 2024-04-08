@@ -1,6 +1,6 @@
 import { StringDimension } from "@/data/types";
 import Select from "./select";
-import BaseSection from "../base-section";
+import BaseSection from "../components/base-section";
 // import GradientChart from "../../charts/gradient";
 // import HistogramChart from "../../charts/histogram-chart";
 // import SalaryComment from "../comment";
@@ -16,7 +16,7 @@ export default function CategorySection(props: CategorySectionProps) {
   const dimensionData = data?.[dimension];
   return (
     <>
-      <BaseSection fullHeightHint={!dimensionData} part={dimensionData ? "top" : undefined}>
+      <BaseSection part={dimensionData ? "top" : undefined}>
         <Select dimension={dimension} />
         {dimensionData ? (
           <>

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { names } from "@/data/static-values";
 import AppContext from "@/components/context";
-import HighchartChart from "../highchart-chart";
-import { getTooltipFormat, getAnnotation } from "../highchart-chart/utils";
+import HighchartChart from "../components/highchart-chart";
+import { getTooltipFormat, getAnnotation } from "../components/highchart-chart/utils";
 
 export default function SalaryHistogramChart() {
   const { user, data } = useContext(AppContext);
-  if (!data.grossSalary) return;
+  if (!data.grossSalary?.histogramCategories) return;
 
   const { histogramSeries, histogramBuckets, histogramCategories } = data.grossSalary;
 
@@ -24,7 +24,7 @@ export default function SalaryHistogramChart() {
         text: "People",
       },
       labels: {
-        format: "{value:,.0f}",
+        format: "{value:,.0f}%",
       },
     },
     tooltip: {
@@ -32,6 +32,7 @@ export default function SalaryHistogramChart() {
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets)],
+    colors: ["var( --secondary-color)", "var(--accent-color)"],
   };
   return <HighchartChart {...chartProps} />;
 }

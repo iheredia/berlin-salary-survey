@@ -14,13 +14,13 @@ export default function Dashboard() {
       {user.grossSalary ? (
         <>
           <GenderSection />
-          <CategorySection dimension="age" />
+          {/* <CategorySection dimension="age" />
           <CategorySection dimension="experience" />
           <CategorySection dimension="citizenship" />
           <CategorySection dimension="education" />
           <CategorySection dimension="organizationType" />
           <CategorySection dimension="industry" />
-          <CategorySection dimension="role" />
+          <CategorySection dimension="role" /> */}
         </>
       ) : null}
 

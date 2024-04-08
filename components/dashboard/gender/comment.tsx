@@ -2,9 +2,9 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 import BaseComment from "../components/base-comment";
 
-export default function SalaryComment() {
+export default function GenderComment() {
   const { data } = useContext(AppContext);
-  if (!data.grossSalary) return;
+  if (!data.grossSalary || !data.gender) return;
 
   const { percentile } = data.grossSalary;
   const upperDifference = 100 - percentile;

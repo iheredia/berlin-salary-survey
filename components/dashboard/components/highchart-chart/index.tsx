@@ -38,8 +38,6 @@ const defaultProps = {
     headerFormat: "",
     footerFormat: "",
   },
-
-  colors: ["var( --secondary-color)", "var(--accent-color)", "blue"],
 };
 
 function getCredits(year: AvailableYear) {

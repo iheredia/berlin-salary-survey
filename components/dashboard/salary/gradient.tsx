@@ -1,17 +1,22 @@
+import { useContext } from "react";
+import AppContext from "@/components/context";
 import styles from "./gradient.module.css";
 
-export default function GradientChart(props: { userPercentile: number }) {
-  const { userPercentile } = props;
+export default function GradientChart() {
+  const { data } = useContext(AppContext);
+  if (!data.grossSalary) return;
 
-  const iconLeft = `${userPercentile}%`;
+  const { percentile } = data.grossSalary;
+
+  const iconLeft = `${percentile}%`;
   const iconStyle = { left: iconLeft };
 
   const tooltipStyle =
-    userPercentile > 90
+    percentile > 90
       ? { right: "-15px" }
-      : userPercentile < 10
+      : percentile < 10
       ? { left: "-15px" }
-      : { left: `${userPercentile}%`, transform: "translate(-50%)" };
+      : { left: `${percentile}%`, transform: "translate(-50%)" };
 
   return (
     <div className={styles.gradientContainer}>

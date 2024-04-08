@@ -1,40 +1,21 @@
-import HighchartChart from "../highchart-chart";
-import { names } from "@/data/static-values";
-import {
-  NumericDimension,
-  Dimension,
-  HistogramSeries,
-  HistogramBuckets,
-  HistogramCategories,
-} from "@/data/types";
 import { useContext } from "react";
 import AppContext from "@/components/context";
-import { getTooltipFormat, getAnnotation } from "../highchart-chart/utils";
+import { names } from "@/data/static-values";
+import HighchartChart from "../components/highchart-chart";
+import { getTooltipFormat, getAnnotation } from "../components/highchart-chart/utils";
 
-type HistogramChartProps = {
-  dimension: NumericDimension;
-  filterDimension?: Dimension;
-  histogramSeries: HistogramSeries;
-  histogramCategories: HistogramCategories;
-  histogramBuckets: HistogramBuckets;
-};
+export default function GenderSplineChart() {
+  const { user, data } = useContext(AppContext);
+  if (!data.gender?.histogramCategories) return;
 
-export default function HistogramChart(props: HistogramChartProps) {
-  const { user } = useContext(AppContext);
-  const { dimension, filterDimension, histogramSeries, histogramBuckets, histogramCategories } =
-    props;
-
-  const xAxisText =
-    filterDimension && user[filterDimension]
-      ? `${names[dimension]} for ${names[filterDimension]}: ${user[filterDimension]}`
-      : names[dimension];
+  const { histogramSeries, histogramBuckets, histogramCategories } = data.gender;
 
   const chartProps = {
     chart: { type: "spline" },
 
     xAxis: {
       title: {
-        text: xAxisText,
+        text: names.grossSalary,
       },
       categories: histogramCategories,
     },
@@ -47,10 +28,11 @@ export default function HistogramChart(props: HistogramChartProps) {
       },
     },
     tooltip: {
-      pointFormat: getTooltipFormat(dimension),
+      pointFormat: getTooltipFormat("grossSalary"),
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets)],
+    colors: ["#C00CAE", "#0400F3"],
   };
   return <HighchartChart {...chartProps} />;
 }

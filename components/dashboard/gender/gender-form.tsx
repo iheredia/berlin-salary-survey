@@ -18,19 +18,21 @@ export default function GenderForm() {
 
   return (
     <form className={formClassName} onSubmit={onSubmit}>
-      <p>Do you identify yourself as ?</p>
-      <label>
-        <input type="radio" name="gender" value="Female" onChange={(event) => {}} />
-        Female
-      </label>
-      <label>
-        <input type="radio" name="gender" value="Male" onChange={onGenderChange} />
-        Male
-      </label>
-      <label>
-        <input type="radio" name="gender" value="Non-Binary" onChange={onGenderChange} />
-        Non-Binary
-      </label>
+      <div>Do you identify yourself as ?</div>
+      <div className={styles.optionsContainer}>
+        <label>
+          <input type="radio" name="gender" value="Female" onChange={onGenderChange} />
+          Female
+        </label>
+        <label>
+          <input type="radio" name="gender" value="Male" onChange={onGenderChange} />
+          Male
+        </label>
+        <label>
+          <input type="radio" name="gender" value="Non-Binary" onChange={onGenderChange} />
+          Non-Binary
+        </label>
+      </div>
     </form>
   );
 }
