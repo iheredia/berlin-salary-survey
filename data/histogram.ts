@@ -1,5 +1,12 @@
 import range from "lodash/range";
-import { Dimension, HistogramSeries, NumericDimension, SurveyData, User } from "./types";
+import {
+  Dimension,
+  HistogramSerie,
+  HistogramSeries,
+  NumericDimension,
+  SurveyData,
+  User,
+} from "./types";
 import { values } from "./static-values";
 
 export const histogramBuckets: Record<NumericDimension, number[]> = {
@@ -48,24 +55,32 @@ function getHistogramSingleSeries(filteredData: SurveyData, name: string) {
   return { data, name };
 }
 
+function normalizeSerie(serie: HistogramSerie): HistogramSerie {
+  const total = serie.data.reduce((accum, val) => accum + val.y, 0);
+  return {
+    ...serie,
+    data: serie.data.map((val) => ({
+      ...val,
+      y: Math.round((val.y * 1000) / total) / 10,
+    })),
+  };
+}
+
 export function getHistogramSeries(
   yearData: SurveyData,
   user: User,
   dimension: Dimension
 ): HistogramSeries {
   if (dimension === "grossSalary") {
-    return [getHistogramSingleSeries(yearData, "grossSalary")];
+    const serie = getHistogramSingleSeries(yearData, "grossSalary");
+    return [normalizeSerie(serie)];
   }
   if (dimension === "gender") {
     const genders = ["Female", "Male"];
     return genders.map((gender) => {
       const filteredData = yearData.filter((row) => row.gender === gender);
       const serie = getHistogramSingleSeries(filteredData, gender);
-      const total = serie.data.reduce((accum, val) => accum + val.y, 0);
-      serie.data.map((val) => {
-        val.y = Math.round((val.y * 1000) / total) / 10;
-      });
-      return serie;
+      return normalizeSerie(serie);
     });
   }
   const filteredData = yearData.filter((row) => row[dimension] === user[dimension]);
