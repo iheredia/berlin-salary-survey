@@ -48,7 +48,7 @@ function getHistogramSingleSeries(filteredData: SurveyData, name: string) {
   });
   const data = buckets.map((value, index) => {
     return {
-      id: `column-${index}`,
+      id: `${name}-${index}`,
       y: value,
     };
   });

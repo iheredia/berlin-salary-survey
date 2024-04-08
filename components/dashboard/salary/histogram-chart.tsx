@@ -31,7 +31,7 @@ export default function SalaryHistogramChart() {
       pointFormat: getTooltipFormat("grossSalary"),
     },
     series: histogramSeries,
-    annotations: [getAnnotation(user, histogramBuckets)],
+    annotations: [getAnnotation(user, histogramBuckets, "grossSalary")],
     colors: ["var( --secondary-color)", "var(--accent-color)"],
   };
   return <HighchartChart {...chartProps} />;

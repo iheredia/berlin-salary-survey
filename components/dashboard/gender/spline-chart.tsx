@@ -6,7 +6,7 @@ import { getTooltipFormat, getAnnotation } from "../components/highchart-chart/u
 
 export default function GenderSplineChart() {
   const { user, data } = useContext(AppContext);
-  if (!data.gender?.histogramCategories) return;
+  if (!user.gender || !data.gender?.histogramCategories) return;
 
   const { histogramSeries, histogramBuckets, histogramCategories } = data.gender;
 
@@ -21,7 +21,7 @@ export default function GenderSplineChart() {
     },
     yAxis: {
       title: {
-        text: "People",
+        text: "Percentage of people",
       },
       labels: {
         format: "{value:,.0f}%",
@@ -31,7 +31,7 @@ export default function GenderSplineChart() {
       pointFormat: getTooltipFormat("grossSalary"),
     },
     series: histogramSeries,
-    annotations: [getAnnotation(user, histogramBuckets)],
+    annotations: [getAnnotation(user, histogramBuckets, user.gender)],
     colors: ["#C00CAE", "#0400F3"],
     legend: {
       align: "right",
