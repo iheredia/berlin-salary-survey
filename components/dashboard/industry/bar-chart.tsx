@@ -18,7 +18,7 @@ export default function IndustryBarChart() {
     .map((industry) => ({
       name: industry,
       y: data.industry?.averages[industry] || 0,
-      color: null,
+      color: "",
     }))
     .sort((a, b) => a.y - b.y)
     .map((point, index) => {
