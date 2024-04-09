@@ -3,7 +3,8 @@ import { useContext } from "react";
 
 import SalarySection from "./salary";
 import GenderSection from "./gender";
-import CategorySection from "./category-section";
+import IndustrySection from "./industry";
+// import CategorySection from "./category-section";
 import AppContext from "../context";
 
 export default function Dashboard() {
@@ -14,13 +15,15 @@ export default function Dashboard() {
       {user.grossSalary ? (
         <>
           <GenderSection />
+          <IndustrySection />
           {/* <CategorySection dimension="age" />
           <CategorySection dimension="experience" />
           <CategorySection dimension="citizenship" />
           <CategorySection dimension="education" />
           <CategorySection dimension="organizationType" />
-          <CategorySection dimension="industry" />
-          <CategorySection dimension="role" /> */}
+          <CategorySection dimension="role" />
+          <CategorySection dimension="position" />
+           */}
         </>
       ) : null}
 

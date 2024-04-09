@@ -3,7 +3,7 @@ import styles from "./base-form.module.css";
 import classNames from "classnames";
 
 type BaseFormProps = {
-  onSubmit: FormEventHandler<HTMLFormElement>;
+  onSubmit?: FormEventHandler<HTMLFormElement>;
   children: ReactNode;
   hasData: boolean;
 };

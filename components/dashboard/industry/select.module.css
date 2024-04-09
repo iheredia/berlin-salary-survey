@@ -1,0 +1,14 @@
+.select {
+  width: 100%;
+  max-width: 200px;
+
+  border: solid 1px #aaa;
+  background: var(--background-color);
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: inherit;
+}
+
+.selectContainer {
+  text-align: center;
+}
