@@ -7,6 +7,11 @@
   padding: 8px 14px;
   border-radius: 4px;
   font-size: inherit;
+  color: inherit;
+}
+
+.select option {
+  color: inherit;
 }
 
 .selectContainer {

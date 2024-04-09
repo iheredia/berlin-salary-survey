@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
-import { getTooltipFormat } from "../components/highchart-chart/utils";
 import gradstop from "gradstop";
 
 export default function IndustryBarChart() {
@@ -38,12 +37,11 @@ export default function IndustryBarChart() {
         text: "Average salary",
       },
       labels: {
-        format: "${value:,.0f}",
+        format: "€ {value:,.0f}",
       },
     },
     tooltip: {
-      // TODO: re work tooltips
-      pointFormat: getTooltipFormat("grossSalary"),
+      pointFormat: `<strong>Industry</strong>: {point.category} <br /> <strong>Average salary:</strong> € {point.y} `,
     },
     series: [
       {

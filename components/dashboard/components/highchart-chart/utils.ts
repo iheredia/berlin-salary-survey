@@ -1,9 +1,4 @@
-import { User, NumericDimension, HistogramBuckets } from "@/data/types";
-import { names } from "@/data/static-values";
-
-export function getTooltipFormat(dimension: NumericDimension) {
-  return `<strong>Percentage of people:</strong> {point.y}% <br /> <strong>${names[dimension]}</strong>: {point.category}`;
-}
+import { User, HistogramBuckets } from "@/data/types";
 
 export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, serieName: string) {
   const columnIndex = histogramBuckets.findIndex((bucketStart, index) => {

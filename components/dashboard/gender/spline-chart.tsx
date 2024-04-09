@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 import { names } from "@/data/static-values";
 import HighchartChart from "../components/highchart-chart";
-import { getTooltipFormat, getAnnotation } from "../components/highchart-chart/utils";
+import { getAnnotation } from "../components/highchart-chart/utils";
 
 export default function GenderSplineChart() {
   const { user, data } = useContext(AppContext);
@@ -28,7 +28,7 @@ export default function GenderSplineChart() {
       },
     },
     tooltip: {
-      pointFormat: getTooltipFormat("grossSalary"),
+      pointFormat: `<strong>Percentage of {series.name}:</strong> {point.y}% <br /> <strong>Gross salary</strong>: {point.category}`,
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets, user.gender)],

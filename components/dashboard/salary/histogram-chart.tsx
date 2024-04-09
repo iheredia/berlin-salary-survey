@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { names } from "@/data/static-values";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
-import { getTooltipFormat, getAnnotation } from "../components/highchart-chart/utils";
+import { getAnnotation } from "../components/highchart-chart/utils";
 
 export default function SalaryHistogramChart() {
   const { user, data } = useContext(AppContext);
@@ -28,7 +28,7 @@ export default function SalaryHistogramChart() {
       },
     },
     tooltip: {
-      pointFormat: getTooltipFormat("grossSalary"),
+      pointFormat: `<strong>Percentage of people:</strong> {point.y}% <br /> <strong>Gross salary</strong>: € {point.category}`,
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets, "grossSalary")],
