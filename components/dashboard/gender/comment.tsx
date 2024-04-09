@@ -24,9 +24,9 @@ export default function GenderComment() {
 
   const upperDifference = 100 - percentile;
   if (percentile < 20) {
-    comment = `${comment} ${upperDifference}% of ${people} earn more than you in Berlin 😓`;
+    comment = `${upperDifference}% of ${people} earn more than you in Berlin 😓`;
   } else if (percentile < 50) {
-    comment = `${comment} ${upperDifference}% of ${people} earn more than you 😕`;
+    comment = `${upperDifference}% of ${people} earn more than you 😕`;
   } else if (percentile < 75) {
     comment = `You earn more than ${percentile}% of ${people} 🤑`;
   } else if (percentile < 100) {
@@ -37,15 +37,13 @@ export default function GenderComment() {
     } who took the survey 😎`;
   }
 
-  // TODO: get from server
-  const menSalary = 1234;
-  const womenSalary = 234;
   return (
     <BaseComment>
       <p>{comment}</p>
       <p>
         Sadly, the gender gap is definitely present in Berlin. The average salary for men is $
-        {menSalary} while the average salary for women is ${womenSalary} 😐
+        {data.gender.averages.male.toLocaleString()} while the average salary for women is $
+        {data.gender.averages.female.toLocaleString()} 😐
       </p>
     </BaseComment>
   );

@@ -39,14 +39,24 @@ export type HistogramCategories = string[];
 
 export type HistogramBuckets = number[];
 
-export type UserComparisonData = Partial<
-  Record<
-    Dimension,
-    {
-      percentile: number;
-      histogramSeries: HistogramSeries;
-      histogramCategories: HistogramCategories;
-      histogramBuckets: HistogramBuckets;
-    }
-  >
->;
+export type UserComparisonData = Partial<{
+  grossSalary: {
+    percentile: number;
+    histogramBuckets: HistogramBuckets;
+    histogramCategories: HistogramCategories;
+    histogramSeries: HistogramSeries;
+  };
+  gender: {
+    percentile: number;
+    histogramBuckets: HistogramBuckets;
+    histogramCategories: HistogramCategories;
+    histogramSeries: HistogramSeries;
+    averages: {
+      male: number;
+      female: number;
+    };
+  };
+  industry: {
+    averages: Record<string, number>;
+  };
+}>;
