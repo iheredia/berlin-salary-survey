@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import styles from "./salary-form.module.css";
 import classNames from "classnames";
 import AppContext from "@/components/context";
+import BaseForm from "../components/base-form";
 
 export default function SalaryForm() {
   const { user, setUser } = useContext(AppContext);
@@ -27,13 +28,12 @@ export default function SalaryForm() {
     updateIfThreshold();
   };
 
-  const formClassName = classNames(styles.form, user.grossSalary ? styles.formWithSalary : "");
   const buttonClassName = classNames(
     styles.inputSubmitIcon,
     parsedSalary > 10_000 ? styles.inputSubmitIconActive : ""
   );
   return (
-    <form className={formClassName} onSubmit={onSubmit}>
+    <BaseForm onSubmit={onSubmit} hasData={!!user.grossSalary}>
       <label className={styles.label}>
         <span className={styles.labelText}>Your current gross annual salary</span>
         <span className={styles.inputContainer}>
@@ -50,6 +50,6 @@ export default function SalaryForm() {
           </button>
         </span>
       </label>
-    </form>
+    </BaseForm>
   );
 }

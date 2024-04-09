@@ -1,16 +1,3 @@
-.form {
-  width: 100%;
-  display: flex;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-
-  padding: 30px;
-}
-
 .optionsContainer {
   display: flex;
   gap: 10px;
@@ -19,7 +6,7 @@
   }
 }
 
-.form label {
+.optionsContainer label {
   width: 160px;
   background: var(--background-color);
   border: solid 1px #c0c0c0;
@@ -33,11 +20,11 @@
   align-items: center;
 }
 
-.form label:focus,
-.form label:focus-within {
+.optionsContainer label:focus,
+.optionsContainer label:focus-within {
   outline: solid 1px var(--accent-color);
 }
 
-.form input {
+.optionsContainer input {
   outline: none;
 }

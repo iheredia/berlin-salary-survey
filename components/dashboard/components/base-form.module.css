@@ -1,0 +1,21 @@
+.form {
+  width: 100%;
+
+  box-sizing: border-box;
+  min-height: 250px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 18px;
+  padding: 30px;
+
+  transition: all 400ms;
+}
+
+.form.formWithData {
+  min-height: 0px;
+}

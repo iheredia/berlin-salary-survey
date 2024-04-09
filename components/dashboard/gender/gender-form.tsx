@@ -1,7 +1,7 @@
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useContext } from "react";
 import styles from "./gender-form.module.css";
-import classNames from "classnames";
 import AppContext from "@/components/context";
+import BaseForm from "../components/base-form";
 
 export default function GenderForm() {
   const { user, setUser } = useContext(AppContext);
@@ -10,14 +10,12 @@ export default function GenderForm() {
     event.preventDefault();
   };
 
-  const formClassName = classNames(styles.form, user.gender ? styles.formWithGender : "");
-
   const onGenderChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUser({ gender: event.currentTarget.value });
   };
 
   return (
-    <form className={formClassName} onSubmit={onSubmit}>
+    <BaseForm onSubmit={onSubmit} hasData={!!user.gender}>
       <div>Do you identify yourself as ?</div>
       <div className={styles.optionsContainer}>
         <label>
@@ -33,6 +31,6 @@ export default function GenderForm() {
           Non-Binary
         </label>
       </div>
-    </form>
+    </BaseForm>
   );
 }
