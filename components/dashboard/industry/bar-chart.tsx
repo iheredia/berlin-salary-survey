@@ -40,6 +40,7 @@ export default function IndustryBarChart() {
       },
       labels: {
         format: "€ {value:,.0f}",
+        rotation: -30,
       },
     },
     tooltip: {

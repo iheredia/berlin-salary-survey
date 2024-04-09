@@ -4,6 +4,7 @@ import { useContext } from "react";
 import SalarySection from "./salary";
 import GenderSection from "./gender";
 import IndustrySection from "./industry";
+import PositionSection from "./position";
 // import CategorySection from "./category-section";
 import AppContext from "../context";
 
@@ -14,6 +15,7 @@ export default function Dashboard() {
       <SalarySection />
       {user.grossSalary ? (
         <>
+          <PositionSection />
           <GenderSection />
           <IndustrySection />
           {/* <CategorySection dimension="age" />
