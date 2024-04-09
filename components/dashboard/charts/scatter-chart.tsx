@@ -1,4 +1,4 @@
-import HighchartChart from "./highchart-chart";
+import HighchartChart from "../components/highchart-chart";
 import { names, units } from "@/data/static-values";
 import { AvailableYear, NumericDimension } from "@/data/types";
 
