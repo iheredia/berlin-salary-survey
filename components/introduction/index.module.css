@@ -12,7 +12,7 @@
 
   @media (max-width: 600px) {
     gap: 2vw;
-    font-size: 5vw;
+    font-size: 4.5vw;
   }
   @media (min-width: 601px) {
     gap: 12px;
@@ -33,7 +33,7 @@
   margin-bottom: 40px;
 
   @media (max-width: 600px) {
-    font-size: 10vw;
+    font-size: 9vw;
   }
   @media (min-width: 601px) {
     font-size: 60px;
