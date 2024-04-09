@@ -17,11 +17,13 @@ export default function IndustryBarChart() {
     .map((industry) => ({
       name: industry,
       y: data.industry?.averages[industry] || 0,
-      color: "",
+      color: "#2caffe",
     }))
     .sort((a, b) => a.y - b.y)
     .map((point, index) => {
-      point.color = gradient[index];
+      if (point.name !== user.industry) {
+        point.color = gradient[index];
+      }
       return point;
     });
   const categories = seriesData.map((point) => point.name);
