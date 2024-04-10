@@ -48,8 +48,6 @@ export type UserComparisonData = Partial<{
   };
   gender: {
     percentile: number;
-    histogramBuckets: HistogramBuckets;
-    histogramCategories: HistogramCategories;
     histogramSeries: HistogramSeries;
     averages: {
       male: number;

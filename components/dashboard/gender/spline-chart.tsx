@@ -6,9 +6,10 @@ import { getAnnotation } from "../components/highchart-chart/utils";
 
 export default function GenderSplineChart() {
   const { user, data } = useContext(AppContext);
-  if (!user.gender || !data.gender?.histogramCategories) return;
+  if (!user.gender || !data.gender?.histogramSeries || !data.grossSalary) return;
 
-  const { histogramSeries, histogramBuckets, histogramCategories } = data.gender;
+  const { histogramSeries } = data.gender;
+  const { histogramBuckets, histogramCategories } = data.grossSalary;
 
   const chartProps = {
     chart: { type: "spline" },

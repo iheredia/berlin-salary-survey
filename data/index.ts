@@ -22,8 +22,6 @@ function getGrossSalaryData(yearData: SurveyData, user: User) {
 function getGenderData(yearData: SurveyData, user: User) {
   return {
     percentile: calculatePercentile(yearData, user, "gender"),
-    histogramBuckets: histogramBuckets.grossSalary,
-    histogramCategories: getHistogramCategories("grossSalary"),
     histogramSeries: getHistogramSeries(yearData, user, "gender"),
     averages: {
       male: getAverage(yearData, "gender", "Male"),
