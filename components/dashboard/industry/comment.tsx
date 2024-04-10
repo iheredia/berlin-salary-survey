@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
-import BaseComment from "../components/base-comment";
+import BaseComment, { Strong } from "../components/base-comment";
 
 export default function IndustryComment() {
   const { data, user } = useContext(AppContext);
@@ -17,9 +17,9 @@ export default function IndustryComment() {
       : "above";
   return (
     <BaseComment>
-      Your salary of <strong> € {user.grossSalary.toLocaleString()} </strong> is {distance} the{" "}
+      Your salary of <Strong>€ {user.grossSalary.toLocaleString()}</Strong> is {distance} the{" "}
       {user.industry} industry average salary of{" "}
-      <strong>€ {industryAverage.toLocaleString()}</strong>
+      <Strong>€ {industryAverage.toLocaleString()}</Strong>
     </BaseComment>
   );
 }

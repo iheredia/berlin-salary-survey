@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
-import BaseComment from "../components/base-comment";
+import BaseComment, { Strong } from "../components/base-comment";
 
 export default function GenderComment() {
   const { user, data } = useContext(AppContext);
@@ -41,9 +41,9 @@ export default function GenderComment() {
     <BaseComment>
       <p>{comment}</p>
       <p>
-        Sadly, the gender gap is definitely present in Berlin. The average salary for men is $
-        {data.gender.averages.male.toLocaleString()} while the average salary for women is $
-        {data.gender.averages.female.toLocaleString()} 😐
+        Sadly, the gender gap is definitely present in Berlin. The average salary for men is{" "}
+        <Strong>€ {data.gender.averages.male.toLocaleString()}</Strong> while the average salary for
+        women is <Strong>€ {data.gender.averages.female.toLocaleString()}</Strong> 😐
       </p>
     </BaseComment>
   );

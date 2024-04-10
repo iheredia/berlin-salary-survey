@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { names } from "@/data/static-values";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 import { getAnnotation } from "../components/highchart-chart/utils";
@@ -15,7 +14,7 @@ export default function SalaryHistogramChart() {
 
     xAxis: {
       title: {
-        text: names.grossSalary,
+        text: "Gross salary",
       },
       categories: histogramCategories,
     },

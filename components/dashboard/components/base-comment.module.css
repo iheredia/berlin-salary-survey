@@ -4,3 +4,7 @@
 
   text-align: center;
 }
+
+.strong {
+  white-space: nowrap;
+}
