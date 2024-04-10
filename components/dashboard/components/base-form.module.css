@@ -20,3 +20,39 @@
 .form.formWithData {
   min-height: 0px;
 }
+
+.optionsContainer {
+  display: flex;
+  gap: 10px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.optionsContainer label {
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+
+  background: var(--background-color);
+  border: solid 1px #c0c0c0;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+
+  white-space: nowrap;
+}
+
+.optionsContainer label:focus,
+.optionsContainer label:focus-within {
+  outline: solid 1px var(--accent-color);
+}
+
+.optionsContainer input {
+  outline: none;
+}

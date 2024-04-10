@@ -5,6 +5,7 @@ import SalarySection from "./salary";
 import GenderSection from "./gender";
 import IndustrySection from "./industry";
 import PositionSection from "./position";
+import RoleSection from "./role";
 // import CategorySection from "./category-section";
 import AppContext from "../context";
 
@@ -18,20 +19,16 @@ export default function Dashboard() {
           <PositionSection />
           <GenderSection />
           <IndustrySection />
+          <RoleSection />
           {/* <CategorySection dimension="age" />
           <CategorySection dimension="experience" />
           <CategorySection dimension="citizenship" />
           <CategorySection dimension="education" />
           <CategorySection dimension="organizationType" />
-          <CategorySection dimension="role" />
           <CategorySection dimension="position" />
            */}
         </>
       ) : null}
-
-      {/* <HistogramChart year={year} dimension="bonus" /> */}
-      {/* <HistogramChart year={year} dimension="equity" /> */}
-      {/* <ScatterChart year={year} dimensionX="hoursPerWeek" dimensionY="grossSalary" /> */}
     </>
   );
 }

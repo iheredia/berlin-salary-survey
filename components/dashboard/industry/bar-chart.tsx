@@ -52,6 +52,5 @@ export default function IndustryBarChart() {
       },
     ],
   };
-  console.log(chartProps);
   return <HighchartChart {...chartProps} />;
 }

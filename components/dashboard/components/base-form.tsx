@@ -7,6 +7,7 @@ type BaseFormProps = {
   children: ReactNode;
   hasData: boolean;
 };
+
 export default function BaseForm(props: BaseFormProps) {
   const { onSubmit, hasData, children } = props;
   const formClassName = classNames(styles.form, hasData ? styles.formWithData : null);
@@ -15,4 +16,12 @@ export default function BaseForm(props: BaseFormProps) {
       {children}
     </form>
   );
+}
+
+type OptionsContainerProps = {
+  children: ReactNode;
+};
+
+export function OptionsContainer(props: OptionsContainerProps) {
+  return <div className={styles.optionsContainer}>{props.children}</div>;
 }
