@@ -1,59 +1,17 @@
 import range from "lodash/range";
-import {
-  Dimension,
-  HistogramSerie,
-  HistogramSeries,
-  NumericDimension,
-  SurveyData,
-  User,
-} from "./types";
-import { values } from "./static-values";
+import { HistogramSerie, SurveyData } from "./types";
 
-export const histogramBuckets: Record<NumericDimension, number[]> = {
-  grossSalary: range(0, 210_000, 10_000),
-  bonus: range(0, 100_000, 5_000),
-  equity: range(0, 100_000, 5_000),
-  hoursPerWeek: range(0, 52, 4),
-};
+export const histogramBuckets = range(0, 210_000, 10_000);
 
-export function getHistogramCategories(dimension: NumericDimension) {
-  const bucketsForDimension = histogramBuckets[dimension];
-  const categories: string[] = bucketsForDimension.map((bucketStart, index) => {
-    const normalizedSize = bucketStart > 1000 ? `${bucketStart / 1000}k` : bucketStart;
-    if (index + 1 === bucketsForDimension.length) {
-      return `${normalizedSize} +`;
-    }
-    const nextBucketStart = bucketsForDimension[index + 1];
-    const normalizedSizeNext =
-      nextBucketStart > 1000 ? `${nextBucketStart / 1000}k` : nextBucketStart;
-    return `${normalizedSize} to ${normalizedSizeNext}`;
-  });
-  return categories;
-}
-
-function getHistogramSingleSeries(filteredData: SurveyData, name: string) {
-  const bucketsForDimension = histogramBuckets.grossSalary;
-  const buckets = bucketsForDimension.map(() => 0);
-  filteredData.forEach((dataPoint) => {
-    const dimensionValue = dataPoint.grossSalary;
-    if (dimensionValue !== null && dimensionValue > 0) {
-      const bucketIndex = bucketsForDimension.findIndex((bucketStart, index) => {
-        if (index === bucketsForDimension.length - 1) {
-          return true;
-        }
-        return bucketStart <= dimensionValue && dimensionValue < bucketsForDimension[index + 1];
-      });
-      buckets[bucketIndex] += 1;
-    }
-  });
-  const data = buckets.map((value, index) => {
-    return {
-      id: `${name}-${index}`,
-      y: value,
-    };
-  });
-  return { data, name };
-}
+export const histogramCategories: string[] = histogramBuckets.map((bucketStart, index) => {
+  const normalizedSize = `${bucketStart / 1000}${bucketStart > 0 ? "" : "k"}`;
+  if (index + 1 === histogramBuckets.length) {
+    return `${normalizedSize} +`;
+  }
+  const nextBucketStart = histogramBuckets[index + 1];
+  const normalizedSizeNext = `${nextBucketStart / 1000}k`;
+  return `${normalizedSize} to ${normalizedSizeNext}`;
+});
 
 function normalizeSerie(serie: HistogramSerie): HistogramSerie {
   const total = serie.data.reduce((accum, val) => accum + val.y, 0);
@@ -66,23 +24,25 @@ function normalizeSerie(serie: HistogramSerie): HistogramSerie {
   };
 }
 
-export function getHistogramSeries(
-  yearData: SurveyData,
-  user: User,
-  dimension: Dimension
-): HistogramSeries {
-  if (dimension === "grossSalary") {
-    const serie = getHistogramSingleSeries(yearData, "grossSalary");
-    return [normalizeSerie(serie)];
-  }
-  if (dimension === "gender") {
-    const genders = ["Female", "Male"];
-    return genders.map((gender) => {
-      const filteredData = yearData.filter((row) => row.gender === gender);
-      const serie = getHistogramSingleSeries(filteredData, gender);
-      return normalizeSerie(serie);
-    });
-  }
-  const filteredData = yearData.filter((row) => row[dimension] === user[dimension]);
-  return [getHistogramSingleSeries(filteredData, dimension)];
+export function getSeries(yearData: SurveyData, name: string) {
+  const buckets = histogramBuckets.map(() => 0);
+  yearData.forEach(({ grossSalary }) => {
+    if (grossSalary !== null && grossSalary > 0) {
+      const bucketIndex = histogramBuckets.findIndex((bucketStart, index) => {
+        if (index === histogramBuckets.length - 1) {
+          return true;
+        }
+        return bucketStart <= grossSalary && grossSalary < histogramBuckets[index + 1];
+      });
+      buckets[bucketIndex] += 1;
+    }
+  });
+  const data = buckets.map((value, index) => {
+    return {
+      id: `${name}-${index}`,
+      y: value,
+    };
+  });
+
+  return normalizeSerie({ data, name });
 }
