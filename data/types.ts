@@ -57,4 +57,12 @@ export type UserComparisonData = Partial<{
   industry: {
     averages: Record<string, number>;
   };
+  role: {
+    percentile: number;
+    histogramSeries: HistogramSeries;
+    averages: {
+      peopleManager: number;
+      individualContributor: number;
+    };
+  };
 }>;

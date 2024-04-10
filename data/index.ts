@@ -26,11 +26,11 @@ export default async function getData(
   };
 
   if (user.gender) {
-    const genderSalaries = yearData.filter((row) => row.gender === user.gender);
+    const userGenderSalaries = yearData.filter((row) => row.gender === user.gender);
     const maleSalaries = yearData.filter((row) => row.gender === "Male");
     const femaleSalaries = yearData.filter((row) => row.gender === "Female");
     data.gender = {
-      percentile: calculatePercentile(genderSalaries, user.grossSalary),
+      percentile: calculatePercentile(userGenderSalaries, user.grossSalary),
       histogramSeries: [getSeries(femaleSalaries, "Female"), getSeries(maleSalaries, "Male")],
       averages: {
         male: getAverage(maleSalaries),
@@ -48,5 +48,33 @@ export default async function getData(
     });
     data.industry = { averages };
   }
+
+  if (user.role) {
+    const allRolesData = yearData.filter((row) => row.role !== "Prefer not to say");
+    const userRoleData = allRolesData.filter((row) => {
+      if (user.role === "Individual contributor") {
+        return row.role === "Individual Contributor (no direct reports)";
+      }
+      return row.role !== "Individual Contributor (no direct reports)";
+    });
+    const individualContributorData = allRolesData.filter(
+      (row) => row.role === "Individual Contributor (no direct reports)"
+    );
+    const peopleManagerData = allRolesData.filter(
+      (row) => row.role !== "Individual Contributor (no direct reports)"
+    );
+    data.role = {
+      percentile: calculatePercentile(userRoleData, user.grossSalary),
+      histogramSeries: [
+        getSeries(individualContributorData, "Individual contributor"),
+        getSeries(peopleManagerData, "People manager"),
+      ],
+      averages: {
+        peopleManager: getAverage(peopleManagerData),
+        individualContributor: getAverage(individualContributorData),
+      },
+    };
+  }
+
   return data;
 }
