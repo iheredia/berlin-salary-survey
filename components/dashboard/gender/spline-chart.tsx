@@ -16,13 +16,13 @@ export default function GenderSplineChart() {
 
     xAxis: {
       title: {
-        text: names.grossSalary,
+        text: "Total Annual Gross Salary",
       },
       categories: histogramCategories,
     },
     yAxis: {
       title: {
-        text: "Percentage of people",
+        text: "Percentage of respondents",
       },
       labels: {
         format: "{value:,.0f}%",
@@ -33,7 +33,7 @@ export default function GenderSplineChart() {
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets, user.gender)],
-    colors: ["#C00CAE", "#0400F3"],
+    colors: ["#A41700", "#4B7F52"],
     legend: {
       align: "right",
       verticalAlign: "top",

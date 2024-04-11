@@ -14,36 +14,29 @@ export default function GenderComment() {
   if (user.gender === "Male") {
     people = "men";
     percentile = data.gender.percentile;
-  } else if (user.gender === "Female") {
+  } else {
     people = "women";
     percentile = data.gender.percentile;
-  } else {
-    people = "people";
-    percentile = data.grossSalary.percentile;
   }
 
   const upperDifference = 100 - percentile;
-  if (percentile < 20) {
-    comment = `${upperDifference}% of ${people} earn more than you in Berlin 😓`;
-  } else if (percentile < 50) {
-    comment = `${upperDifference}% of ${people} earn more than you 😕`;
-  } else if (percentile < 75) {
-    comment = `You earn more than ${percentile}% of ${people} 🤑`;
+  if (percentile < 50) {
+    comment = `${upperDifference}% of ${people} earn more than you.`;
   } else if (percentile < 100) {
-    comment = `Only ${upperDifference}% of ${people} earn more than you 💰💰`;
+    comment = `You earn more than ${percentile}% of ${people}.`;
   } else {
-    comment = `You earn more than ${
-      people === "people" ? "everyone" : `every ${people}`
-    } who took the survey 😎`;
+    comment = `You earn more than every ${people} who took the survey.`;
   }
 
   return (
     <BaseComment>
       <p>{comment}</p>
       <p>
-        Sadly, the gender gap is definitely present in Berlin. The average salary for men is{" "}
-        <Strong>€ {data.gender.averages.male.toLocaleString()}</Strong> while the average salary for
-        women is <Strong>€ {data.gender.averages.female.toLocaleString()}</Strong> 😐
+        For more gender gap data,{" "}
+        <a href="https://handpickedberlin.com/startup-tech-salary-trends-berlin/">
+          check our report
+        </a>
+        .
       </p>
     </BaseComment>
   );

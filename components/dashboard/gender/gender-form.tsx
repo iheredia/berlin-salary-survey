@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useContext } from "react";
 import AppContext from "@/components/context";
 import BaseForm, { OptionsContainer } from "../components/base-form";
+import styles from "./gender-form.module.css";
 
 export default function GenderForm() {
   const { user, setUser } = useContext(AppContext);
@@ -15,7 +16,6 @@ export default function GenderForm() {
 
   return (
     <BaseForm onSubmit={onSubmit} hasData={!!user.gender}>
-      <div>Do you identify yourself as ?</div>
       <OptionsContainer>
         <label>
           <input type="radio" name="gender" value="Female" onChange={onGenderChange} />
@@ -24,10 +24,6 @@ export default function GenderForm() {
         <label>
           <input type="radio" name="gender" value="Male" onChange={onGenderChange} />
           Male
-        </label>
-        <label>
-          <input type="radio" name="gender" value="Non-Binary" onChange={onGenderChange} />
-          Non-Binary
         </label>
       </OptionsContainer>
     </BaseForm>
