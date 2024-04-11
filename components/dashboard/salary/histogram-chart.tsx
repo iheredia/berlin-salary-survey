@@ -14,13 +14,13 @@ export default function SalaryHistogramChart() {
 
     xAxis: {
       title: {
-        text: "Gross salary",
+        text: "Total Annual Gross Salary",
       },
       categories: histogramCategories,
     },
     yAxis: {
       title: {
-        text: "Percentage of people",
+        text: "Percentage of respondents",
       },
       labels: {
         format: "{value:,.0f}%",
@@ -31,7 +31,7 @@ export default function SalaryHistogramChart() {
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets, "grossSalary")],
-    colors: ["var( --secondary-color)", "var(--accent-color)"],
+    colors: ["#004209"],
   };
   return <HighchartChart {...chartProps} />;
 }

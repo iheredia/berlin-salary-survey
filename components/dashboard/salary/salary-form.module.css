@@ -71,3 +71,8 @@
 .inputSubmitIcon.inputSubmitIconActive {
   pointer-events: auto;
 }
+
+.disclaimer {
+  font-size: 12px;
+  margin: 0;
+}

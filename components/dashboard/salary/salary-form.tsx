@@ -35,7 +35,7 @@ export default function SalaryForm() {
   return (
     <BaseForm onSubmit={onSubmit} hasData={!!user.grossSalary}>
       <label className={styles.label}>
-        <span className={styles.labelText}>Your current gross annual salary</span>
+        <span className={styles.labelText}>What is your Total Annual Gross Salary?*</span>
         <span className={styles.inputContainer}>
           <input
             className={styles.input}
@@ -49,6 +49,9 @@ export default function SalaryForm() {
             Compare
           </button>
         </span>
+        <p className={styles.disclaimer}>
+          *Without bonus or equity. <br /> We do not keep your data.
+        </p>
       </label>
     </BaseForm>
   );
