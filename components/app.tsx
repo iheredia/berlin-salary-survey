@@ -2,6 +2,7 @@ import AppContextElement from "./context/provider";
 import Introduction from "./introduction";
 import Dashboard from "./dashboard";
 import { AvailableYear } from "@/data/types";
+import styles from "./app.module.css";
 
 type AppProps = {
   year: AvailableYear;
@@ -13,7 +14,7 @@ export default function App(props: AppProps) {
 
   return (
     <AppContextElement year={year}>
-      <main>
+      <main className={styles.main}>
         {embed ? null : <Introduction year={year} />}
         <Dashboard />
       </main>

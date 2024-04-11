@@ -1,6 +1,11 @@
 .gradientContainer {
   width: 100%;
-  padding: 20px;
+  @media (max-width: 600px) {
+    padding: 10px 0;
+  }
+  @media (min-width: 601px) {
+    padding: 20px;
+  }
 }
 
 .gradient {
