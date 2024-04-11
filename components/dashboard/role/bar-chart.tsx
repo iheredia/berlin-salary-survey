@@ -30,6 +30,7 @@ export default function RoleBarChart() {
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets, user.role)],
+    colors: ["#A41700", "#4B7F52"],
     legend: {
       align: "right",
       verticalAlign: "top",

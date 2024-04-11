@@ -15,7 +15,6 @@ export default function RoleForm() {
 
   return (
     <BaseForm onSubmit={onSubmit} hasData={!!user.role}>
-      <div>Are you an individual contributor or do you have people on charge ?</div>
       <OptionsContainer>
         <label>
           <input type="radio" name="role" value="Individual contributor" onChange={onRoleChange} />
@@ -23,7 +22,7 @@ export default function RoleForm() {
         </label>
         <label>
           <input type="radio" name="role" value="People manager" onChange={onRoleChange} />
-          People manager / lead
+          Team Manager / Lead
         </label>
       </OptionsContainer>
     </BaseForm>

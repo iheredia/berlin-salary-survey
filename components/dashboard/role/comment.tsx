@@ -15,25 +15,23 @@ export default function RoleComment() {
     people = "individual contributors";
   }
 
-  if (percentile < 20) {
-    comment = `${upperDifference}% of ${people} earn more than you in Berlin 😓`;
-  } else if (percentile < 50) {
-    comment = `${upperDifference}% of ${people} earn more than you 😕`;
-  } else if (percentile < 75) {
-    comment = `You earn more than ${percentile}% of ${people} 🤑`;
+  if (percentile < 50) {
+    comment = `${upperDifference}% of ${people} earn more than you.`;
   } else if (percentile < 100) {
-    comment = `Only ${upperDifference}% of ${people} earn more than you 💰💰`;
+    comment = `You earn more than ${percentile}% of ${people}`;
   } else {
-    comment = `You earn more than all of the ${people} who took the survey 😎`;
+    comment = `You earn more than all of the ${people} who took the survey`;
   }
 
   return (
     <BaseComment>
       <p>{comment}</p>
       <p>
-        Unsurprisingly, the average salary for individual contributors is{" "}
-        <Strong>€ {averages.individualContributor}</Strong> while the average salary for people
-        managers is <Strong>€ {averages.peopleManager}</Strong>
+        For more gender gap data,{" "}
+        <a href="https://handpickedberlin.com/startup-tech-salary-trends-berlin/">
+          check our report
+        </a>
+        .
       </p>
     </BaseComment>
   );
