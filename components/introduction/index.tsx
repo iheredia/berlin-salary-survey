@@ -24,7 +24,12 @@ export default function Introduction(props: { year: AvailableYear }) {
         </h1>
         <h2>How are you paid?</h2>
       </div>
-      <p>Welcome to the analysis of the {year} Handpicked Berlin Salary Survey.</p>
+      <p>
+        Welcome to the analysis of the{" "}
+        <a href="https://handpickedberlin.com/startup-tech-salary-trends-berlin/" target="_blank">
+          {year} Handpicked Berlin Salary Survey.
+        </a>
+      </p>
       <p>
         Here you can find general statistics of the survey with an interactive section to see{" "}
         <strong>how does your salary compare?</strong> against the survey.

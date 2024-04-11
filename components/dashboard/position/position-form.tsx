@@ -25,11 +25,11 @@ export default function PositionForm() {
 
   return (
     <BaseForm hasData={!!user.position}>
-      <p>Which is your current job position?</p>
       <div style={{ width: "300px", maxWidth: "100%" }}>
         <ReactSearchAutocomplete<Item>
           items={positionValues}
           onSelect={handleOnSelect}
+          placeholder="What is your current job position?"
           styling={{
             borderRadius: "6px",
             boxShadow: "none",

@@ -67,7 +67,7 @@ export default async function getData(
       percentile: calculatePercentile(userRoleData, user.grossSalary),
       histogramSeries: [
         getSeries(individualContributorData, "Individual contributor"),
-        getSeries(peopleManagerData, "People manager"),
+        getSeries(peopleManagerData, "Team Manager / Lead"),
       ],
       averages: {
         peopleManager: getAverage(peopleManagerData),
