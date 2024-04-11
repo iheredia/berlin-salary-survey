@@ -51,6 +51,7 @@ export default function IndustryBarChart() {
         data: seriesData,
       },
     ],
+    colors: ["#bbb"],
   };
   return <HighchartChart {...chartProps} />;
 }
