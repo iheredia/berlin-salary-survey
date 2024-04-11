@@ -14,18 +14,18 @@ export default function IndustryBarChart() {
   });
 
   const seriesData = Object.keys(data.industry.averages)
-    .map((industry) => ({
-      name: industry,
-      y: data.industry?.averages[industry] || 0,
-      color: "#2caffe",
-    }))
-    .sort((a, b) => a.y - b.y)
-    .map((point, index) => {
-      if (point.name !== user.industry) {
-        point.color = gradient[index];
+    .map((industry) => {
+      let color;
+      if (industry == user.industry) {
+        color = "#004209";
       }
-      return point;
-    });
+      return {
+        name: industry,
+        y: data.industry?.averages[industry] || 0,
+        color,
+      };
+    })
+    .sort((a, b) => a.y - b.y);
   const categories = seriesData.map((point) => point.name);
 
   const chartProps = {
@@ -36,7 +36,7 @@ export default function IndustryBarChart() {
     },
     yAxis: {
       title: {
-        text: "Average salary",
+        text: "Average Total Annual Gross Salary",
       },
       labels: {
         format: "€ {value:,.0f}",

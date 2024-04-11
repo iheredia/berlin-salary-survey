@@ -10,7 +10,6 @@ export default function IndustryForm() {
   const industryValues = values.industry.filter((val) => val != defaultValue);
   return (
     <BaseForm hasData={!!user.industry}>
-      <p>In which industry are you working?</p>
       <select
         className={styles.select}
         defaultValue={defaultValue}
