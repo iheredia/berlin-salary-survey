@@ -76,7 +76,9 @@ export default async function getData(
   }
 
   if (user.position) {
-    const userFamily = yearData.find((row) => row.position === user.position)?.positionFamily;
+    const userFamily = yearData.find(
+      (row) => row.position === user.position && row.positionFamily !== "Other"
+    )?.positionFamily;
     let positionData, positionName;
     if (userFamily) {
       positionData = yearData.filter(
@@ -98,6 +100,10 @@ export default async function getData(
           })),
         },
       ],
+      average: {
+        value: getAverage(positionData),
+        name: positionName,
+      },
     };
   }
 

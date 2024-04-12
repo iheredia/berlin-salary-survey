@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
-import BaseComment from "../components/base-comment";
+import BaseComment, { Strong } from "../components/base-comment";
 
 export default function PositionComment() {
   const { data, user } = useContext(AppContext);
-  if (!data.grossSalary || !user.position) return;
+  if (!data.position || !user.position) return;
 
   return (
-    <BaseComment>Pending comparisong agaisnt the rest of &quot;{user.position}&quot;</BaseComment>
+    <BaseComment>
+      The average gross salary for {data.position.average.name} is{" "}
+      <Strong>€ {data.position.average.value.toLocaleString()}</Strong>
+    </BaseComment>
   );
 }

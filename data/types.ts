@@ -83,5 +83,9 @@ export type UserComparisonData = Partial<{
   };
   position: {
     scatter: Series;
+    average: {
+      value: number;
+      name: string;
+    };
   };
 }>;
