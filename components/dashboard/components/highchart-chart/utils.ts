@@ -1,6 +1,10 @@
 import { User, HistogramBuckets } from "@/data/types";
 
-export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, serieName: string) {
+export function getHighlightedId(
+  user: User,
+  histogramBuckets: HistogramBuckets,
+  serieName: string
+) {
   const columnIndex = histogramBuckets.findIndex((bucketStart, index) => {
     if (index === histogramBuckets.length - 1) {
       return true;
@@ -10,6 +14,10 @@ export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, se
     }
     return bucketStart <= user.grossSalary && user.grossSalary < histogramBuckets[index + 1];
   });
+  return `${serieName}-${columnIndex}`;
+}
+
+export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, serieName: string) {
   return {
     draggable: "",
     labelOptions: {
@@ -21,7 +29,7 @@ export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, se
     },
     labels: [
       {
-        point: `${serieName}-${columnIndex}`,
+        point: getHighlightedId(user, histogramBuckets, serieName),
         text: "You are here",
         verticalAlign: "bottom",
       },
