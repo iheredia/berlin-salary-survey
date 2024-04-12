@@ -5,16 +5,12 @@ import BaseForm, { OptionsContainer } from "../components/base-form";
 export default function GenderForm() {
   const { user, setUser } = useContext(AppContext);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   const onGenderChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUser({ gender: event.currentTarget.value });
   };
 
   return (
-    <BaseForm onSubmit={onSubmit} hasData={!!user.gender}>
+    <BaseForm hasData={!!user.gender}>
       <OptionsContainer>
         <label>
           <input type="radio" name="gender" value="Female" onChange={onGenderChange} />

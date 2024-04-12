@@ -24,7 +24,6 @@ export default function SalaryForm() {
   };
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
     updateIfThreshold();
   };
 

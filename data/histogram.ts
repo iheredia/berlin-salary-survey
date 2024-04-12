@@ -4,7 +4,7 @@ import { Serie, SurveyData } from "./types";
 export const histogramBuckets = range(0, 210_000, 10_000);
 
 export const histogramCategories: string[] = histogramBuckets.map((bucketStart, index) => {
-  const normalizedSize = `${bucketStart / 1000}`; // TODO: fix missing "k"s
+  const normalizedSize = `${bucketStart / 1000}`;
   if (index + 1 === histogramBuckets.length) {
     return `${normalizedSize}k +`;
   }

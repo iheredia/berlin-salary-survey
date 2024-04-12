@@ -1,4 +1,4 @@
-import { FormEventHandler, ReactNode } from "react";
+import { FormEvent, FormEventHandler, ReactNode } from "react";
 import styles from "./base-form.module.css";
 import classNames from "classnames";
 
@@ -9,7 +9,15 @@ type BaseFormProps = {
 };
 
 export default function BaseForm(props: BaseFormProps) {
-  const { onSubmit, hasData, children } = props;
+  const { onSubmit: extraOnSubmit, hasData, children } = props;
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (extraOnSubmit) {
+      extraOnSubmit(event);
+    }
+  };
+
   const formClassName = classNames(styles.form, hasData ? styles.formWithData : null);
   return (
     <form className={formClassName} onSubmit={onSubmit}>

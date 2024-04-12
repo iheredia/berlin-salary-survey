@@ -5,16 +5,12 @@ import BaseForm, { OptionsContainer } from "../components/base-form";
 export default function RoleForm() {
   const { user, setUser } = useContext(AppContext);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   const onRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUser({ role: event.currentTarget.value });
   };
 
   return (
-    <BaseForm onSubmit={onSubmit} hasData={!!user.role}>
+    <BaseForm hasData={!!user.role}>
       <OptionsContainer>
         <label>
           <input type="radio" name="role" value="Individual contributor" onChange={onRoleChange} />
