@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { names, getValues } from "@/data/static-values";
+import { getValues } from "@/data/static-values";
 import AppContext from "@/components/context";
 import styles from "./select.module.css";
 import BaseForm from "../components/base-form";
@@ -17,7 +17,7 @@ export default function IndustryForm() {
           setUser({ industry: event.currentTarget.value });
         }}
       >
-        {user.industry ? null : <option value={defaultValue}>{names.industry}</option>}
+        {user.industry ? null : <option value={defaultValue}>Industry</option>}
         {industryValues.map((value) => (
           <option key={value} value={value}>
             {value}
