@@ -33,7 +33,7 @@ export default function PositionForm() {
           styling={{
             borderRadius: "6px",
             boxShadow: "none",
-            backgroundColor: "#f5f5f5",
+            backgroundColor: "var(--background-color)",
             border: "solid 1px #c0c0c0",
           }}
         />
