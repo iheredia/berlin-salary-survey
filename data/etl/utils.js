@@ -13,11 +13,19 @@ function sanitizeInt(stringVal) {
   return parseInt(stringVal.replace(/\D/g, "")) || 0;
 }
 
+const inBerlinValues = [
+  "Yes, I'm physically working in Berlin.",
+  "Berlin: I work in Berlin (hybrid or on-site)",
+];
+const remoteValues = [
+  "Yes, I'm working remotely for a Berlin-based organization.",
+  "Berlin: I work remotely for a Berlin-based organization",
+];
+
 function parseRow(row) {
   const parsedRow = {
-    inBerlin: row.inBerlin === "Yes, I'm physically working in Berlin.",
-    workingRemotelyForBerlin:
-      row.inBerlin === "Yes, I'm working remotely for a Berlin-based organization.",
+    inBerlin: inBerlinValues.includes(row.inBerlin),
+    workingRemotelyForBerlin: remoteValues.includes(row.inBerlin),
 
     gender: sanitizeString(row.gender),
     age: sanitizeString(row.age),
