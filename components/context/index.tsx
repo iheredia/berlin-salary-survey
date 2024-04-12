@@ -8,6 +8,7 @@ type AppContextType = {
   setUser: CallableFunction;
   data: UserComparisonData;
   loading: boolean;
+  embed: boolean;
 };
 
 const AppContext = createContext<AppContextType>({
@@ -16,6 +17,7 @@ const AppContext = createContext<AppContextType>({
   setUser: () => {},
   data: {},
   loading: false,
+  embed: false,
 });
 
 export default AppContext;

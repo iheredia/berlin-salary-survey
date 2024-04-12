@@ -7,6 +7,7 @@ import getData from "@/data";
 type AppProps = {
   children: ReactNode;
   year: AvailableYear;
+  embed: boolean;
 };
 
 const DEBUG = process.env.NODE_ENV === "development";
@@ -35,6 +36,7 @@ export default function AppContextElement(props: AppProps) {
     data,
     loading,
     year: props.year,
+    embed: props.embed,
   };
 
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
