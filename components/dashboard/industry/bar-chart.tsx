@@ -35,6 +35,14 @@ export default function IndustryBarChart() {
         format: "€ {value:,.0f}",
         rotation: -30,
       },
+      plotLines: [
+        {
+          color: "var(--chart-red)",
+          width: 2,
+          value: user.grossSalary,
+          zIndex: 2000,
+        },
+      ],
     },
     tooltip: {
       pointFormat: `<strong>Industry</strong>: {point.category} <br /> <strong>Average salary:</strong> € {point.y} `,
