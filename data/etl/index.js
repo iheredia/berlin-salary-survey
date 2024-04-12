@@ -11,7 +11,7 @@ function processYear(year) {
       console.log(`Raw count: ${rawData.length}`);
 
       const cleanData = rawData
-        .map(parseRow)
+        .map((row) => parseRow(row, year))
         .filter((row) => row.inBerlin || row.workingRemotelyForBerlin)
         .filter((row) => !isNaN(row.grossSalary));
 

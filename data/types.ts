@@ -1,6 +1,7 @@
 "use server";
 
 import data2023 from "@/data/2023.json";
+import data2024 from "@/data/2024.json";
 
 type NumericKeys<T> = {
   [K in keyof T]: T[K] extends number ? K : never;
@@ -14,7 +15,9 @@ type StringKeys<T> = {
   [K in keyof T]: T[K] extends String ? K : never;
 }[keyof T];
 
-export type SurveyData = typeof data2023;
+export type SurveyData2023 = typeof data2023;
+export type SurveyData2024 = typeof data2024;
+export type SurveyData = SurveyData2023 | SurveyData2024;
 export type DataPoint = SurveyData[number];
 export type User = Partial<DataPoint>;
 

@@ -9,8 +9,12 @@ function sanitizeString(val) {
   return val;
 }
 
-function sanitizeInt(stringVal) {
+function sanitizeInt2023(stringVal) {
   return parseInt(stringVal.replace(/\D/g, "")) || 0;
+}
+
+function sanitizeInt2024(stringVal) {
+  return Math.round(parseFloat(stringVal)) || 0;
 }
 
 const inBerlinValues = [
@@ -22,7 +26,9 @@ const remoteValues = [
   "Berlin: I work remotely for a Berlin-based organization",
 ];
 
-function parseRow(row) {
+function parseRow(row, year) {
+  const sanitizeInt = year === 2024 ? sanitizeInt2024 : sanitizeInt2023;
+
   const parsedRow = {
     inBerlin: inBerlinValues.includes(row.inBerlin),
     workingRemotelyForBerlin: remoteValues.includes(row.inBerlin),

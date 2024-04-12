@@ -1,12 +1,16 @@
 "use server";
 import data2023 from "@/data/2023.json";
+import data2024 from "@/data/2024.json";
 import { calculatePercentile, getAverage } from "./utils";
 import { histogramCategories, getSeries, histogramBuckets } from "./histogram";
 import { AvailableYear, User, UserComparisonData } from "./types";
 import { values } from "./static-values";
 
 function getYearData(year: AvailableYear) {
-  return data2023;
+  if (year === 2023) {
+    return data2023;
+  }
+  return data2024;
 }
 
 export default async function getData(
