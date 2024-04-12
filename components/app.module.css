@@ -12,3 +12,8 @@
     padding: 40px 20px;
   }
 }
+
+.main.embed {
+  padding-left: 0;
+  padding-right: 0;
+}
