@@ -13,9 +13,9 @@ export default function GradientChart() {
 
   const tooltipStyle =
     percentile > 90
-      ? { right: "-15px" }
+      ? { right: "-5px" }
       : percentile < 10
-      ? { left: "-15px" }
+      ? { left: "-5px" }
       : { left: `${percentile}%`, transform: "translate(-50%)" };
 
   return (
