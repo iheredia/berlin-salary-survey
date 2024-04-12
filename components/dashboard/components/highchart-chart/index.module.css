@@ -1,0 +1,10 @@
+.chartContainer,
+.highchartContainer {
+  width: 100%;
+}
+
+.credits {
+  font-size: 12px;
+  text-align: right;
+  color: #777;
+}

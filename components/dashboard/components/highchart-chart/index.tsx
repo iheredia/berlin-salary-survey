@@ -2,9 +2,9 @@ import { useContext } from "react";
 import HighchartsReact from "highcharts-react-official";
 import merge from "lodash/merge";
 
-import { AvailableYear } from "@/data/types";
 import AppContext from "@/components/context";
 import ClientChart from "./client-chart";
+import styles from "./index.module.css";
 
 const defaultProps = {
   chart: {
@@ -16,6 +16,7 @@ const defaultProps = {
   },
   title: false,
   legend: false,
+  credits: false,
   plotOptions: {
     series: {
       animation: false,
@@ -40,22 +41,25 @@ const defaultProps = {
   },
 };
 
-function getCredits(year: AvailableYear) {
-  // TODO: add 2024
-  return {
-    text: "Data from Handpicked 2023 Salary Survey",
-    href: "https://handpickedberlin.com/report-on-berlin-salary-trends-survey-june-2023/",
-  };
-}
+const creditsLinks = {
+  2023: "https://handpickedberlin.com/report-on-berlin-salary-trends-survey-june-2023/",
+  2024: "https://handpickedberlin.com/startup-tech-salary-trends-berlin/",
+};
 
 export default function HighchartChart(props: HighchartsReact.Props) {
   const { year } = useContext(AppContext);
-  const credits = getCredits(year);
-  const options = merge({}, defaultProps, { credits }, props);
+  const options = merge({}, defaultProps, props);
   const height = options.chart.height || 400;
   return (
-    <div style={{ height: `${height}px`, width: "100%" }}>
-      <ClientChart {...options} />
+    <div className={styles.chartContainer}>
+      <div style={{ height: `${height}px` }} className={styles.highchartContainer}>
+        <ClientChart {...options} />
+      </div>
+      <p className={styles.credits}>
+        <a href={creditsLinks[year]}>
+          Data from Handpicked Berlin&apos;s Salary Trends {year} survey
+        </a>
+      </p>
     </div>
   );
 }
