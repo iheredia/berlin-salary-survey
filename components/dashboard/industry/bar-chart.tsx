@@ -41,10 +41,14 @@ export default function IndustryBarChart() {
           width: 2,
           value: user.grossSalary,
           zIndex: 2000,
+          label: {
+            text: "Your salary",
+          },
         },
       ],
     },
     tooltip: {
+      // TODO: Add count of respondants
       pointFormat: `<strong>Industry</strong>: {point.category} <br /> <strong>Average salary:</strong> € {point.y} `,
     },
     series: [

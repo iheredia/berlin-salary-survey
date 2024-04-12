@@ -25,7 +25,7 @@ export default function PositionForm() {
 
   return (
     <BaseForm hasData={!!user.position}>
-      <div style={{ width: "300px", maxWidth: "100%" }}>
+      <div style={{ width: "300px", maxWidth: "100%", position: "relative", zIndex: 1 }}>
         <ReactSearchAutocomplete<Item>
           items={positionValues}
           onSelect={handleOnSelect}

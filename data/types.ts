@@ -34,9 +34,17 @@ export type AvailableYear = 2023 | 2024;
 export type Serie = {
   name: string;
   color?: string;
+  marker?: {
+    radius?: number;
+  };
+  jitter?: {
+    x?: number;
+    y?: number;
+  };
   data: {
     id: string;
     y: number;
+    x?: number;
     color?: string;
   }[];
 };

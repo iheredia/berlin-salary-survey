@@ -17,7 +17,7 @@ export default function IndustryForm() {
           setUser({ industry: event.currentTarget.value });
         }}
       >
-        {user.industry ? null : <option value={defaultValue}>Industry</option>}
+        {user.industry ? null : <option value={defaultValue}>What is your industry?</option>}
         {industryValues.map((value) => (
           <option key={value} value={value}>
             {value}

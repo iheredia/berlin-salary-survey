@@ -76,33 +76,29 @@ export default async function getData(
   }
 
   if (user.position) {
-    const userPositionData = yearData.filter((row) => row.position === user.position);
     const userFamily = yearData.find((row) => row.position === user.position)?.positionFamily;
-
+    let positionData, positionName;
+    if (userFamily) {
+      positionData = yearData.filter(
+        (row) => row.position !== user.position && row.positionFamily == userFamily
+      );
+      positionName = userFamily;
+    } else {
+      positionData = yearData.filter((row) => row.position === user.position);
+      positionName = user.position;
+    }
     data.position = {
       scatter: [
         {
-          name: user.position,
-          data: userPositionData.map((row, index) => ({
-            id: `${user.position}-${index}`,
+          name: `Other ${positionName}`,
+          data: positionData.map((row, index) => ({
+            id: `${positionName}-${index}`,
             y: row.grossSalary,
+            x: 0,
           })),
         },
       ],
     };
-
-    if (userFamily) {
-      const familyPositionData = yearData.filter(
-        (row) => row.position !== user.position && row.positionFamily == userFamily
-      );
-      data.position.scatter.push({
-        name: userFamily,
-        data: familyPositionData.map((row, index) => ({
-          id: `${userFamily}-${index}`,
-          y: row.grossSalary,
-        })),
-      });
-    }
   }
 
   return data;
