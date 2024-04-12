@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { names, values } from "@/data/static-values";
+import { names, getValues } from "@/data/static-values";
 import AppContext from "@/components/context";
 import styles from "./select.module.css";
 import BaseForm from "../components/base-form";
 
 export default function IndustryForm() {
-  const { setUser, user } = useContext(AppContext);
+  const { setUser, user, year } = useContext(AppContext);
   const defaultValue = "Prefer not to say";
-  const industryValues = values.industry.filter((val) => val != defaultValue);
+  const industryValues = getValues(year).industry.filter((val) => val != defaultValue);
   return (
     <BaseForm hasData={!!user.industry}>
       <select

@@ -21,7 +21,7 @@ export default function RoleForm() {
           Individual contributor
         </label>
         <label>
-          <input type="radio" name="role" value="People manager" onChange={onRoleChange} />
+          <input type="radio" name="role" value="Team Manager / Lead" onChange={onRoleChange} />
           Team Manager / Lead
         </label>
       </OptionsContainer>

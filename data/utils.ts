@@ -1,4 +1,4 @@
-import { SurveyData } from "./types";
+import { DataPoint, SurveyData, User } from "./types";
 
 export function getAverage(filteredYearData: SurveyData) {
   const average =
@@ -18,4 +18,16 @@ export function calculatePercentile(filteredYearData: SurveyData, userGrossSalar
   });
 
   return Math.round((100 * count) / filteredYearData.length);
+}
+
+export function isIndividualContributor(row: User) {
+  return (
+    row.role !== "Prefer not to say" && row.role?.toLowerCase().includes("individual contributor")
+  );
+}
+
+export function isPeopleManager(row: User) {
+  return (
+    row.role !== "Prefer not to say" && !row.role?.toLowerCase().includes("individual contributor")
+  );
 }

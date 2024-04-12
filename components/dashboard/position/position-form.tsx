@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { values } from "@/data/static-values";
+import { getValues } from "@/data/static-values";
 import AppContext from "@/components/context";
 import BaseForm from "../components/base-form";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
@@ -10,10 +10,10 @@ type Item = {
 };
 
 export default function PositionForm() {
-  const { setUser, user } = useContext(AppContext);
+  const { setUser, user, year } = useContext(AppContext);
   const defaultValue = "Prefer not to say";
-  const positionValues = values.position
-    .filter((val) => val != defaultValue)
+  const positionValues = getValues(year)
+    .position.filter((val) => val != defaultValue)
     .map((position) => ({
       name: position,
       id: position,

@@ -1,10 +1,10 @@
 "use server";
 import data2023 from "@/data/2023.json";
 import data2024 from "@/data/2024.json";
-import { calculatePercentile, getAverage } from "./utils";
+import { calculatePercentile, getAverage, isIndividualContributor, isPeopleManager } from "./utils";
 import { histogramCategories, getSeries, histogramBuckets } from "./histogram";
 import { AvailableYear, User, UserComparisonData } from "./types";
-import { values } from "./static-values";
+import { getValues } from "./static-values";
 
 function getYearData(year: AvailableYear) {
   if (year === 2023) {
@@ -45,7 +45,9 @@ export default async function getData(
 
   if (user.industry) {
     const averages: Record<string, number> = {};
-    const industries = values.industry.filter((industry) => industry !== "Prefer not to say");
+    const industries = getValues(year).industry.filter(
+      (industry) => industry !== "Prefer not to say"
+    );
     industries.forEach((industry) => {
       const industryData = yearData.filter((row) => row.industry === industry);
       averages[industry] = getAverage(industryData);
@@ -55,18 +57,11 @@ export default async function getData(
 
   if (user.role) {
     const allRolesData = yearData.filter((row) => row.role !== "Prefer not to say");
-    const userRoleData = allRolesData.filter((row) => {
-      if (user.role === "Individual contributor") {
-        return row.role === "Individual Contributor (no direct reports)";
-      }
-      return row.role !== "Individual Contributor (no direct reports)";
-    });
-    const individualContributorData = allRolesData.filter(
-      (row) => row.role === "Individual Contributor (no direct reports)"
-    );
-    const peopleManagerData = allRolesData.filter(
-      (row) => row.role !== "Individual Contributor (no direct reports)"
-    );
+    const individualContributorData = allRolesData.filter(isIndividualContributor);
+    const peopleManagerData = allRolesData.filter(isPeopleManager);
+    const userRoleData = isIndividualContributor(user)
+      ? individualContributorData
+      : peopleManagerData;
     data.role = {
       percentile: calculatePercentile(userRoleData, user.grossSalary),
       histogramSeries: [

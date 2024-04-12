@@ -1,7 +1,11 @@
-import { Dimension, StringDimension } from "./types";
-import uniqueValues from "./2023-values.json";
+import { AvailableYear, Dimension } from "./types";
+import uniqueValues2023 from "./2023-values.json";
+import uniqueValues2024 from "./2024-values.json";
 
-export const values: Record<StringDimension, string[]> = uniqueValues;
+export function getValues(year: AvailableYear) {
+  if (year === 2024) return uniqueValues2024;
+  return uniqueValues2023;
+}
 
 export const names: Record<Dimension, string> = {
   age: "Age",
