@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useContext } from "react";
 import AppContext from "@/components/context";
 import BaseForm, { OptionsContainer } from "../components/base-form";
-import styles from "./gender-form.module.css";
 
 export default function GenderForm() {
   const { user, setUser } = useContext(AppContext);

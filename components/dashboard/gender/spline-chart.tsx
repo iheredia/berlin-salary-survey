@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
-import { names } from "@/data/static-values";
 import HighchartChart from "../components/highchart-chart";
 import { getAnnotation } from "../components/highchart-chart/utils";
+import styles from "./spline-chart.module.css";
 
 export default function GenderSplineChart() {
   const { user, data } = useContext(AppContext);
@@ -42,5 +42,12 @@ export default function GenderSplineChart() {
       y: 0,
     },
   };
-  return <HighchartChart {...chartProps} />;
+  return (
+    <>
+      <HighchartChart {...chartProps} />
+      <p className={styles.disclaimer}>
+        The non-binary group was excluded due to the insufficient number of responses.
+      </p>
+    </>
+  );
 }
