@@ -12,9 +12,11 @@ export default function SalaryHistogramChart() {
   const highlightedId = getHighlightedId(user, histogramBuckets, histogramSeries[0].name);
 
   histogramSeries[0].data.forEach((point) => {
+    let color;
     if (point.id === highlightedId) {
-      point.color = "var(--chart-green)";
+      color = "var(--chart-green)";
     }
+    point.color = color;
   });
 
   const chartProps = {
