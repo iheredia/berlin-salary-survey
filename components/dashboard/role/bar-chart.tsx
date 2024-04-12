@@ -38,6 +38,12 @@ export default function RoleBarChart() {
       x: 0,
       y: 0,
     },
+    plotOptions: {
+      column: {
+        pointPadding: 0.1,
+        groupPadding: 0,
+      },
+    },
   };
   return <HighchartChart {...chartProps} />;
 }

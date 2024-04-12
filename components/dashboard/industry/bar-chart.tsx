@@ -51,6 +51,12 @@ export default function IndustryBarChart() {
         data: seriesData,
       },
     ],
+    plotOptions: {
+      bar: {
+        pointPadding: 0.1,
+        groupPadding: 0,
+      },
+    },
     colors: ["#bbb"],
   };
   return <HighchartChart {...chartProps} />;

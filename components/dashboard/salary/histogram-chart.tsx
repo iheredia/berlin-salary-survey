@@ -30,6 +30,14 @@ export default function SalaryHistogramChart() {
       pointFormat: `<strong>Percentage of people:</strong> {point.y}% <br /> <strong>Gross salary</strong>: € {point.category}`,
     },
     series: histogramSeries,
+    plotOptions: {
+      column: {
+        pointPadding: 0.1,
+        groupPadding: 0,
+      },
+    },
+    // z-index conflicts with the tooltip hover
+    // The position needs to be fixed for the peaks of the charts
     annotations: [getAnnotation(user, histogramBuckets, "grossSalary")],
     colors: ["#004209"],
   };
