@@ -13,7 +13,7 @@ export default function SalaryHistogramChart() {
 
   histogramSeries[0].data.forEach((point) => {
     if (point.id === highlightedId) {
-      point.color = "#004209";
+      point.color = "var(--chart-green)";
     }
   });
 
@@ -47,7 +47,7 @@ export default function SalaryHistogramChart() {
     // z-index conflicts with the tooltip hover
     // The position needs to be fixed for the peaks of the charts
     annotations: [getAnnotation(user, histogramBuckets, "grossSalary")],
-    colors: ["#bbb"],
+    colors: ["var(--chart-grey)"],
   };
   return <HighchartChart {...chartProps} />;
 }

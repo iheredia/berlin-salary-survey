@@ -11,6 +11,14 @@ export default function GenderSplineChart() {
   const { histogramSeries } = data.gender;
   const { histogramBuckets, histogramCategories } = data.grossSalary;
 
+  if (histogramSeries[0].name === user.gender) {
+    histogramSeries[0].color = "var(--chart-red)";
+    histogramSeries[1].color = "var(--chart-light-green)";
+  } else {
+    histogramSeries[0].color = "var(--chart-light-red)";
+    histogramSeries[1].color = "var(--chart-green)";
+  }
+
   const chartProps = {
     chart: { type: "spline" },
 
@@ -33,7 +41,6 @@ export default function GenderSplineChart() {
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets, user.gender)],
-    colors: ["#A41700", "#4B7F52"],
     legend: {
       align: "right",
       verticalAlign: "top",

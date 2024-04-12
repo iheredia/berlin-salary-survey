@@ -33,6 +33,7 @@ export type AvailableYear = 2023 | 2024;
 
 export type Serie = {
   name: string;
+  color?: string;
   data: {
     id: string;
     y: number;

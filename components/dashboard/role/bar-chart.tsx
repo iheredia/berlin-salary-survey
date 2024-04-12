@@ -2,6 +2,7 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 import { getAnnotation } from "../components/highchart-chart/utils";
+import { isIndividualContributor } from "@/data/utils";
 
 export default function RoleBarChart() {
   const { user, data } = useContext(AppContext);
@@ -9,6 +10,14 @@ export default function RoleBarChart() {
 
   const { histogramCategories, histogramBuckets } = data.grossSalary;
   const { histogramSeries } = data.role;
+
+  if (isIndividualContributor(user)) {
+    histogramSeries[0].color = "var(--chart-red)";
+    histogramSeries[1].color = "var(--chart-light-green)";
+  } else {
+    histogramSeries[0].color = "var(--chart-light-red)";
+    histogramSeries[1].color = "var(--chart-green)";
+  }
 
   const chartProps = {
     chart: {
@@ -30,7 +39,6 @@ export default function RoleBarChart() {
     },
     series: histogramSeries,
     annotations: [getAnnotation(user, histogramBuckets, user.role)],
-    colors: ["#A41700", "#4B7F52"],
     legend: {
       align: "right",
       verticalAlign: "top",

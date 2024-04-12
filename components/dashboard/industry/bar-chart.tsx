@@ -10,7 +10,7 @@ export default function IndustryBarChart() {
     .map((industry) => {
       let color;
       if (industry == user.industry) {
-        color = "#004209";
+        color = "var(--chart-green)";
       }
       return {
         name: industry,
@@ -50,7 +50,7 @@ export default function IndustryBarChart() {
         groupPadding: 0,
       },
     },
-    colors: ["#bbb"],
+    colors: ["var(--chart-grey)"],
   };
   return <HighchartChart {...chartProps} />;
 }

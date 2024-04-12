@@ -5,6 +5,14 @@
   --font-color: #222;
   --accent-color: #f33b1d;
   --secondary-color: #d1a153;
+
+  --chart-grey: #bbb;
+
+  --chart-light-green: #7a977e;
+  --chart-green: #004209;
+
+  --chart-light-red: #c06557;
+  --chart-red: #a41700;
 }
 
 * {
