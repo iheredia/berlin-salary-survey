@@ -1,5 +1,5 @@
 import range from "lodash/range";
-import { HistogramSerie, SurveyData } from "./types";
+import { Serie, SurveyData } from "./types";
 
 export const histogramBuckets = range(0, 210_000, 10_000);
 
@@ -13,7 +13,7 @@ export const histogramCategories: string[] = histogramBuckets.map((bucketStart, 
   return `${normalizedSize}${bucketStart > 0 ? "k" : ""} to ${normalizedSizeNext}k`;
 });
 
-function normalizeSerie(serie: HistogramSerie): HistogramSerie {
+function normalizeSerie(serie: Serie): Serie {
   const total = serie.data.reduce((accum, val) => accum + val.y, 0);
   return {
     ...serie,

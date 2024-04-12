@@ -3,10 +3,10 @@ import data2023 from "@/data/2023.json";
 import data2024 from "@/data/2024.json";
 import { calculatePercentile, getAverage, isIndividualContributor, isPeopleManager } from "./utils";
 import { histogramCategories, getSeries, histogramBuckets } from "./histogram";
-import { AvailableYear, User, UserComparisonData } from "./types";
+import { AvailableYear, SurveyData, User, UserComparisonData } from "./types";
 import { getValues } from "./static-values";
 
-function getYearData(year: AvailableYear) {
+function getYearData(year: AvailableYear): SurveyData {
   if (year === 2023) {
     return data2023;
   }
@@ -73,6 +73,36 @@ export default async function getData(
         individualContributor: getAverage(individualContributorData),
       },
     };
+  }
+
+  if (user.position) {
+    const userPositionData = yearData.filter((row) => row.position === user.position);
+    const userFamily = yearData.find((row) => row.position === user.position)?.positionFamily;
+
+    data.position = {
+      scatter: [
+        {
+          name: user.position,
+          data: userPositionData.map((row, index) => ({
+            id: `${user.position}-${index}`,
+            y: row.grossSalary,
+          })),
+        },
+      ],
+    };
+
+    if (userFamily) {
+      const familyPositionData = yearData.filter(
+        (row) => row.position !== user.position && row.positionFamily == userFamily
+      );
+      data.position.scatter.push({
+        name: userFamily,
+        data: familyPositionData.map((row, index) => ({
+          id: `${userFamily}-${index}`,
+          y: row.grossSalary,
+        })),
+      });
+    }
   }
 
   return data;

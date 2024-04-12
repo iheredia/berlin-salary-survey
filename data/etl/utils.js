@@ -43,6 +43,7 @@ function parseRow(row, year) {
     companySize: sanitizeString(row.companySize),
     yearsInCurrentCompany: sanitizeString(row.yearsInCurrentCompany),
     position: sanitizeString(row.position),
+    positionFamily: sanitizeString(row.positionFamily) || null,
     role: sanitizeString(row.role),
     yearsInCurrentPosition: sanitizeString(row.yearsInCurrentPosition),
 

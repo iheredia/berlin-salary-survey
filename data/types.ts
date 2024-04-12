@@ -1,8 +1,5 @@
 "use server";
 
-import data2023 from "@/data/2023.json";
-import data2024 from "@/data/2024.json";
-
 type NumericKeys<T> = {
   [K in keyof T]: T[K] extends number ? K : never;
 }[keyof T];
@@ -15,10 +12,16 @@ type StringKeys<T> = {
   [K in keyof T]: T[K] extends String ? K : never;
 }[keyof T];
 
-export type SurveyData2023 = typeof data2023;
-export type SurveyData2024 = typeof data2024;
-export type SurveyData = SurveyData2023 | SurveyData2024;
-export type DataPoint = SurveyData[number];
+export type DataPoint = {
+  grossSalary: number;
+  gender: string;
+  industry: string;
+  role: string;
+  position: string;
+  positionFamily: string | null;
+};
+export type SurveyData = DataPoint[];
+
 export type User = Partial<DataPoint>;
 
 export type Dimension = keyof DataPoint;
@@ -28,15 +31,16 @@ export type StringDimension = StringKeys<DataPoint>;
 
 export type AvailableYear = 2023 | 2024;
 
-export type HistogramSerie = {
+export type Serie = {
   name: string;
   data: {
     id: string;
     y: number;
+    color?: string;
   }[];
 };
 
-export type HistogramSeries = HistogramSerie[];
+export type Series = Serie[];
 
 export type HistogramCategories = string[];
 
@@ -47,11 +51,11 @@ export type UserComparisonData = Partial<{
     percentile: number;
     histogramBuckets: HistogramBuckets;
     histogramCategories: HistogramCategories;
-    histogramSeries: HistogramSeries;
+    histogramSeries: Series;
   };
   gender: {
     percentile: number;
-    histogramSeries: HistogramSeries;
+    histogramSeries: Series;
     averages: {
       male: number;
       female: number;
@@ -62,10 +66,13 @@ export type UserComparisonData = Partial<{
   };
   role: {
     percentile: number;
-    histogramSeries: HistogramSeries;
+    histogramSeries: Series;
     averages: {
       peopleManager: number;
       individualContributor: number;
     };
+  };
+  position: {
+    scatter: Series;
   };
 }>;
