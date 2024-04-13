@@ -1,8 +1,15 @@
 import { ReactNode } from "react";
 import styles from "./base-comment.module.css";
+import classNames from "classnames";
 
-export default function BaseComment(props: { children: ReactNode }) {
-  return <div className={styles.comment}>{props.children}</div>;
+type BaseCommentProps = {
+  children?: ReactNode;
+  hidden?: boolean;
+};
+export default function BaseComment(props: BaseCommentProps) {
+  const { children, hidden } = props;
+  const className = classNames(styles.comment, hidden ? styles.hiddenComment : "");
+  return <div className={className}>{children}</div>;
 }
 
 export function Strong(props: { children: ReactNode }) {
