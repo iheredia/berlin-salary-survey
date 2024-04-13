@@ -1,11 +1,11 @@
 "use client";
 import { useContext } from "react";
 
-import SalarySection from "./salary";
-import GenderSection from "./gender";
-import IndustrySection from "./industry";
-import PositionSection from "./position";
-import RoleSection from "./role";
+import SalarySection from "./01_salary";
+import PositionSection from "./02_position";
+import GenderSection from "./03_gender";
+import IndustrySection from "./04_industry";
+import RoleSection from "./05_role";
 // import CategorySection from "./category-section";
 import AppContext from "../context";
 
