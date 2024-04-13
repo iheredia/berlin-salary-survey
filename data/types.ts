@@ -19,6 +19,7 @@ export type DataPoint = {
   role: string;
   position: string;
   positionFamily: string | null;
+  satisfaction: number | null;
 };
 export type SurveyData = DataPoint[];
 
@@ -87,5 +88,9 @@ export type UserComparisonData = Partial<{
       value: number;
       name: string;
     };
+  };
+  satisfaction: {
+    male: number[];
+    female: number[];
   };
 }>;

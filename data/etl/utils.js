@@ -57,6 +57,7 @@ function parseRow(row, year) {
     bonus: sanitizeInt(row.bonus),
     equity: sanitizeInt(row.equity),
     salaryRaise: sanitizeString(row.salaryRaise),
+    satisfaction: year === 2024 ? sanitizeInt(row.satisfaction) : null,
   };
 
   return parsedRow;
