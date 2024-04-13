@@ -9,7 +9,11 @@ type BaseCommentProps = {
 export default function BaseComment(props: BaseCommentProps) {
   const { children, hidden } = props;
   const className = classNames(styles.comment, hidden ? styles.hiddenComment : "");
-  return <div className={className}>{children}</div>;
+  return (
+    <div className={className}>
+      <div>{children}</div>
+    </div>
+  );
 }
 
 export function Strong(props: { children: ReactNode }) {
