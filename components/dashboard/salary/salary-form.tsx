@@ -5,7 +5,7 @@ import AppContext from "@/components/context";
 import BaseForm from "../components/base-form";
 
 export default function SalaryForm() {
-  const { user, setUser } = useContext(AppContext);
+  const { user, setUser, setData } = useContext(AppContext);
   const [parsedSalary, setParsedSalary] = useState(0);
 
   const onSalaryChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +20,7 @@ export default function SalaryForm() {
   const updateIfThreshold = () => {
     if (parsedSalary > 10_000) {
       setUser({ grossSalary: parsedSalary });
+      setData({ grossSalary: null });
     }
   };
 

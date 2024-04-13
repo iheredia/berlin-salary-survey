@@ -5,7 +5,7 @@ import styles from "./select.module.css";
 import BaseForm from "../components/base-form";
 
 export default function IndustryForm() {
-  const { setUser, user, year } = useContext(AppContext);
+  const { setUser, user, year, setData } = useContext(AppContext);
   const defaultValue = "Prefer not to say";
   const industryValues = getValues(year).industry.filter((val) => val != defaultValue);
   return (
@@ -15,6 +15,7 @@ export default function IndustryForm() {
         defaultValue={defaultValue}
         onChange={(event) => {
           setUser({ industry: event.currentTarget.value });
+          setData({ industry: null });
         }}
       >
         {user.industry ? null : <option value={defaultValue}>What is your industry?</option>}

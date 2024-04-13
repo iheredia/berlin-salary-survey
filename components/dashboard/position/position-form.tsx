@@ -10,7 +10,7 @@ type Item = {
 };
 
 export default function PositionForm() {
-  const { setUser, user, year } = useContext(AppContext);
+  const { setUser, user, year, setData } = useContext(AppContext);
   const defaultValue = "Prefer not to say";
   const positionValues = getValues(year)
     .position.filter((val) => val != defaultValue)
@@ -21,6 +21,7 @@ export default function PositionForm() {
 
   const handleOnSelect = (item: Item) => {
     setUser({ position: item.id });
+    setData({ position: null });
   };
 
   return (

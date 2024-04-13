@@ -3,10 +3,11 @@ import AppContext from "@/components/context";
 import BaseForm, { OptionsContainer } from "../components/base-form";
 
 export default function GenderForm() {
-  const { user, setUser } = useContext(AppContext);
+  const { user, setUser, setData } = useContext(AppContext);
 
   const onGenderChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUser({ gender: event.currentTarget.value });
+    setData({ gender: null });
   };
 
   return (

@@ -3,10 +3,11 @@ import AppContext from "@/components/context";
 import BaseForm, { OptionsContainer } from "../components/base-form";
 
 export default function RoleForm() {
-  const { user, setUser } = useContext(AppContext);
+  const { user, setUser, setData } = useContext(AppContext);
 
   const onRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUser({ role: event.currentTarget.value });
+    setData({ role: null });
   };
 
   return (

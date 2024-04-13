@@ -16,8 +16,12 @@ const logCopy = (obj: Object) => console.log(JSON.parse(JSON.stringify(obj)));
 
 export default function AppContextElement(props: AppProps) {
   const [user, _setUser] = useState<User>({});
-  const [data, setData] = useState<UserComparisonData>({});
+  const [data, _setData] = useState<UserComparisonData>({});
   const [loading, setLoadingData] = useState(false);
+
+  const setData = async (newDataValues: UserComparisonData) => {
+    _setData({ ...data, ...newDataValues });
+  };
 
   const setUser = async (newUserValues: User) => {
     const newUser = { ...user, ...newUserValues };
@@ -34,6 +38,7 @@ export default function AppContextElement(props: AppProps) {
     user,
     setUser,
     data,
+    setData,
     loading,
     year: props.year,
     embed: props.embed,
