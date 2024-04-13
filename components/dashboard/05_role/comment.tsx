@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
-import BaseComment, { Strong } from "../components/base-comment";
+import BaseComment from "../components/base-comment";
 
 export default function RoleComment() {
   const { data, user } = useContext(AppContext);
