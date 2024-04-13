@@ -1,6 +1,8 @@
 .chartContainer,
 .highchartContainer {
   width: 100%;
+  transition: all 400ms;
+  min-height: 0;
 }
 
 .credits {

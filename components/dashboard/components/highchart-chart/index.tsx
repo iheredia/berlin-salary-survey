@@ -6,10 +6,9 @@ import AppContext from "@/components/context";
 import ClientChart from "./client-chart";
 import styles from "./index.module.css";
 
-const defaultProps = {
+const defaultChartConfig = {
   chart: {
     backgroundColor: "rgba(255, 255, 255, 0.0)",
-    height: 400,
     style: {
       fontFamily: "var(--montserrat)",
     },
@@ -46,20 +45,39 @@ const creditsLinks = {
   2024: "https://handpickedberlin.com/startup-tech-salary-trends-berlin/",
 };
 
-export default function HighchartChart(props: HighchartsReact.Props) {
+type HichchartsChartProps = {
+  chart?: HighchartsReact.Props;
+  hidden?: boolean;
+  height?: number;
+};
+
+export default function HighchartChart(props: HichchartsChartProps) {
+  const { chart, hidden, height: customHeight } = props;
+  const height = customHeight || 400;
   const { year } = useContext(AppContext);
-  const options = merge({}, defaultProps, props);
-  const height = options.chart.height || 400;
+
+  const chartOptions = merge(
+    {
+      chart: { height },
+    },
+    defaultChartConfig,
+    chart
+  );
+
   return (
-    <div className={styles.chartContainer}>
-      <div style={{ height: `${height}px` }} className={styles.highchartContainer}>
-        <ClientChart {...options} />
-      </div>
-      <p className={styles.credits}>
-        <a href={creditsLinks[year]}>
-          Data from Handpicked Berlin&apos;s Salary Trends {year} survey
-        </a>
-      </p>
+    <div className={styles.chartContainer} style={{ minHeight: hidden ? "0px" : `${height}px` }}>
+      {chart && (
+        <>
+          <div style={{ height: `${height}px` }} className={styles.highchartContainer}>
+            <ClientChart {...chartOptions} />
+          </div>
+          <p className={styles.credits}>
+            <a href={creditsLinks[year]}>
+              Data from Handpicked Berlin&apos;s Salary Trends {year} survey
+            </a>
+          </p>
+        </>
+      )}
     </div>
   );
 }
