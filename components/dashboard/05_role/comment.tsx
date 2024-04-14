@@ -29,7 +29,7 @@ export default function RoleComment() {
         <p>{roleComment}</p>
         <p>
           For more gender gap data,{" "}
-          <a href="https://handpickedberlin.com/startup-tech-salary-trends-berlin/">
+          <a href="https://handpickedberlin.com/startup-tech-salary-trends-berlin/" target="_blank">
             check our report
           </a>
           .

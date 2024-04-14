@@ -26,7 +26,6 @@ export default function IndustryBarChart() {
         selectedIndex = index;
       }
     });
-    console.log({ selectedIndex });
     const categories = seriesData.map((point) => point.name);
 
     chart = {

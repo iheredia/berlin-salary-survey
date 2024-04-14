@@ -20,13 +20,6 @@ export default function Dashboard() {
           <GenderSection />
           <IndustrySection />
           <RoleSection />
-          {/* <CategorySection dimension="age" />
-          <CategorySection dimension="experience" />
-          <CategorySection dimension="citizenship" />
-          <CategorySection dimension="education" />
-          <CategorySection dimension="organizationType" />
-          <CategorySection dimension="position" />
-           */}
         </>
       ) : null}
     </>

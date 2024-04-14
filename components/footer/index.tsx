@@ -82,21 +82,21 @@ export default function Footer() {
   if (!embed) return null;
   return (
     <footer className={classNames(styles.footer, montserrat.className)}>
-      <a href="https://www.instagram.com/handpickedberlin/">
+      <a href="https://www.instagram.com/handpickedberlin/" target="_blank">
         <InstagramIcon />
         Follow
       </a>
-      <a href="https://donate.stripe.com/7sIfZXc8K0PVeg85kk" title="">
+      <a href="https://donate.stripe.com/7sIfZXc8K0PVeg85kk" target="_blank">
         <CoffeeIcon />
         Donate
       </a>
 
-      <a href="https://forms.gle/4u1NSF2UtYJX91vb8" title="">
+      <a href="https://forms.gle/4u1NSF2UtYJX91vb8" target="_blank">
         <ClockIcon />
         Reminder 2025
       </a>
 
-      <a href="https://handpickedberlin.substack.com/" title="">
+      <a href="https://handpickedberlin.substack.com/" target="_blank">
         <EmailIcon />
         Subscribe
       </a>
