@@ -27,5 +27,9 @@
 }
 
 .strong {
+  font-weight: 600;
+}
+
+.nowrap {
   white-space: nowrap;
 }

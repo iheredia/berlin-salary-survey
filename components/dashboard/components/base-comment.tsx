@@ -16,6 +16,14 @@ export default function BaseComment(props: BaseCommentProps) {
   );
 }
 
+export function Nowrap(props: { children: ReactNode }) {
+  return <span className={styles.nowrap}>{props.children}</span>;
+}
+
 export function Strong(props: { children: ReactNode }) {
-  return <strong className={styles.strong}>{props.children}</strong>;
+  return (
+    <strong className={styles.strong}>
+      <Nowrap>{props.children}</Nowrap>
+    </strong>
+  );
 }

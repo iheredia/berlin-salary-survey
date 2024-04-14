@@ -76,34 +76,50 @@ export default async function getData(
   }
 
   if (user.position) {
+    let average, familyAverage;
     const userFamily = yearData.find(
       (row) => row.position === user.position && row.positionFamily !== "Other"
     )?.positionFamily;
-    let positionData, positionName;
+    let scatterData, positionName;
+    const positionData = yearData.filter((row) => row.position === user.position);
     if (userFamily) {
-      positionData = yearData.filter(
+      const familyData = yearData.filter(
         (row) => row.position !== user.position && row.positionFamily == userFamily
       );
+      scatterData = familyData;
       positionName = userFamily;
+      average = {
+        value: getAverage(positionData),
+        name: user.position,
+        count: positionData.length,
+      };
+      familyAverage = {
+        value: getAverage(familyData),
+        name: userFamily,
+        count: familyData.length,
+      };
     } else {
-      positionData = yearData.filter((row) => row.position === user.position);
+      scatterData = positionData;
       positionName = user.position;
+      average = {
+        value: getAverage(positionData),
+        name: positionName,
+        count: positionData.length,
+      };
     }
     data.position = {
       scatter: [
         {
           name: `Other ${positionName}`,
-          data: positionData.map((row, index) => ({
+          data: scatterData.map((row, index) => ({
             id: `${positionName}-${index}`,
             y: row.grossSalary,
             x: 0,
           })),
         },
       ],
-      average: {
-        value: getAverage(positionData),
-        name: positionName,
-      },
+      average,
+      familyAverage,
     };
   }
 

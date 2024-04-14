@@ -87,6 +87,12 @@ export type UserComparisonData = Partial<{
     average: {
       value: number;
       name: string;
+      count: number;
+    };
+    familyAverage?: {
+      value: number;
+      name: string;
+      count: number;
     };
   };
   satisfaction: {
