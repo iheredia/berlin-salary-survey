@@ -21,7 +21,6 @@ export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, se
   return {
     draggable: "",
     labelOptions: {
-      useHTML: true,
       style: {
         fontSize: "15px",
         width: 300,
@@ -32,6 +31,7 @@ export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, se
         point: getHighlightedId(user, histogramBuckets, serieName),
         text: "You are here",
         verticalAlign: "bottom",
+        allowOverlap: true,
       },
     ],
   };
