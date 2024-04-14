@@ -6,8 +6,8 @@
 
   transition: all 400ms;
   max-height: 1000px;
-  overflow: hidden;
-
+  width: 100%;
+  aspect-ratio: 3 / 1;
   max-width: 700px;
 }
 
@@ -15,6 +15,67 @@
   max-height: 0;
 }
 
-.ampelContainer svg {
+.ampelContainer span {
+  display: inline-block;
   width: 5%;
+  position: relative;
+}
+
+.ampelContainer svg {
+  width: 100%;
+}
+
+.ampelContainer span:hover::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  background: black;
+  height: 10px;
+  width: 10px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ampelContainer span:hover::after {
+  content: attr(data-percentage) "% of people choose " attr(data-satisfaction);
+  position: absolute;
+  color: white;
+  background: black;
+  padding: 4px 6px;
+  border-radius: 4px;
+  top: 0;
+  width: 120px;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 1;
+}
+
+.satisfaction1 path {
+  fill: hsl(0deg 100% 35%);
+}
+
+.satisfaction2 path {
+  fill: hsl(30deg 100% 50%);
+}
+
+.satisfaction3 path {
+  fill: hsl(60deg 100% 35%);
+}
+
+.satisfaction4 path {
+  fill: hsl(90deg 100% 45%);
+}
+
+.satisfaction5 path {
+  fill: hsl(120deg 100% 25%);
+}
+
+.ampelContainer:has(.satisfaction1:hover) span:not(.satisfaction1),
+.ampelContainer:has(.satisfaction2:hover) span:not(.satisfaction2),
+.ampelContainer:has(.satisfaction3:hover) span:not(.satisfaction3),
+.ampelContainer:has(.satisfaction4:hover) span:not(.satisfaction4),
+.ampelContainer:has(.satisfaction5:hover) span:not(.satisfaction5) {
+  opacity: 0.1;
 }

@@ -15,7 +15,6 @@ export default function PositionScatterChart() {
     data.position.scatter[0].marker = {
       radius: 4,
     };
-    console.log(data.position.scatter[0].data.length);
 
     chart = {
       chart: { type: "scatter" },
