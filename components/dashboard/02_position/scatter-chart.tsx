@@ -29,7 +29,8 @@ export default function PositionScatterChart() {
       colors: ["var(--chart-light-green)", "var(--chart-red)"],
 
       tooltip: {
-        pointFormat: "Total Annual Gross Salary: € {point.y:,.0f} <br /> Position: {point.name}",
+        pointFormat:
+          "Total Annual Gross Salary: <strong>€ {point.y:,.0f}</strong> <br /> Position: <strong>{point.name}</strong>",
       },
 
       legend: {

@@ -83,9 +83,7 @@ export default async function getData(
     let scatterData, positionName;
     const positionData = yearData.filter((row) => row.position === user.position);
     if (userFamily) {
-      const familyData = yearData.filter(
-        (row) => row.position !== user.position && row.positionFamily == userFamily
-      );
+      const familyData = yearData.filter((row) => row.positionFamily == userFamily);
       scatterData = familyData;
       positionName = userFamily;
       average = {
