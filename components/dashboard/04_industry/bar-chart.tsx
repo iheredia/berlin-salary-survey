@@ -73,5 +73,5 @@ export default function IndustryBarChart() {
       colors: ["var(--chart-grey)"],
     };
   }
-  return <HighchartChart height={600} chart={chart} hidden={!user.industry} />;
+  return <HighchartChart height={500} chart={chart} hidden={!user.industry} />;
 }
