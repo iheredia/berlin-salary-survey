@@ -12,7 +12,7 @@ export default function GenderForm() {
 
   return (
     <BaseForm hasData={!!user.gender}>
-      <OptionsContainer>
+      <OptionsContainer rowMobile>
         <label>
           <input type="radio" name="gender" value="Female" onChange={onGenderChange} />
           Female

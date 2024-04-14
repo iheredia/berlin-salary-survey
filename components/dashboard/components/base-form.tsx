@@ -28,8 +28,13 @@ export default function BaseForm(props: BaseFormProps) {
 
 type OptionsContainerProps = {
   children: ReactNode;
+  rowMobile?: boolean;
 };
 
 export function OptionsContainer(props: OptionsContainerProps) {
-  return <div className={styles.optionsContainer}>{props.children}</div>;
+  const className = classNames(
+    styles.optionsContainer,
+    props.rowMobile ? styles.optionsContainerRowMobile : styles.optionsContainerColumnMobile
+  );
+  return <div className={className}>{props.children}</div>;
 }

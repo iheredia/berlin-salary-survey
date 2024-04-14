@@ -24,8 +24,17 @@
 .optionsContainer {
   display: flex;
   gap: 10px;
+}
+
+.optionsContainerColumnMobile {
   @media (max-width: 600px) {
     flex-direction: column;
+  }
+}
+
+.optionsContainerRowMobile {
+  @media (max-width: 600px) {
+    flex-direction: row;
   }
 }
 
