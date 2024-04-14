@@ -16,26 +16,13 @@ export default function RoleComment() {
       people = "individual contributors";
     }
 
-    let roleComment;
     if (percentile < 50) {
-      roleComment = `${upperDifference}% of ${people} earn more than you.`;
+      comment = `${upperDifference}% of ${people} earn more than you.`;
     } else if (percentile < 100) {
-      roleComment = `You earn more than ${percentile}% of ${people}`;
+      comment = `You earn more than ${percentile}% of ${people}`;
     } else {
-      roleComment = `You earn more than all of the ${people} who took the survey`;
+      comment = `You earn more than all of the ${people} who took the survey`;
     }
-    comment = (
-      <>
-        <p>{roleComment}</p>
-        <p>
-          For more gender gap data,{" "}
-          <a href="https://handpickedberlin.com/startup-tech-salary-trends-berlin/" target="_blank">
-            check our report
-          </a>
-          .
-        </p>
-      </>
-    );
   }
 
   return <BaseComment hidden={!user.role}>{comment}</BaseComment>;
