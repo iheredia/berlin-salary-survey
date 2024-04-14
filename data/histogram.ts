@@ -6,7 +6,7 @@ export const histogramBuckets = range(0, 210_000, 10_000);
 export const histogramCategories: string[] = histogramBuckets.map((bucketStart, index) => {
   const normalizedSize = `${bucketStart / 1000}${bucketStart > 0 ? "k" : ""}`;
   if (index + 1 === histogramBuckets.length) {
-    return `${normalizedSize}k +`;
+    return `${normalizedSize} +`;
   }
   const nextBucketStart = histogramBuckets[index + 1];
   const normalizedSizeNext = `${nextBucketStart / 1000}k`;
