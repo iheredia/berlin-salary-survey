@@ -113,6 +113,7 @@ export default async function getData(
           name: `Other ${positionName}`,
           data: scatterData.map((row, index) => ({
             id: `${positionName}-${index}`,
+            name: row.position,
             y: row.grossSalary,
             x: 0,
           })),
