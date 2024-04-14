@@ -92,6 +92,7 @@ export type UserComparisonData = Partial<{
     };
   };
   satisfaction: {
+    all: number[];
     male: number[];
     female: number[];
   };

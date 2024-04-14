@@ -122,5 +122,19 @@ export default async function getData(
     };
   }
 
+  if (user.satisfaction) {
+    const getSatisfaction = (data: SurveyData) =>
+      [1, 2, 3, 4, 5].map(
+        (score) => data.filter((row) => row.satisfaction === score).length / data.length
+      );
+    const maleData = yearData.filter((row) => row.gender === "Male");
+    const femaleData = yearData.filter((row) => row.gender === "Female");
+    data.satisfaction = {
+      all: getSatisfaction(yearData),
+      male: getSatisfaction(maleData),
+      female: getSatisfaction(femaleData),
+    };
+  }
+
   return data;
 }
