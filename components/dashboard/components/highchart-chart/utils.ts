@@ -31,7 +31,6 @@ export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, se
         point: getHighlightedId(user, histogramBuckets, serieName),
         text: "You are here",
         verticalAlign: "bottom",
-        allowOverlap: true,
       },
     ],
   };

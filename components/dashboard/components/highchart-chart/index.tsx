@@ -28,6 +28,11 @@ const defaultChartConfig = {
     },
   },
 
+  yAxis: {
+    top: "20%",
+    height: "80%",
+  },
+
   xAxis: {
     startOnTick: true,
     endOnTick: true,
