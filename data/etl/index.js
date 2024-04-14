@@ -13,7 +13,11 @@ function processYear(year) {
       const cleanData = rawData
         .map((row) => parseRow(row, year))
         .filter((row) => row.inBerlin || row.workingRemotelyForBerlin)
-        .filter((row) => !isNaN(row.grossSalary));
+        .filter((row) => !isNaN(row.grossSalary))
+        .sort((a, b) => {
+          if (a.grossSalary !== b.grossSalary) return a.grossSalary - b.grossSalary;
+          return a.position.localeCompare(b.position);
+        });
 
       console.log(`Clean count: ${cleanData.length}`);
       writeJson(cleanData, `../${year}.json`);
