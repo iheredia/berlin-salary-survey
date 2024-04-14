@@ -17,6 +17,17 @@ export default async function getData(
   year: AvailableYear,
   user: User
 ): Promise<UserComparisonData> {
+  function sleepSeconds(seconds: number) {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, seconds * 1000);
+    });
+  }
+  if (process.env.NODE_ENV === "development") {
+    await sleepSeconds(Math.random());
+  }
+
   const yearData = getYearData(year);
   const data: UserComparisonData = {};
 
