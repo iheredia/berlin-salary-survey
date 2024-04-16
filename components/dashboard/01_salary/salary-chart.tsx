@@ -3,7 +3,7 @@ import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 import { getAnnotation, getHighlightedId } from "../components/highchart-chart/utils";
 
-export default function SalaryHistogramChart() {
+export default function SalaryChart() {
   const { user, data } = useContext(AppContext);
 
   let chart;

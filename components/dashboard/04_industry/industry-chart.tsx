@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 
-export default function IndustryBarChart() {
+export default function IndustryChart() {
   const { user, data } = useContext(AppContext);
 
   let chart;

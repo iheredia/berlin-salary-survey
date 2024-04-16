@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
-import styles from "./gradient.module.css";
+import styles from "./salary-gradient.module.css";
 import classNames from "classnames";
 
-export default function GradientChart() {
+export default function SalaryGradientChart() {
   const { data, user } = useContext(AppContext);
 
   let tooltipStyle = {};

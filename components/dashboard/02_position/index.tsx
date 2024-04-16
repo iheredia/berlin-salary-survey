@@ -1,14 +1,14 @@
 import BaseSection from "../components/base-section";
 import PositionForm from "./position-form";
-import PositionComment from "./comment";
-import PositionScatterChart from "./scatter-chart";
+import PositionComment from "./position-comment";
+import PositionChart from "./position-chart";
 
 export default function IndustrySection() {
   return (
     <BaseSection>
       <PositionForm />
       <PositionComment />
-      <PositionScatterChart />
+      <PositionChart />
     </BaseSection>
   );
 }

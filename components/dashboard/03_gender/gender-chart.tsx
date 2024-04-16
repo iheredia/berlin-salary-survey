@@ -2,9 +2,9 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 import { getAnnotation } from "../components/highchart-chart/utils";
-import styles from "./spline-chart.module.css";
+import styles from "./gender-chart.module.css";
 
-export default function GenderSplineChart() {
+export default function GenderChart() {
   const { user, data } = useContext(AppContext);
 
   let chart;

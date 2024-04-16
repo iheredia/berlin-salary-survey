@@ -4,7 +4,7 @@ import HighchartChart from "../components/highchart-chart";
 import { getAnnotation } from "../components/highchart-chart/utils";
 import { isIndividualContributor } from "@/data/utils";
 
-export default function RoleBarChart() {
+export default function RoleChart() {
   const { user, data } = useContext(AppContext);
 
   let chart;

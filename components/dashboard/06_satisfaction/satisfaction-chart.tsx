@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
 import classNames from "classnames";
-import styles from "./ampel-chart.module.css";
+import styles from "./satisfaction-chart.module.css";
 import { range } from "lodash";
 import { UserComparisonData } from "@/data/types";
 
@@ -69,7 +69,7 @@ function getPercentage(percentages: number[], satisfaction: number) {
   return 100 - percentage1 - percentage2 - percentage3 - percentage4;
 }
 
-export default function SatisfactionAmpelChart() {
+export default function SatisfactionChart() {
   const { user, data } = useContext(AppContext);
 
   const className = classNames(styles.ampelContainer, user.satisfaction ? "" : styles.hidden);

@@ -3,7 +3,7 @@ import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 import { shuffle } from "lodash";
 
-export default function PositionScatterChart() {
+export default function PositionChart() {
   const { user, data } = useContext(AppContext);
 
   let chart;
