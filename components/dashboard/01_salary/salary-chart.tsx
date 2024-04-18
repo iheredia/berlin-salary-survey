@@ -36,6 +36,8 @@ export default function SalaryChart() {
         labels: {
           format: "{value:,.0f}%",
         },
+        top: "10%",
+        height: "90%",
       },
       tooltip: {
         pointFormat: `<strong>Percentage of people:</strong> {point.y}% <br /> <strong>Gross salary</strong>: € {point.category}`,

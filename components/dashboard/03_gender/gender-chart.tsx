@@ -36,6 +36,8 @@ export default function GenderChart() {
         labels: {
           format: "{value:,.0f}%",
         },
+        top: "15%",
+        height: "85%",
       },
       tooltip: {
         pointFormat: `<strong>Percentage of {series.name}:</strong> {point.y}% <br /> <strong>Gross salary</strong>: {point.category}`,
