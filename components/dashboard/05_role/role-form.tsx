@@ -12,7 +12,7 @@ export default function RoleForm() {
 
   return (
     <BaseForm hasData={!!user.role}>
-      <OptionsContainer>
+      <OptionsContainer rowMobile={false}>
         <label>
           <input type="radio" name="role" value="Individual contributor" onChange={onRoleChange} />
           Individual contributor
