@@ -34,7 +34,7 @@ type OptionsContainerProps = {
 export function OptionsContainer(props: OptionsContainerProps) {
   const className = classNames(
     styles.optionsContainer,
-    props.rowMobile ? styles.optionsContainerRowMobile : styles.optionsContainerColumnMobile
+    props.rowMobile ? styles.optionsRowMobile : styles.optionsColumnMobile
   );
   return <div className={className}>{props.children}</div>;
 }

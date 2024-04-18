@@ -26,13 +26,13 @@
   gap: 10px;
 }
 
-.optionsContainerColumnMobile {
+.optionsColumnMobile {
   @media (max-width: 600px) {
     flex-direction: column;
   }
 }
 
-.optionsContainerRowMobile {
+.optionsRowMobile {
   @media (max-width: 600px) {
     flex-direction: row;
   }
