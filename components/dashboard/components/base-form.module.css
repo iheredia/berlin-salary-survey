@@ -26,14 +26,14 @@
   gap: 10px;
 }
 
-.optionsColumnMobile {
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
+  .optionsColumnMobile {
     flex-direction: column;
   }
 }
 
-.optionsRowMobile {
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
+  .optionsRowMobile {
     flex-direction: row;
   }
 }
