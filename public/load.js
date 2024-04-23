@@ -16,16 +16,16 @@
   }
   insertAfter(thisScript, styleElement);
 
-  const iframeResizerScript = document.createElement("script");
-  iframeResizerScript.type = "text/javascript";
-  iframeResizerScript.src = "https://berlin-salary-survey.iheredia.com/iframeResizer.js";
-  insertAfter(styleElement, iframeResizerScript);
-
   const dashboardIframe = document.createElement("iframe");
   dashboardIframe.id = "dashboard-iframe";
   dashboardIframe.src = "https://berlin-salary-survey.iheredia.com/2024?embed=true";
   dashboardIframe.frameborder = "0";
   dashboardIframe.onload = function () {
+    const iframeResizerScript = document.createElement("script");
+    iframeResizerScript.type = "text/javascript";
+    iframeResizerScript.src = "https://berlin-salary-survey.iheredia.com/iframeResizer.js";
+    insertAfter(styleElement, iframeResizerScript);
+
     function waitForResizer() {
       if (window.iframeResizer) {
         window.iFrameResize({ log: true }, "#dashboard-iframe");
@@ -35,5 +35,5 @@
     }
     waitForResizer();
   };
-  insertAfter(iframeResizerScript, dashboardIframe);
+  insertAfter(styleElement, dashboardIframe);
 })();
