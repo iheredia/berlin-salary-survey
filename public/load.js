@@ -27,7 +27,7 @@
     insertAfter(styleElement, iframeResizerScript);
 
     function waitForResizer() {
-      if (window.iframeResizer) {
+      if (window.iFrameResize) {
         console.log("Initializing iframe resizer");
         window.iFrameResize({ log: true }, "#dashboard-iframe");
       } else {
