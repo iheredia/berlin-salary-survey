@@ -16,3 +16,9 @@
 .main.embed {
   padding: 0;
 }
+
+.lastUpdate {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 12px;
+}

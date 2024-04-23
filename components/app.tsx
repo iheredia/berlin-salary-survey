@@ -21,6 +21,7 @@ export default function App(props: AppProps) {
         {embed ? null : <Introduction year={year} />}
         <Dashboard />
         <Footer />
+        <p className={styles.lastUpdate}>Last update: 18.04.2024</p>
       </main>
     </AppContextElement>
   );
