@@ -28,6 +28,7 @@
 
     function waitForResizer() {
       if (window.iframeResizer) {
+        console.log("Initializing iframe resizer");
         window.iFrameResize({ log: true }, "#dashboard-iframe");
       } else {
         setTimeout(waitForResizer, 100);
