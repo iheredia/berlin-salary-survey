@@ -5,7 +5,7 @@
     existingElement.parentNode.insertBefore(newElement, existingElement.nextSibling);
   }
 
-  var css = "#dashboard-iframe { width: 100%; min-width: 100%; outline: none; min-height: 900px }";
+  var css = "#dashboard-iframe { width: 100%; min-width: 100%; outline: none; min-height: 500px }";
   var styleElement = document.createElement("style");
   styleElement.type = "text/css";
   if (styleElement.styleSheet) {
