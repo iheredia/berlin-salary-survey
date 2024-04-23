@@ -1,10 +1,11 @@
 (function () {
+  console.log("Loading iframe");
   var thisScript = document.querySelector("#salaries-dashboard-script");
   function insertAfter(existingElement, newElement) {
     existingElement.parentNode.insertBefore(newElement, existingElement.nextSibling);
   }
 
-  var css = "#salaries-iframe { width: 1px; min-width: 100%; }";
+  var css = "#dashboard-iframe { width: 100%; min-width: 100%; }";
   var styleElement = document.createElement("style");
   styleElement.type = "text/css";
   if (styleElement.styleSheet) {
@@ -26,5 +27,15 @@
   dashboardIframe.frameborder = "0";
   insertAfter(iframeResizerScript, dashboardIframe);
 
-  window.iFrameResize({ log: true }, "#dashboard-iframe");
+  function waitForResizer() {
+    if (window.iframeResizer) {
+      window.iFrameResize(
+        { log: true, resizeFrom: "child", heightCalculationMethod: "max" },
+        "#dashboard-iframe"
+      );
+    } else {
+      setTimeout(waitForResizer, 100);
+    }
+  }
+  waitForResizer();
 })();
