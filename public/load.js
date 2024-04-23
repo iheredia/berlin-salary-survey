@@ -5,7 +5,7 @@
     existingElement.parentNode.insertBefore(newElement, existingElement.nextSibling);
   }
 
-  var css = "#dashboard-iframe { width: 100%; min-width: 100%; }";
+  var css = "#dashboard-iframe { width: 100%; min-width: 100%; outline: none; min-height: 900px }";
   var styleElement = document.createElement("style");
   styleElement.type = "text/css";
   if (styleElement.styleSheet) {
@@ -29,10 +29,7 @@
 
   function waitForResizer() {
     if (window.iframeResizer) {
-      window.iFrameResize(
-        { log: true, resizeFrom: "child", heightCalculationMethod: "max" },
-        "#dashboard-iframe"
-      );
+      window.iFrameResize({ log: true }, "#dashboard-iframe");
     } else {
       setTimeout(waitForResizer, 100);
     }
