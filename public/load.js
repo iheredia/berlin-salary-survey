@@ -18,7 +18,7 @@
 
   const iframeResizerScript = document.createElement("script");
   iframeResizerScript.type = "text/javascript";
-  iframeResizerScript.src = "https://berlin-salary-survey.iheredia.com/iframeResizer.min.js";
+  iframeResizerScript.src = "https://berlin-salary-survey.iheredia.com/iframeResizer.js";
   insertAfter(styleElement, iframeResizerScript);
 
   const dashboardIframe = document.createElement("iframe");
