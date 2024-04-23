@@ -147,5 +147,29 @@ export default async function getData(
     };
   }
 
+  if (user.experience) {
+    const experienceValues = [
+      "Less than 1",
+      "1-2",
+      "3-5",
+      "6-10",
+      "11-15",
+      "16-20",
+      "21-30",
+      "30+",
+    ];
+    data.experience = {
+      series: experienceValues.map((experienceValue, index) => {
+        const data = yearData
+          .filter((row) => row.experience === experienceValue)
+          .map((row) => ({ x: index, y: row.grossSalary }));
+        return {
+          name: experienceValue,
+          data,
+        };
+      }),
+    };
+  }
+
   return data;
 }

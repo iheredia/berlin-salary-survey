@@ -20,6 +20,7 @@ export type DataPoint = {
   position: string;
   positionFamily: string | null;
   satisfaction: number | null;
+  experience: string;
 };
 export type SurveyData = DataPoint[];
 
@@ -39,7 +40,7 @@ export type Serie = {
     radius?: number;
   };
   data: {
-    id: string;
+    id?: string;
     y: number;
     x?: number;
     color?: string;
@@ -95,5 +96,8 @@ export type UserComparisonData = Partial<{
     all: number[];
     male: number[];
     female: number[];
+  };
+  experience: {
+    series: Series;
   };
 }>;

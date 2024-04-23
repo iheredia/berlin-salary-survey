@@ -7,6 +7,7 @@ import GenderSection from "./03_gender";
 import IndustrySection from "./04_industry";
 import RoleSection from "./05_role";
 import SatisfactionSection from "./06_satisfaction";
+import ExperienceSection from "./07_experience";
 import AppContext from "../context";
 
 export default function Dashboard() {
@@ -21,6 +22,7 @@ export default function Dashboard() {
           <IndustrySection />
           <RoleSection />
           <SatisfactionSection />
+          <ExperienceSection />
         </>
       ) : null}
     </>
