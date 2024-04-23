@@ -1,3 +1,5 @@
+import "iframe-resizer/js/iframeResizer.contentWindow";
+
 import AppContextElement from "./context/provider";
 import Introduction from "./introduction";
 import Dashboard from "./dashboard";
