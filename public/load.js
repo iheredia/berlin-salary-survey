@@ -25,14 +25,15 @@
   dashboardIframe.id = "dashboard-iframe";
   dashboardIframe.src = "https://berlin-salary-survey.iheredia.com/2024?embed=true";
   dashboardIframe.frameborder = "0";
-  insertAfter(iframeResizerScript, dashboardIframe);
-
-  function waitForResizer() {
-    if (window.iframeResizer) {
-      window.iFrameResize({ log: true }, "#dashboard-iframe");
-    } else {
-      setTimeout(waitForResizer, 100);
+  dashboardIframe.onload = function () {
+    function waitForResizer() {
+      if (window.iframeResizer) {
+        window.iFrameResize({ log: true }, "#dashboard-iframe");
+      } else {
+        setTimeout(waitForResizer, 100);
+      }
     }
-  }
-  waitForResizer();
+    waitForResizer();
+  };
+  insertAfter(iframeResizerScript, dashboardIframe);
 })();
