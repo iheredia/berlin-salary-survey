@@ -10,7 +10,7 @@ export default function PositionChart() {
   if (data.position) {
     data.position.scatter[0].data = shuffle(data.position.scatter[0].data);
     data.position.scatter[0].data.forEach((point, index) => {
-      point.x = index;
+      point.x = index + 1;
     });
     data.position.scatter[0].marker = {
       radius: 4,
@@ -22,7 +22,7 @@ export default function PositionChart() {
       xAxis: {
         visible: false,
         min: 0,
-        max: data.position.scatter[0].data.length,
+        max: data.position.scatter[0].data.length + 1,
         endOnTick: false,
       },
 
@@ -52,7 +52,7 @@ export default function PositionChart() {
           },
           data: [
             {
-              x: data.position.scatter[0].data.length / 2,
+              x: (data.position.scatter[0].data.length + 1) / 2,
               y: user.grossSalary,
               id: "You",
             },
