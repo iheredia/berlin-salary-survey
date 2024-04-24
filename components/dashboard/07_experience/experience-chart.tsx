@@ -14,6 +14,15 @@ export default function ExperienceChart() {
       xAxis: {
         categories: data.experience.series.map((serie) => serie.name),
       },
+      yAxis: {
+        title: {
+          text: "Average Total Annual Gross Salary",
+        },
+        labels: {
+          format: "€ {value:,.0f}",
+          rotation: -30,
+        },
+      },
       series: [
         {
           type: "columnrange",
@@ -37,7 +46,7 @@ export default function ExperienceChart() {
             symbol: "circle",
           },
           tooltip: {
-            pointFormat: "Measurement: {point.y:.3f}",
+            pointFormat: `<strong>Total Annual Gross Salary</strong> € {point.y} <br /> <strong>Experience years</strong>: {point.category}`,
           },
         },
         columnrange: {
