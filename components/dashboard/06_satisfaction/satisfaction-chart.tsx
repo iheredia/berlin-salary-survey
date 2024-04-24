@@ -51,10 +51,9 @@ function getIcons(data: UserComparisonData) {
       if (data.satisfaction) {
         score = getSatisfaction(data.satisfaction[type], index / amountOfIcons);
       }
-      const sortScore = score + (Math.random() - 0.5) * 2;
-      return { type, fill, score, sortScore };
+      return { type, fill, score };
     })
-    .sort((a, b) => a.sortScore - b.sortScore);
+    .sort((a, b) => a.score - b.score);
 }
 
 function getPercentage(percentages: number[], satisfaction: number) {
