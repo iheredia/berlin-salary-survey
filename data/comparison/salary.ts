@@ -1,12 +1,19 @@
 import { calculatePercentile } from "../helpers/utils";
 import { histogramCategories, getSeries, histogramBuckets } from "../helpers/histogram";
-import { AvailableYear, UserGrossSalaryComparisonData } from "../types";
+import { AvailableYear, HistogramBuckets, HistogramCategories, Series } from "../types";
 import { getYearData } from "../helpers/year-data";
 
-export default async function getSalaryComparisonData(
+export type GrossSalaryComparison = {
+  percentile: number;
+  histogramBuckets: HistogramBuckets;
+  histogramCategories: HistogramCategories;
+  histogramSeries: Series;
+};
+
+export default async function getSalaryComparison(
   year: AvailableYear,
   userGrossSalary: number
-): Promise<UserGrossSalaryComparisonData> {
+): Promise<GrossSalaryComparison> {
   const yearData = getYearData(year);
   return {
     percentile: calculatePercentile(yearData, userGrossSalary),

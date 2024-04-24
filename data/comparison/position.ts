@@ -1,12 +1,26 @@
 "use server";
 import { getYearData } from "../helpers/year-data";
-import { AvailableYear, UserPositionComparisonData } from "../types";
+import { AvailableYear, Series } from "../types";
 import { getAverage } from "../helpers/utils";
 
-export default async function getPositionComparisonData(
+export type PositionComparison = {
+  scatter: Series;
+  average: {
+    value: number;
+    name: string;
+    count: number;
+  };
+  familyAverage?: {
+    value: number;
+    name: string;
+    count: number;
+  };
+};
+
+export default async function getPositionComparison(
   year: AvailableYear,
   userPosition: string
-): Promise<UserPositionComparisonData> {
+): Promise<PositionComparison> {
   const yearData = getYearData(year);
   let average, familyAverage;
   const userFamily = yearData.find(

@@ -1,10 +1,16 @@
 "use server";
 import { getYearData } from "../helpers/year-data";
-import { AvailableYear, SurveyData, UserSatisfactionComparisonData } from "../types";
+import { AvailableYear, SurveyData } from "../types";
 
-export default async function getSatisfactionComparisonData(
+export type SatisfactionComparison = {
+  all: number[];
+  male: number[];
+  female: number[];
+};
+
+export default async function getSatisfactionComparison(
   year: AvailableYear
-): Promise<UserSatisfactionComparisonData> {
+): Promise<SatisfactionComparison> {
   const yearData = getYearData(year);
   const getSatisfaction = (data: SurveyData) =>
     [1, 2, 3, 4, 5].map(

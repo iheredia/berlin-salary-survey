@@ -3,7 +3,7 @@ import AppContext from "@/components/context";
 import classNames from "classnames";
 import styles from "./satisfaction-chart.module.css";
 import { range } from "lodash";
-import { UserComparisonData } from "@/data/types";
+import { UserComparison } from "@/data";
 
 function Ampelmann() {
   return (
@@ -41,7 +41,7 @@ function getSatisfaction(satisfactions: number[], index: number) {
   return 5;
 }
 
-function getIcons(data: UserComparisonData) {
+function getIcons(data: UserComparison) {
   const amountOfIcons = 100;
   return range(amountOfIcons)
     .map((index) => {

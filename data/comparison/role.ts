@@ -1,7 +1,7 @@
 "use server";
 import { getSeries } from "../helpers/histogram";
 import { getYearData } from "../helpers/year-data";
-import { AvailableYear, UserRoleComparisonData } from "../types";
+import { AvailableYear, Series } from "../types";
 import {
   calculatePercentile,
   getAverage,
@@ -9,11 +9,20 @@ import {
   isPeopleManager,
 } from "../helpers/utils";
 
-export default async function getRoleComparisonData(
+export type RoleComparison = {
+  percentile: number;
+  histogramSeries: Series;
+  averages: {
+    peopleManager: number;
+    individualContributor: number;
+  };
+};
+
+export default async function getRoleComparison(
   year: AvailableYear,
   userRole: string,
   userGrossSalary: number
-): Promise<UserRoleComparisonData> {
+): Promise<RoleComparison> {
   const yearData = getYearData(year);
   const allRolesData = yearData.filter((row) => row.role !== "Prefer not to say");
   const individualContributorData = allRolesData.filter(isIndividualContributor);

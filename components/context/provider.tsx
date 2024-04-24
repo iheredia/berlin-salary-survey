@@ -1,8 +1,8 @@
 "use client";
 import { useState, ReactNode } from "react";
-import { AvailableYear, User, UserComparisonData } from "@/data/types";
+import { AvailableYear, User } from "@/data/types";
+import getData, { UserComparison } from "@/data";
 import AppContext from ".";
-import getData from "@/data";
 
 type AppProps = {
   children: ReactNode;
@@ -16,10 +16,10 @@ const logCopy = (obj: Object) => console.log(JSON.parse(JSON.stringify(obj)));
 
 export default function AppContextElement(props: AppProps) {
   const [user, _setUser] = useState<User>({});
-  const [data, _setData] = useState<UserComparisonData>({});
+  const [data, _setData] = useState<UserComparison>({});
   const [loading, setLoadingData] = useState(false);
 
-  const setData = async (newDataValues: UserComparisonData) => {
+  const setData = async (newDataValues: UserComparison) => {
     _setData({ ...data, ...newDataValues });
   };
 

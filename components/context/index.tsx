@@ -1,12 +1,13 @@
 "use client";
 import { createContext } from "react";
-import { AvailableYear, User, UserComparisonData } from "@/data/types";
+import { AvailableYear, User } from "@/data/types";
+import { UserComparison } from "@/data";
 
 type AppContextType = {
   year: AvailableYear;
   user: User;
   setUser: CallableFunction;
-  data: UserComparisonData;
+  data: UserComparison;
   setData: CallableFunction;
   loading: boolean;
   embed: boolean;

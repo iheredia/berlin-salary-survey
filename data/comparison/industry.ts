@@ -1,12 +1,16 @@
 "use server";
 import getValues from "../helpers/static-values";
 import { getYearData } from "../helpers/year-data";
-import { AvailableYear, UserIndustryComparisonData } from "../types";
+import { AvailableYear } from "../types";
 import { getAverage } from "../helpers/utils";
 
-export default async function getIndustryComparisonData(
+export type IndustryComparison = {
+  averages: Record<string, number>;
+};
+
+export default async function getIndustryComparison(
   year: AvailableYear
-): Promise<UserIndustryComparisonData> {
+): Promise<IndustryComparison> {
   const yearData = getYearData(year);
   const averages: Record<string, number> = {};
   const industries = getValues(year).industry.filter(
