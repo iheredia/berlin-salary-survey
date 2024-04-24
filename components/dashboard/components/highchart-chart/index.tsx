@@ -73,7 +73,7 @@ export default function HighchartChart(props: HichchartsChartProps) {
           </div>
           <p className={styles.credits}>
             <a href={creditsLinks[year]} target="_blank">
-              Data from Handpicked Berlin&apos;s Salary Trends {year} survey
+              Data source
             </a>
           </p>
         </>
