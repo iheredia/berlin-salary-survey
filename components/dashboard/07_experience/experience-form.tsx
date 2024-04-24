@@ -13,7 +13,7 @@ export default function ExperienceForm() {
   return (
     <BaseForm hasData={!!user.experience}>
       <p>How many years of experience do you have?</p>
-      <OptionsContainer rowMobile>
+      <OptionsContainer>
         <label>
           <input type="radio" name="experience" value="Less than 1" onChange={onExperienceChange} />
           Less than 1

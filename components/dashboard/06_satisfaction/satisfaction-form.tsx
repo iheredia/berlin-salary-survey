@@ -12,22 +12,27 @@ export default function SatisfactionForm() {
 
   return (
     <BaseForm hasData={!!user.satisfaction}>
-      <p>How much are you satisfied with your compensation?</p>
-      <OptionsContainer rowMobile>
+      <p>I am satisfied with my current level of compensation</p>
+      <OptionsContainer>
         <label>
-          <input type="radio" name="satisfaction" value="1" onChange={onSatisfactionChange} />1
+          <input type="radio" name="satisfaction" value="1" onChange={onSatisfactionChange} />1 -
+          Strongly Agree
         </label>
         <label>
-          <input type="radio" name="satisfaction" value="2" onChange={onSatisfactionChange} />2
+          <input type="radio" name="satisfaction" value="2" onChange={onSatisfactionChange} />2 -
+          Disagree
         </label>
         <label>
-          <input type="radio" name="satisfaction" value="3" onChange={onSatisfactionChange} />3
+          <input type="radio" name="satisfaction" value="3" onChange={onSatisfactionChange} />3 -
+          Neutral
         </label>
         <label>
-          <input type="radio" name="satisfaction" value="4" onChange={onSatisfactionChange} />4
+          <input type="radio" name="satisfaction" value="4" onChange={onSatisfactionChange} />4 -
+          Agree
         </label>
         <label>
-          <input type="radio" name="satisfaction" value="5" onChange={onSatisfactionChange} />5
+          <input type="radio" name="satisfaction" value="5" onChange={onSatisfactionChange} />5 -
+          Strongly Agree
         </label>
       </OptionsContainer>
     </BaseForm>
