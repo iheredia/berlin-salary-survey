@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 import { getAnnotation } from "../components/highchart-chart/utils";
-import { isIndividualContributor } from "@/data/utils";
+import { isIndividualContributor } from "@/data/helpers/utils";
 
 export default function RoleChart() {
   const { user, data } = useContext(AppContext);

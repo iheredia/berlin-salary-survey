@@ -53,51 +53,58 @@ export type HistogramCategories = string[];
 
 export type HistogramBuckets = number[];
 
+export type UserGrossSalaryComparisonData = {
+  percentile: number;
+  histogramBuckets: HistogramBuckets;
+  histogramCategories: HistogramCategories;
+  histogramSeries: Series;
+};
+export type UserGenderComparisonData = {
+  percentile: number;
+  histogramSeries: Series;
+  averages: {
+    male: number;
+    female: number;
+  };
+};
+export type UserIndustryComparisonData = {
+  averages: Record<string, number>;
+};
+export type UserRoleComparisonData = {
+  percentile: number;
+  histogramSeries: Series;
+  averages: {
+    peopleManager: number;
+    individualContributor: number;
+  };
+};
+export type UserPositionComparisonData = {
+  scatter: Series;
+  average: {
+    value: number;
+    name: string;
+    count: number;
+  };
+  familyAverage?: {
+    value: number;
+    name: string;
+    count: number;
+  };
+};
+export type UserSatisfactionComparisonData = {
+  all: number[];
+  male: number[];
+  female: number[];
+};
+export type UserExperienceComparisonData = {
+  series: Series;
+};
 export type UserComparisonData = Partial<{
-  grossSalary: {
-    percentile: number;
-    histogramBuckets: HistogramBuckets;
-    histogramCategories: HistogramCategories;
-    histogramSeries: Series;
-  };
-  gender: {
-    percentile: number;
-    histogramSeries: Series;
-    averages: {
-      male: number;
-      female: number;
-    };
-  };
-  industry: {
-    averages: Record<string, number>;
-  };
-  role: {
-    percentile: number;
-    histogramSeries: Series;
-    averages: {
-      peopleManager: number;
-      individualContributor: number;
-    };
-  };
-  position: {
-    scatter: Series;
-    average: {
-      value: number;
-      name: string;
-      count: number;
-    };
-    familyAverage?: {
-      value: number;
-      name: string;
-      count: number;
-    };
-  };
-  satisfaction: {
-    all: number[];
-    male: number[];
-    female: number[];
-  };
-  experience: {
-    series: Series;
-  };
+  grossSalary: UserGrossSalaryComparisonData;
+  gender: UserGenderComparisonData;
+  industry: UserIndustryComparisonData;
+  role: UserRoleComparisonData;
+  position: UserPositionComparisonData;
+  satisfaction: UserSatisfactionComparisonData;
+  experience: UserExperienceComparisonData;
 }>;

@@ -1,5 +1,5 @@
 import range from "lodash/range";
-import { Serie, SurveyData } from "./types";
+import { Serie, SurveyData } from "../types";
 
 export const histogramBuckets = range(0, 210_000, 10_000);
 

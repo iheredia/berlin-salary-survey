@@ -1,4 +1,4 @@
-import { DataPoint, SurveyData, User } from "./types";
+import { SurveyData, User } from "../types";
 
 export function getAverage(filteredYearData: SurveyData) {
   const average =

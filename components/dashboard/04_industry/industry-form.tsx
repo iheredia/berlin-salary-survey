@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { getValues } from "@/data/static-values";
+import getValues from "@/data/helpers/static-values";
 import AppContext from "@/components/context";
 import styles from "./select.module.css";
 import BaseForm from "../components/base-form";
