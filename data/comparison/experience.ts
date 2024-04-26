@@ -21,7 +21,10 @@ export default async function getExperienceComparison(
     if (experienceValue === userExperience) {
       percentile = calculatePercentile(filteredData, userGrossSalary);
     }
-    const data = filteredData.map((row) => ({ x: index, y: row.grossSalary }));
+    const data = filteredData.map((row) => {
+      const xOffset = row.gender === "Male" ? 0.2 : row.gender === "Female" ? -0.2 : 0;
+      return { x: index + xOffset, y: row.grossSalary, gender: row.gender };
+    });
     return {
       name: experienceValue,
       data,

@@ -24,6 +24,9 @@ export default function ExperienceChart() {
       },
       xAxis: {
         categories: data.experience.series.map((serie) => serie.name),
+        type: "category",
+        min: 0,
+        max: 7,
       },
       yAxis: {
         title: {
@@ -71,7 +74,7 @@ export default function ExperienceChart() {
         scatter: {
           showInLegend: false,
           jitter: {
-            x: 0.3,
+            x: 0.1,
             y: 0,
           },
           marker: {
@@ -79,7 +82,7 @@ export default function ExperienceChart() {
             symbol: "circle",
           },
           tooltip: {
-            pointFormat: `<strong>Total Annual Gross Salary</strong> € {point.y} <br /> <strong>Experience years</strong>: {point.category}`,
+            pointFormat: `<strong>Total Annual Gross Salary</strong> € {point.y} <br /> <strong>Experience years</strong>: {point.category} <br /><strong>Gender</strong>: {point.gender}`,
           },
         },
         columnrange: {
