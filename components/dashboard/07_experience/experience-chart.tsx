@@ -7,6 +7,17 @@ export default function ExperienceChart() {
 
   let chart;
   if (user.experience && data.experience && data.grossSalary) {
+    const colors = [
+      "#a41700",
+      "#c06557",
+      "#bdc057",
+      "#90c057",
+      "#69c057",
+      "#3e8c2d",
+      "#226413",
+      "#004209",
+    ];
+
     chart = {
       chart: {
         inverted: true,
@@ -50,7 +61,11 @@ export default function ExperienceChart() {
             };
           }),
         },
-        ...data.experience.series.map((serie) => ({ ...serie, type: "scatter" })),
+        ...data.experience.series.map((serie, index) => ({
+          ...serie,
+          type: "scatter",
+          color: colors[index],
+        })),
       ],
       plotOptions: {
         scatter: {
