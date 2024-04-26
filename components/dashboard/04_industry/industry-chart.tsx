@@ -16,7 +16,8 @@ export default function IndustryChart() {
         }
         return {
           name: industry,
-          y: data.industry?.averages[industry] || 0,
+          count: data.industry?.averages[industry].count,
+          y: data.industry?.averages[industry].average || 0,
           color,
         };
       })
@@ -61,6 +62,13 @@ export default function IndustryChart() {
       },
       series: [
         {
+          dataLabels: [
+            {
+              align: "left",
+              format: "( n: {point.count} )",
+              color: "black",
+            },
+          ],
           data: seriesData,
         },
       ],
@@ -68,6 +76,10 @@ export default function IndustryChart() {
         bar: {
           pointPadding: 0.1,
           groupPadding: 0,
+          dataLabels: {
+            enabled: true,
+            inside: false,
+          },
         },
       },
       colors: ["var(--chart-grey)"],

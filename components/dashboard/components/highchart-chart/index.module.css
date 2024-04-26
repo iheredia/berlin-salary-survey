@@ -10,3 +10,7 @@
   text-align: right;
   color: #777;
 }
+
+.chartContainer :global(.highcharts-text-outline) {
+  stroke: transparent;
+}
