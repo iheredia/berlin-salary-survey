@@ -57,7 +57,6 @@ export default function IndustryChart() {
         ],
       },
       tooltip: {
-        // TODO: Add count of respondants
         pointFormat: `<strong>Industry</strong>: {point.category} <br /> <strong>Average salary:</strong> € {point.y} `,
       },
       series: [

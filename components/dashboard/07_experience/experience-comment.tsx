@@ -12,11 +12,11 @@ export default function ExperienceComment() {
     const upperDifference = 100 - percentile;
 
     if (percentile < 50) {
-      comment = `${upperDifference}% of people with your same experience earn more than you`;
+      comment = `${upperDifference}% of people with the same experience earn more than you`;
     } else if (percentile < 100) {
-      comment = `You earn more than ${percentile}% of people with your same experience`;
+      comment = `You earn more than ${percentile}% of people with the same experience`;
     } else {
-      comment = `You earn more than all of the people who took the survey and has your same experience`;
+      comment = `You earn more than all respondents with the same experience`;
     }
   }
 
