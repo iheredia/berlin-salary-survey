@@ -13,8 +13,8 @@ export const histogramCategories: string[] = histogramBuckets.map((bucketStart, 
   return `${normalizedSize} to ${normalizedSizeNext}`;
 });
 
-function normalizeSerie(serie: Serie): Serie {
-  const total = serie.data.reduce((accum, val) => accum + val.y, 0);
+function normalizeSerie(serie: Serie, normalizationTotal?: number): Serie {
+  const total = normalizationTotal || serie.data.reduce((accum, val) => accum + val.y, 0);
   return {
     ...serie,
     data: serie.data.map((val) => ({
@@ -24,7 +24,7 @@ function normalizeSerie(serie: Serie): Serie {
   };
 }
 
-export function getSeries(yearData: SurveyData, name: string) {
+export function getSeries(yearData: SurveyData, name: string, normalizationTotal?: number) {
   const buckets = histogramBuckets.map(() => 0);
   yearData.forEach(({ grossSalary }) => {
     if (grossSalary !== null && grossSalary > 0) {
@@ -44,5 +44,5 @@ export function getSeries(yearData: SurveyData, name: string) {
     };
   });
 
-  return normalizeSerie({ data, name });
+  return normalizeSerie({ data, name }, normalizationTotal);
 }

@@ -9,6 +9,7 @@
   width: 100%;
   aspect-ratio: 3 / 1;
   max-width: 700px;
+  margin: 20px 0;
 }
 
 .ampelContainer.hidden {
@@ -53,23 +54,23 @@
 }
 
 .satisfaction1 path {
-  fill: hsl(0deg 100% 35%);
+  fill: #b30000;
 }
 
 .satisfaction2 path {
-  fill: hsl(30deg 100% 50%);
+  fill: #ff8000;
 }
 
 .satisfaction3 path {
-  fill: hsl(60deg 100% 35%);
+  fill: #b3b300;
 }
 
 .satisfaction4 path {
-  fill: hsl(90deg 100% 45%);
+  fill: #73e600;
 }
 
 .satisfaction5 path {
-  fill: hsl(120deg 100% 25%);
+  fill: #008000;
 }
 
 .ampelContainer:has(.satisfaction1:hover) span:not(.satisfaction1),

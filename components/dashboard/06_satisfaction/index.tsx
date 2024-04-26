@@ -1,14 +1,18 @@
 import BaseSection from "../components/base-section";
 import SatisfactionForm from "./satisfaction-form";
-import SatisfactionComment from "./satisfaction-comment";
-import SatisfactionChart from "./satisfaction-chart";
+import SatisfactionFirstComment from "./satisfaction-first-comment";
+import SatisfactionAmpelChart from "./satisfaction-ampel-chart";
+import SatisfactionSecondComment from "./satisfaction-second-comment";
+import SatisfactionHistogramChart from "./satisfaction-histogram-chart";
 
 export default function SatisfactionSection() {
   return (
     <BaseSection>
       <SatisfactionForm />
-      <SatisfactionComment />
-      <SatisfactionChart />
+      <SatisfactionFirstComment />
+      <SatisfactionAmpelChart />
+      <SatisfactionSecondComment />
+      <SatisfactionHistogramChart />
     </BaseSection>
   );
 }
