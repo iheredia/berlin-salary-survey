@@ -48,5 +48,5 @@ export default function SatisfactionHistogramChart() {
       colors: ["#008000", "#73e600", "#b3b300", "#ff8000", "#b30000"],
     };
   }
-  return <HighchartChart chart={chart} hidden={!user.grossSalary} />;
+  return <HighchartChart chart={chart} hidden={!user.satisfaction} />;
 }
