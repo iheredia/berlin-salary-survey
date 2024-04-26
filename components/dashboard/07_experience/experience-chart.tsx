@@ -82,7 +82,7 @@ export default function ExperienceChart() {
             symbol: "circle",
           },
           tooltip: {
-            pointFormat: `<strong>Total Annual Gross Salary</strong> € {point.y} <br /> <strong>Experience years</strong>: {point.category} <br /><strong>Gender</strong>: {point.gender}`,
+            pointFormat: `<strong>Total Annual Gross Salary</strong> € {point.y} <br /> <strong>Experience years</strong>: {series.name} <br /><strong>Gender</strong>: {point.gender}`,
           },
         },
         columnrange: {
