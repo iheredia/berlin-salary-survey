@@ -21,7 +21,13 @@ export default function App(props: AppProps) {
         {embed ? null : <Introduction year={year} />}
         <Dashboard />
         <Footer />
-        <p className={styles.lastUpdate}>Last update: 18.04.2024</p>
+        <p className={styles.footerNote}>Last update: 26.04.2024</p>
+        <p className={styles.footerNote}>
+          Developed by{" "}
+          <a href="https://github.com/iheredia" target="_blank">
+            Ignacio Heredia
+          </a>
+        </p>
       </main>
     </AppContextElement>
   );
