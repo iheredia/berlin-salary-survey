@@ -9,7 +9,7 @@ export default function IndustryComment() {
   if (data.industry && user.industry && user.grossSalary) {
     const industryAverage = data.industry.averages[user.industry];
 
-    const percentageDiff = industryAverage / user.grossSalary;
+    const percentageDiff = industryAverage.average / user.grossSalary;
     const distance =
       0.91 < percentageDiff && percentageDiff < 1.09
         ? "pretty close of"
