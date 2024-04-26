@@ -58,7 +58,7 @@ export default async function getData(year: AvailableYear, user: User): Promise<
   }
 
   if (user.experience) {
-    data.experience = await getExperienceComparison(year);
+    data.experience = await getExperienceComparison(year, user.experience, user.grossSalary);
   }
 
   return data;

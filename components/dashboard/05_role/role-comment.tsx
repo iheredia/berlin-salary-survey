@@ -8,7 +8,7 @@ export default function RoleComment() {
   let comment;
 
   if (data.role) {
-    const { percentile, averages } = data.role;
+    const { percentile } = data.role;
     const upperDifference = 100 - percentile;
     let people = "people managers";
 

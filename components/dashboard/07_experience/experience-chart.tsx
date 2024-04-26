@@ -22,14 +22,32 @@ export default function ExperienceChart() {
           format: "€ {value:,.0f}",
           rotation: -30,
         },
+        plotLines: [
+          {
+            color: "var(--chart-red)",
+            width: 2,
+            value: user.grossSalary,
+            zIndex: 2000,
+            label: {
+              text: "Your salary",
+              y: user.grossSalary && user.grossSalary < 72_000 ? 320 : 1,
+            },
+          },
+        ],
       },
       series: [
         {
           type: "columnrange",
-          color: "#fff",
+          borderColor: "transparent",
           data: data.experience.series.map((serie) => {
             const sortedData = serie.data.sort((a, b) => a.y - b.y);
-            return [(sortedData.at(0)?.y || 0) - 2000, (sortedData.at(-1)?.y || 0) + 2000];
+            const low = (sortedData.at(0)?.y || 0) - 2000;
+            const high = (sortedData.at(-1)?.y || 0) + 2000;
+            return {
+              low,
+              high,
+              color: serie.name === user.experience ? "#fff" : "#ddd",
+            };
           }),
         },
         ...data.experience.series.map((serie) => ({ ...serie, type: "scatter" })),
@@ -57,5 +75,5 @@ export default function ExperienceChart() {
       },
     };
   }
-  return <HighchartChart chart={chart} hidden={!user.experience} />;
+  return <HighchartChart height={500} chart={chart} hidden={!user.experience} />;
 }
