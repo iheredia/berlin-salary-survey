@@ -28,6 +28,11 @@ export default function App(props: AppProps) {
             Ignacio Heredia
           </a>
         </p>
+        <p className={styles.footerNote}>
+          <a href="mailto:igor@handpickedberlin.com?subject=Berlin%20Salary%20Trends%20Feedback&body=Hi%20there,%20%20%20can%20you%E2%80%A6">
+            Feedback or a question?
+          </a>
+        </p>
       </main>
     </AppContextElement>
   );
