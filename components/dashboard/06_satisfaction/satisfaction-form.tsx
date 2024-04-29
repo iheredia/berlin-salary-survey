@@ -16,7 +16,7 @@ export default function SatisfactionForm() {
       <OptionsContainer>
         <label>
           <input type="radio" name="satisfaction" value="1" onChange={onSatisfactionChange} />1 -
-          Strongly Agree
+          Strongly Disagree
         </label>
         <label>
           <input type="radio" name="satisfaction" value="2" onChange={onSatisfactionChange} />2 -
