@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "download-data": "curl $DATA_DOWNLOAD_URL/2023.csv -o data/etl/2023.csv; curl $DATA_DOWNLOAD_URL/2024.csv -o data/etl/2024.csv",
+    "etl": "node data/etl",
     "dev": "NODE_OPTIONS='-r @newrelic/next' next dev",
     "build-next": "next build",
     "build-iframe-resizer": "cp node_modules/iframe-resizer/js/iframeResizer.js public; cp node_modules/iframe-resizer/js/iframeResizer.contentWindow.js public",

@@ -36,4 +36,12 @@ yarn-error.log*
 next-env.d.ts
 
 newrelic_agent.log
-*.csv
+
+# Data files
+2023.csv
+2023.json
+2023-values.json
+
+2024.csv
+2024.json
+2024-values.json
