@@ -18,6 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lora.className}>
+        <script
+          defer
+          data-domain="berlin-salary-survey.iheredia.com"
+          src="https://patti.nachblog.com/js/script.js"
+        ></script>
         {children}
         <Analytics />
         <SpeedInsights />
