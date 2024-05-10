@@ -21,7 +21,7 @@ export default function RootLayout({
         <script
           defer
           data-domain="berlin-salary-survey.iheredia.com"
-          src="https://patti.nachblog.com/js/script.js"
+          src="https://patti.iheredia.com/js/script.js"
         ></script>
         {children}
         <Analytics />
