@@ -20,7 +20,7 @@ export default function IndustryComment() {
       <>
         Your salary of <Strong>€ {user.grossSalary.toLocaleString()}</Strong> is {distance} the{" "}
         {user.industry} industry average salary of{" "}
-        <Strong>€ {industryAverage.toLocaleString()}</Strong>
+        <Strong>€ {industryAverage.average.toLocaleString()}</Strong>
       </>
     );
   }
