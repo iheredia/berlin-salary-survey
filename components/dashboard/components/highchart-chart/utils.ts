@@ -16,8 +16,7 @@ export function getHighlightedId(
   });
   return `${serieName}-${columnIndex}`;
 }
-
-export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, serieName: string) {
+export function youAreHereAnnotation(id: string) {
   return {
     draggable: "",
     labelOptions: {
@@ -28,7 +27,7 @@ export function getAnnotation(user: User, histogramBuckets: HistogramBuckets, se
     },
     labels: [
       {
-        point: getHighlightedId(user, histogramBuckets, serieName),
+        point: id,
         text: "You are here",
         verticalAlign: "bottom",
       },

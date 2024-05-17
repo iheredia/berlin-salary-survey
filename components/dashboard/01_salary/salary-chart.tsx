@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
-import { getAnnotation, getHighlightedId } from "../components/highchart-chart/utils";
+import { youAreHereAnnotation, getHighlightedId } from "../components/highchart-chart/utils";
 
 export default function SalaryChart() {
   const { user, data } = useContext(AppContext);
@@ -51,7 +51,7 @@ export default function SalaryChart() {
       },
       // z-index conflicts with the tooltip hover
       // The position needs to be fixed for the peaks of the charts
-      annotations: [getAnnotation(user, histogramBuckets, "grossSalary")],
+      annotations: [youAreHereAnnotation(highlightedId)],
       colors: ["var(--chart-grey)"],
     };
   }

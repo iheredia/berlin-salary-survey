@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
-import { getAnnotation, getHighlightedId } from "../components/highchart-chart/utils";
+import { youAreHereAnnotation, getHighlightedId } from "../components/highchart-chart/utils";
 
 export default function SatisfactionHistogramChart() {
   const { user, data } = useContext(AppContext);
@@ -11,6 +11,7 @@ export default function SatisfactionHistogramChart() {
     const { histogramBuckets, histogramCategories } = data.grossSalary;
     const { histogramSeries } = data.satisfaction;
 
+    const highlightedId = getHighlightedId(user, histogramBuckets, `${user.satisfaction}`);
     chart = {
       chart: { type: "column" },
 
@@ -44,7 +45,7 @@ export default function SatisfactionHistogramChart() {
       },
       // z-index conflicts with the tooltip hover
       // The position needs to be fixed for the peaks of the charts
-      annotations: [getAnnotation(user, histogramBuckets, `${user.satisfaction}`)],
+      annotations: [youAreHereAnnotation(highlightedId)], // Fix
       colors: ["#008000", "#73e600", "#b3b300", "#ff8000", "#b30000"],
     };
   }

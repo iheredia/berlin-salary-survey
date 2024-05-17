@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
-import { getAnnotation } from "../components/highchart-chart/utils";
+import { youAreHereAnnotation, getHighlightedId } from "../components/highchart-chart/utils";
 import styles from "./gender-chart.module.css";
 
 export default function GenderChart() {
@@ -19,6 +19,8 @@ export default function GenderChart() {
       histogramSeries[0].color = "var(--chart-light-red)";
       histogramSeries[1].color = "var(--chart-green)";
     }
+
+    const highlightedId = getHighlightedId(user, histogramBuckets, user.gender);
 
     chart = {
       chart: { type: "spline" },
@@ -43,7 +45,7 @@ export default function GenderChart() {
         pointFormat: `<strong>Percentage of {series.name}:</strong> {point.y}% <br /> <strong>Gross salary</strong>: {point.category}`,
       },
       series: histogramSeries,
-      annotations: [getAnnotation(user, histogramBuckets, user.gender)],
+      annotations: [youAreHereAnnotation(highlightedId)],
       legend: {
         align: "right",
         verticalAlign: "top",

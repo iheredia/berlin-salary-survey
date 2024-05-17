@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
-import { getAnnotation } from "../components/highchart-chart/utils";
+import { getHighlightedId, youAreHereAnnotation } from "../components/highchart-chart/utils";
 import { isIndividualContributor } from "@/data/helpers/utils";
 
+// Individial contributor vs team lead
 export default function RoleChart() {
   const { user, data } = useContext(AppContext);
 
@@ -19,6 +20,8 @@ export default function RoleChart() {
       histogramSeries[0].color = "var(--chart-light-red)";
       histogramSeries[1].color = "var(--chart-green)";
     }
+
+    const highlightedId = getHighlightedId(user, histogramBuckets, user.role);
 
     chart = {
       chart: {
@@ -39,7 +42,7 @@ export default function RoleChart() {
         pointFormat: `<strong>Percentage of {series.name}:</strong> {point.y}% <br /> <strong>Gross salary</strong>: {point.category}`,
       },
       series: histogramSeries,
-      annotations: [getAnnotation(user, histogramBuckets, user.role)],
+      annotations: [youAreHereAnnotation(highlightedId)],
       legend: {
         align: "right",
         verticalAlign: "top",

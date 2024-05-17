@@ -2,6 +2,7 @@ import { useContext } from "react";
 import AppContext from "@/components/context";
 import HighchartChart from "../components/highchart-chart";
 import { shuffle } from "lodash";
+import { youAreHereAnnotation } from "../components/highchart-chart/utils";
 
 export default function PositionChart() {
   const { user, data } = useContext(AppContext);
@@ -38,11 +39,6 @@ export default function PositionChart() {
           "Total Annual Gross Salary: <strong>€ {point.y:,.0f}</strong> <br /> Position: <strong>{point.name}</strong>",
       },
 
-      legend: {
-        align: "center",
-        verticalAlign: "top",
-      },
-
       series: [
         ...data.position.scatter,
         {
@@ -59,6 +55,7 @@ export default function PositionChart() {
           ],
         },
       ],
+      annotations: [youAreHereAnnotation("You")],
     };
   }
   return <HighchartChart chart={chart} hidden={!user.position} />;
